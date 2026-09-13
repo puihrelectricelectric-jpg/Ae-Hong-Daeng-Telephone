@@ -70,14 +70,14 @@
                     <i class="fas fa-sync-alt"></i> <span data-i18n="refresh">อัปเดต</span>
                 </button>
                 <select id="langSelector" class="bg-blue-700 text-white border border-blue-500 rounded px-2 py-1 text-sm focus:outline-none">
-                    <option value="th">🇹🇭 ไทย</option>
-                    <option value="en">🇬🇧 English</option>
+                    <option value="th">🇭 ไทย</option>
+                    <option value="en">🇬 English</option>
                     <option value="zh">🇨🇳 中文</option>
-                    <option value="ar">🇸🇦 العربية</option>
+                    <option value="ar">🇸 العربية</option>
                     <option value="ru">🇷🇺 Русский</option>
-                    <option value="my">🇲🇲 မြန်မာ</option>
-                    <option value="km">🇰🇭 ខ្មែរ</option>
-                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="my">🇲 မြန်မာ</option>
+                    <option value="km">🇰 ខ្មែរ</option>
+                    <option value="ko">🇰 한국어</option>
                 </select>
                 <button onclick="toggleAdmin()" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm transition">
                     <i class="fas fa-cog"></i> <span data-i18n="admin">Admin</span>
@@ -295,11 +295,11 @@
         const i18n = {
             th: { shopName: "ร้านมือถือโปร", welcome: "ยินดีต้อนรับสู่ร้านของเรา", admin: "จัดการ", refresh: "อัปเดต", loading: "กำลังโหลดข้อมูล...", dataUpdated: "ข้อมูลอัปเดตแล้ว!", lastUpdated: "อัปเดตล่าสุด:", autoRefresh: "Auto-refresh ทุก 30 วินาที", searchPlaceholder: "ค้นหายี่ห้อ หรือ รุ่นโทรศัพท์...", products: "สินค้าทั้งหมด", call: "โทร", calcTitle: "คำนวณผ่อนชำระ", calcPrice: "ราคาสินค้า (บาท)", calcDown: "เงินดาวน์ (บาท)", calcMonths: "จำนวนเดือน", calcBtn: "คำนวณ", calcResult: "ยอดผ่อนต่อเดือน:", baht: "บาท", evalTitle: "ประเมินราคาโทรศัพท์มือสอง", evalModel: "รุ่นโทรศัพท์", evalCondition: "สภาพ", evalBtn: "ประเมินราคา", evalResult: "ราคาประเมินโดยประมาณ:", evalNote: "*ราคานี้เป็นเพียงการประเมินเบื้องต้น กรุณานำเครื่องมาตรวจสอบที่ร้าน", repairTitle: "บริการซ่อมโทรศัพท์", repair1: "เปลี่ยนหน้าจอ", repair2: "เปลี่ยนแบตเตอรี่", repair3: "ซ่อมชาร์จไม่เข้า", mapTitle: "แผนที่ร้าน", rights: "สงวนลิขสิทธิ์", adminPanel: "แผงควบคุม Admin" },
             en: { shopName: "Mobile Shop Pro", welcome: "Welcome to our shop", admin: "Admin", refresh: "Refresh", loading: "Loading data...", dataUpdated: "Data updated!", lastUpdated: "Last updated:", autoRefresh: "Auto-refresh every 30s", searchPlaceholder: "Search brand or model...", products: "All Products", call: "Call", calcTitle: "Installment Calculator", calcPrice: "Price (THB)", calcDown: "Down Payment (THB)", calcMonths: "Months", calcBtn: "Calculate", calcResult: "Monthly Payment:", baht: "THB", evalTitle: "Used Phone Evaluation", evalModel: "Phone Model", evalCondition: "Condition", evalBtn: "Evaluate", evalResult: "Estimated Price:", evalNote: "*This is a preliminary estimate.", repairTitle: "Repair Services", repair1: "Screen Replacement", repair2: "Battery Replacement", repair3: "Charging Port Fix", mapTitle: "Shop Map", rights: "All rights reserved", adminPanel: "Admin Panel" },
-            zh: { shopName: "手机专业店", welcome: "欢迎光临", admin: "管理", refresh: "刷新", loading: "正在加载数据...", dataUpdated: "数据已更新!", lastUpdated: "最后更新:", autoRefresh: "每30秒自动刷新", searchPlaceholder: "搜索品牌或型号...", products: "所有产品", call: "致电", calcTitle: "分期付款计算器", calcPrice: "价格 (泰铢)", calcDown: "首付 (泰铢)", calcMonths: "月数", calcBtn: "计算", calcResult: "每月还款:", baht: "泰铢", evalTitle: "二手手机估价", evalModel: "手机型号", evalCondition: "状况", evalBtn: "估价", evalResult: "预估价格:", evalNote: "*此为初步估价。", repairTitle: "维修服务", repair1: "更换屏幕", repair2: "更换电池", repair3: "修理充电口", mapTitle: "商店地图", rights: "版权所有", adminPanel: "管理面板" },
+            zh: { shopName: "手机专业店", welcome: "欢迎光临", admin: "管理", refresh: "刷新", loading: "正在加载数据...", dataUpdated: "数据已更新!", lastUpdated: "最后更新:", autoRefresh: "每30秒自动刷新", searchPlaceholder: "搜索品牌或型号...", products: "所有产品", call: "致电", calcTitle: "分期付款计算器", calcPrice: "价格 (泰)", calcDown: "首付 (泰铢)", calcMonths: "月数", calcBtn: "计算", calcResult: "每月还款:", baht: "泰铢", evalTitle: "二手手机估价", evalModel: "手机型号", evalCondition: "状况", evalBtn: "估价", evalResult: "预估价格:", evalNote: "*此为初步估价。", repairTitle: "维修服务", repair1: "更换屏幕", repair2: "更换电池", repair3: "修理充电口", mapTitle: "商店地图", rights: "版权所有", adminPanel: "管理面板" },
             ar: { shopName: "متجر الهواتف", welcome: "مرحباً", admin: "إدارة", refresh: "تحديث", loading: "جاري التحميل...", dataUpdated: "تم التحديث!", lastUpdated: "آخر تحديث:", autoRefresh: "تحديث كل 30 ثانية", searchPlaceholder: "ابحث...", products: "المنتجات", call: "اتصال", calcTitle: "حاسبة التقسيط", calcPrice: "السعر", calcDown: "الدفعة الأولى", calcMonths: "الأشهر", calcBtn: "حساب", calcResult: "القسط الشهري:", baht: "بات", evalTitle: "تقييم الهاتف", evalModel: "طراز الهاتف", evalCondition: "الحالة", evalBtn: "تقييم", evalResult: "السعر المقدر:", evalNote: "*تقدير أولي.", repairTitle: "خدمات الإصلاح", repair1: "استبدال الشاشة", repair2: "استبدال البطارية", repair3: "إصلاح الشحن", mapTitle: "خريطة المتجر", rights: "جميع الحقوق محفوظة", adminPanel: "لوحة الإدارة" },
             ru: { shopName: "Магазин телефонов", welcome: "Добро пожаловать", admin: "Админ", refresh: "Обновить", loading: "Загрузка...", dataUpdated: "Обновлено!", lastUpdated: "Последнее обновление:", autoRefresh: "Автообновление каждые 30 сек", searchPlaceholder: "Поиск...", products: "Товары", call: "Звонить", calcTitle: "Калькулятор", calcPrice: "Цена", calcDown: "Первый взнос", calcMonths: "Месяцы", calcBtn: "Рассчитать", calcResult: "Ежемесячный платеж:", baht: "бат", evalTitle: "Оценка телефона", evalModel: "Модель", evalCondition: "Состояние", evalBtn: "Оценить", evalResult: "Примерная цена:", evalNote: "*Предварительная оценка.", repairTitle: "Ремонт", repair1: "Замена экрана", repair2: "Замена батареи", repair3: "Ремонт зарядки", mapTitle: "Карта", rights: "Все права защищены", adminPanel: "Панель администратора" },
             my: { shopName: "မိုဘိုင်းဖုန်းဆိုင်", welcome: "ကြိုဆိုပါသည်", admin: "အက်ဒမင်", refresh: "ရီဖရက်ရှ်", loading: "လိုဒ်နေသည်...", dataUpdated: "အပ်ဒိတ်ပြီး!", lastUpdated: "နောက်ဆုံးအပ်ဒိတ်:", autoRefresh: "30 စက္ကန့်လျှင်", searchPlaceholder: "ရှာဖွေပါ...", products: "ကုန်ပစ္စည်း", call: "ခေါ်", calcTitle: "တွက်ချက်မှု", calcPrice: "စျေးနှုန်း", calcDown: "ကြိုတင်ငွေ", calcMonths: "လ", calcBtn: "တွက်", calcResult: "လစဉ်ပေးသွင်း:", baht: "ဘတ်", evalTitle: "ဖုန်းအကဲဖြတ်", evalModel: "မော်ဒယ်", evalCondition: "အခြေအနေ", evalBtn: "အကဲဖြတ်", evalResult: "ခန့်မှန်းစျေး:", evalNote: "*ကနဦးခန့်မှန်းချက်။", repairTitle: "ပြုပြင်ခြင်း", repair1: "မျက်နှာပြင်", repair2: "ဘက်ထရီ", repair3: "အားသွင်း", mapTitle: "မြေပုံ", rights: "မူပိုင်ခွင့်", adminPanel: "အက်ဒမင်" },
-            km: { shopName: "ហាងលក់ទូរស័ព្ទ", welcome: "សូមស្វាគមន៍", admin: "អ្នកគ្រប់គ្រង", refresh: "ធ្វើឱ្យថ្មី", loading: "កំពុងផ្ទុក...", dataUpdated: "បានធ្វើបច្ចុប្បន្នភាព!", lastUpdated: "ការធ្វើបច្ចុប្បន្នភាពចុងក្រោយ:", autoRefresh: "រៀងរាល់ 30 វិនាទី", searchPlaceholder: "ស្វែងរក...", products: "ផលិតផល", call: "ហៅ", calcTitle: "គណនា", calcPrice: "តម្លៃ", calcDown: "ប្រាក់កក់", calcMonths: "ខែ", calcBtn: "គណនា", calcResult: "ការបង់ប្រាក់:", baht: "បាត", evalTitle: "វាយតម្លៃ", evalModel: "ម៉ូដែល", evalCondition: "ស្ថានភាព", evalBtn: "វាយតម្លៃ", evalResult: "តម្លៃប៉ាន់ស្មាន:", evalNote: "*ការប៉ាន់ស្មានបឋម។", repairTitle: "ជួសជុល", repair1: "ប្តូរអេក្រង់", repair2: "ប្តូរថ្ម", repair3: "កន្លែងសាក", mapTitle: "ផែនទី", rights: "រក្សាសិទ្ធិ", adminPanel: "ផ្ទាំងគ្រប់គ្រង" },
+            km: { shopName: "ហាងលក់ទូរសព្ទ", welcome: "សូមស្វាគមន", admin: "អ្នកគរប់គ្រង", refresh: "ធ្វើឱ្យថ្មី", loading: "កំពុងផ្ទុក...", dataUpdated: "បានធ្វើបច្ចុប្បននភាព!", lastUpdated: "ការធ្វើបច្ុប្បន្នភាពចុងក្រោយ:", autoRefresh: "រៀងរាល់ 30 វិនាទី", searchPlaceholder: "ស្វែងរក...", products: "ផលិតផល", call: "ហៅ", calcTitle: "គណនា", calcPrice: "តម្លៃ", calcDown: "ប្រាក់កក់", calcMonths: "ខែ", calcBtn: "គណនា", calcResult: "ការបង់ប្រាក់:", baht: "បាត", evalTitle: "វាយតម្លៃ", evalModel: "ម៉ូដែល", evalCondition: "ស្ថានភាព", evalBtn: "វាយតម្លៃ", evalResult: "តម្លៃប៉ាន់ស្មាន:", evalNote: "*ការប៉ាន់ស្មានបឋម។", repairTitle: "ជួសជុល", repair1: "ប្តូរអេក្ង់", repair2: "ប្ូរថ្ម", repair3: "កន្លែងសាក", mapTitle: "ផែនទី", rights: "រក្សាសិទធិ", adminPanel: "ផ្ាំងគ្រប់គ្រង" },
             ko: { shopName: "모바일 샵", welcome: "환영합니다", admin: "관리자", refresh: "새로고침", loading: "로딩 중...", dataUpdated: "업데이트됨!", lastUpdated: "마지막 업데이트:", autoRefresh: "30초마다", searchPlaceholder: "검색...", products: "제품", call: "전화", calcTitle: "할부 계산기", calcPrice: "가격", calcDown: "두금", calcMonths: "개월", calcBtn: "계산", calcResult: "월 할부금:", baht: "바트", evalTitle: "휴대폰 평가", evalModel: "모델", evalCondition: "상태", evalBtn: "평가", evalResult: "예상 가격:", evalNote: "*예비 추정치.", repairTitle: "수리 서비스", repair1: "화면 교체", repair2: "배터리 교체", repair3: "충전 포트", mapTitle: "매장 지도", rights: "모든 권리 보유", adminPanel: "관리자 패널" }
         };
 
@@ -365,7 +365,6 @@
         }
 
         function init() {
-            // โหลดค่าจาก LocalStorage ถ้ามี
             document.getElementById('ghOwner').value = localStorage.getItem('gh_owner') || 'puihrelectricelectric-jpg';
             document.getElementById('ghRepo').value = localStorage.getItem('gh_repo') || 'Ae-Hong-Daeng-Telephone';
             document.getElementById('ghPath').value = localStorage.getItem('gh_path') || 'data/shop.json';
@@ -376,15 +375,12 @@
 
             document.getElementById('langSelector').value = currentLang;
             
-            // แสดงข้อมูลเริ่มต้นทันที (ป้องกันหน้าจอขาว/ข้อมูลหาย)
             hideLoading();
             renderAll();
 
-            // โหลดจาก GitHub แบบ Background (ถ้ามีไฟล์)
             setTimeout(() => loadFromGitHub(true), 500);
             setupAutoRefresh();
 
-            // แก้ไข Syntax Error: ย้าย Event Listener เข้ามาในฟังก์ชัน init
             document.getElementById('passwordInput').addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') submitPassword();
             });
@@ -592,7 +588,14 @@
 
             if (!silent) showLoading('กำลังโหลด...');
             try {
-                const response = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/main/${path}?t=${Date.now()}`, { cache: 'no-store' });
+                // ลอง branch 'main' ก่อน
+                let response = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/main/${path}?t=${Date.now()}`, { cache: 'no-store' });
+                
+                // ถ้าไม่ได้ ลอง branch 'master'
+                if (!response.ok) {
+                    response = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/master/${path}?t=${Date.now()}`, { cache: 'no-store' });
+                }
+                
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 
                 shopData = await response.json();
