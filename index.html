@@ -414,25 +414,22 @@
 
         // ---------- App logic ----------
         function init() {
-            document.getElementById('ghOwner').value = localStorage.getItem('gh_owner') || '';
-            document.getElementById('ghRepo').value = localStorage.getItem('gh_repo') || '';
-            document.getElementById('ghPath').value = localStorage.getItem('gh_path') || 'data/shop.json';
-            document.getElementById('ghToken').value = localStorage.getItem('gh_token') || '';
+    document.getElementById('ghOwner').value = 'puihrelectricelectric-jpg';
+    document.getElementById('ghRepo').value = 'Ae-Hong-Daeng-Telephone';
+    document.getElementById('ghPath').value = 'data/shop.json';
+    document.getElementById('ghToken').value = '';
+    
+    const autoRefreshEnabled = true;
+    document.getElementById('autoRefresh').checked = autoRefreshEnabled;
 
-            const autoRefreshEnabled = localStorage.getItem('auto_refresh') !== 'false';
-            document.getElementById('autoRefresh').checked = autoRefreshEnabled;
+    document.getElementById('langSelector').value = currentLang;
+    applyLanguage(currentLang);
 
-            document.getElementById('langSelector').value = currentLang;
-            applyLanguage(currentLang);
-
-            hideLoading();
-            renderAll();
-
-            if (localStorage.getItem('gh_owner') && localStorage.getItem('gh_token')) {
-                setTimeout(() => loadFromGitHub(true), 1000);
-            }
-
-            setupAutoRefresh();
+    // โหลดข้อมูลจาก shop.json ทันที (ไม่ต้องรอ)
+    loadFromGitHub(true);
+    
+    setupAutoRefresh();
+}
 
             // Allow Enter key to submit the password modal
             document.getElementById('passwordInput').addEventListener('keydown', (e) => {
@@ -700,36 +697,32 @@
         }
 
         async function loadFromGitHub(silent = false) {
-            const owner = document.getElementById('ghOwner').value || localStorage.getItem('gh_owner');
-            const repo = document.getElementById('ghRepo').value || localStorage.getItem('gh_repo');
-            const path = document.getElementById('ghPath').value || localStorage.getItem('gh_path') || 'data/shop.json';
-            const token = document.getElementById('ghToken').value || localStorage.getItem('gh_token');
+    // Hardcode config (ไม่ต้องใช้ Token)
+    const owner = 'puihrelectricelectric-jpg';
+    const repo = 'Ae-Hong-Daeng-Telephone';
+    const path = 'data/shop.json';
 
-            if (!owner || !repo || !token) {
-                if (!silent) await showAlert("Please fill in GitHub Owner, Repo, and Token");
-                return false;
-            }
+    if (!silent) showLoading('กำลังโหลดข้อมูลจาก GitHub...');
 
-            if (!silent) showLoading('กำลังโหลดข้อมูลจาก GitHub...');
-
-            try {
-                const timestamp = new Date().getTime();
-                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?t=${timestamp}`, {
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
+    try {
+        const timestamp = new Date().getTime();
+        // ใช้ Raw URL แทน API (ไม่ต้องใช้ Token)
+        const response = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/main/${path}?t=${timestamp}`, {
+            headers: {
+                'Cache-Control': 'no-cache'
+            },
+            cache: 'no-store'
+        });
 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
 
-                const data = await response.json();
-                lastDataVersion = data.sha;
+                // Raw GitHub ให้ JSON โดยตรง ไม่ต้อง decode base64
+const shopDataLoaded = await response.json();
+lastDataVersion = timestamp;
 
-                const decodedContent = decodeURIComponent(escape(atob(data.content)));
-                shopData = JSON.parse(decodedContent);
+shopData = shopDataLoaded;
 
                 document.getElementById('adminShopName').value = shopData.name || '';
                 document.getElementById('adminPhone').value = shopData.phone || '';
