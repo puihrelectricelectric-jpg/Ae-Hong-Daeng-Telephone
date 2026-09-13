@@ -1,10 +1,32 @@
 {
   "name": "ร้าน AE หงแดง เทเลโฟน",
-  "phone": "081-234-5678",
+  "phone": "081-999-8888",
   "line": "@aehongdaeng",
   "fb": "https://facebook.com/aehongdaeng",
   "address": "ซอย แบตแมน หนองปรือ2",
-  "mapUrl": "https://www.google.com/maps/embed?...",
-  "lastUpdated": null,
-  "products": []
+  "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.5!2d100.5!3d13.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQyJzAwLjAiTiAxMDDCsDMwJzAwLjAiRQ!5e0!3m2!1sen!2sth!4v1600000000000!5m2!1sen!2sth",
+  "lastUpdated": "2026-09-13T12:00:00Z",
+  "products": [
+    {
+      "id": 1,
+      "brand": "Apple",
+      "model": "iPhone 15 Pro Max 256GB",
+      "price": 48900,
+      "img": "https://via.placeholder.com/300x200?text=iPhone+15+Pro+Max"
+    },
+    {
+      "id": 2,
+      "brand": "Samsung",
+      "model": "Galaxy S24 Ultra 512GB",
+      "price": 52900,
+      "img": "https://via.placeholder.com/300x200?text=Galaxy+S24+Ultra"
+    },
+    {
+      "id": 3,
+      "brand": "Xiaomi",
+      "model": "Redmi Note 13 Pro 5G",
+      "price": 9999,
+      "img": "https://via.placeholder.com/300x200?text=Redmi+Note+13"
+    }
+  ]
 }
