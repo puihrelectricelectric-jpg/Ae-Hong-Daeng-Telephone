@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -63,6 +63,15 @@
             animation: slideIn 0.3s ease-out;
         }
         @keyframes slideIn { from { transform: translateX(400px); } to { transform: translateX(0); } }
+        .simple-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 9998;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans transition-all duration-300">
@@ -88,12 +97,12 @@
                 </button>
                 <select id="langSelector" class="bg-blue-700 text-white border border-blue-500 rounded px-2 py-1 text-sm focus:outline-none">
                     <option value="th">🇹🇭 ไทย</option>
-                    <option value="en">🇧 English</option>
+                    <option value="en">🇬🇧 English</option>
                     <option value="zh">🇨🇳 中文</option>
                     <option value="ar">🇸🇦 العربية</option>
                     <option value="ru">🇷🇺 Русский</option>
                     <option value="my">🇲🇲 မြန်မာ</option>
-                    <option value="km">🇭 ខ្មែរ</option>
+                    <option value="km">🇰🇭 ខ្មែរ</option>
                     <option value="ko">🇰🇷 한국어</option>
                 </select>
                 <button onclick="toggleAdmin()" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm transition">
@@ -125,7 +134,7 @@
 
         <section class="bg-white rounded-lg shadow p-4">
             <div class="relative">
-                <input type="text" id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="ค้นหายี่ห้อ หรือ รุ่นโทรศัพท์..." 
+                <input type="text" id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="ค้นหายี่ห้อ หรือ รุ่นโทรศัพท์..."
                     class="w-full border border-gray-300 rounded-lg px-4 py-3 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
             </div>
@@ -138,7 +147,7 @@
         </section>
 
         <section class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg shadow p-6 border border-blue-100">
-            <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-calculator text-blue-600"></i> <span data-i18n="calcTitle">คำนวณผ่อนชำระ</span></h3>
+            <h3 id="calcSectionTitle" class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-calculator text-blue-600"></i> <span data-i18n="calcTitle">คำนวณผ่อนชำระ</span></h3>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="calcPrice">ราคาสินค้า (บาท)</label>
@@ -216,7 +225,7 @@
         <div class="bg-white w-full max-w-4xl mx-auto mt-10 mb-10 rounded-lg shadow-2xl p-6 relative">
             <button onclick="toggleAdmin()" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 text-2xl">&times;</button>
             <h2 class="text-2xl font-bold mb-6 border-b pb-2"><i class="fas fa-user-shield"></i> <span data-i18n="adminPanel">แผงควบคุม Admin</span></h2>
-            
+
             <div class="bg-yellow-50 border border-yellow-200 p-4 rounded mb-6">
                 <h3 class="font-bold text-yellow-800 mb-2">⚙️ GitHub API Configuration</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -230,7 +239,7 @@
                     <button onclick="loadFromGitHub()" class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700"><i class="fas fa-download"></i> Load from GitHub</button>
                     <button onclick="saveToGitHub()" class="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700"><i class="fas fa-upload"></i> Save to GitHub</button>
                     <label class="flex items-center gap-2 text-sm text-gray-700 ml-2">
-                        <input type="checkbox" id="autoRefresh" checked> 
+                        <input type="checkbox" id="autoRefresh" checked>
                         <span data-i18n="autoRefresh">Auto-refresh ทุก 30 วินาที</span>
                     </label>
                 </div>
@@ -238,7 +247,7 @@
             </div>
 
             <div class="mb-6">
-                <h3 class="font-bold mb-2"> Shop Information</h3>
+                <h3 class="font-bold mb-2">Shop Information</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <input type="text" id="adminShopName" placeholder="Shop Name" class="border rounded px-3 py-2">
                     <input type="text" id="adminPhone" placeholder="Phone" class="border rounded px-3 py-2">
@@ -265,12 +274,46 @@
         </div>
     </div>
 
+    <!-- Custom password modal (replaces window.prompt, which many in-app browsers such as LINE/Facebook/Messenger block) -->
+    <div id="passwordModal" class="simple-modal-overlay hidden" style="z-index:9999;">
+        <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-sm">
+            <h3 class="font-bold text-lg mb-3 flex items-center gap-2"><i class="fas fa-lock text-blue-600"></i> Admin Login</h3>
+            <input type="password" id="passwordInput" placeholder="Enter admin password" class="w-full border rounded px-3 py-2 mb-2" autocomplete="off">
+            <p id="passwordError" class="text-red-500 text-sm mb-2 hidden">Wrong password, please try again.</p>
+            <div class="flex justify-end gap-2 mt-2">
+                <button onclick="closePasswordModal()" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">Cancel</button>
+                <button onclick="submitPassword()" class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom alert modal (replaces window.alert) -->
+    <div id="alertModal" class="simple-modal-overlay hidden" style="z-index:9999;">
+        <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-sm">
+            <p id="alertMessage" class="text-gray-800 mb-4 whitespace-pre-line"></p>
+            <div class="flex justify-end">
+                <button id="alertOkBtn" class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom confirm modal (replaces window.confirm) -->
+    <div id="confirmModal" class="simple-modal-overlay hidden" style="z-index:9999;">
+        <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-sm">
+            <p id="confirmMessage" class="text-gray-800 mb-4"></p>
+            <div class="flex justify-end gap-2">
+                <button id="confirmNoBtn" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">Cancel</button>
+                <button id="confirmYesBtn" class="px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700">Delete</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         let currentLang = localStorage.getItem('shop_lang') || 'th';
         let autoRefreshInterval = null;
         let lastDataVersion = null;
         let isLoading = false;
-        
+
         let shopData = {
             name: "ร้าน AE หงแดง เทเลโฟน",
             phone: "081-234-5678",
@@ -297,12 +340,85 @@
             ko: { shopName: "모바일 샵 프로", welcome: "저희 매장에 오신 것을 환영합니다", admin: "관리자", refresh: "새로고침", loading: "데이터 로딩 중...", dataUpdated: "데이터가 업데이트되었습니다!", lastUpdated: "마지막 업데이트:", autoRefresh: "30초마다 자동 새로고침", searchPlaceholder: "브랜드 또는 모델 검색...", products: "모든 제품", call: "전화", calcTitle: "할부 계산기", calcPrice: "가격 (바트)", calcDown: "두금 (바트)", calcMonths: "개월", calcBtn: "계산", calcResult: "월 할부금:", baht: "바트", evalTitle: "중고 휴대폰 평가", evalModel: "휴대폰 모델", evalCondition: "상태", evalBtn: "평가하기", evalResult: "예상 가격:", evalNote: "*이는 예비 추정치입니다. 기기를 매장으로 가져오십시오.", repairTitle: "수리 서비스", repair1: "화면 교체", repair2: "배터리 교체", repair3: "충전 포트 수리", mapTitle: "매장 지도", rights: "모든 권리 보유", adminPanel: "관리자 패널" }
         };
 
+        // ---------- Custom modal helpers (replace prompt/alert/confirm) ----------
+        function showAlert(message) {
+            return new Promise(resolve => {
+                const modal = document.getElementById('alertModal');
+                document.getElementById('alertMessage').textContent = message;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                const btn = document.getElementById('alertOkBtn');
+                const handler = () => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    btn.removeEventListener('click', handler);
+                    resolve();
+                };
+                btn.addEventListener('click', handler);
+            });
+        }
+
+        function showConfirm(message) {
+            return new Promise(resolve => {
+                const modal = document.getElementById('confirmModal');
+                document.getElementById('confirmMessage').textContent = message;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                const yesBtn = document.getElementById('confirmYesBtn');
+                const noBtn = document.getElementById('confirmNoBtn');
+                const cleanup = (result) => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    yesBtn.removeEventListener('click', onYes);
+                    noBtn.removeEventListener('click', onNo);
+                    resolve(result);
+                };
+                const onYes = () => cleanup(true);
+                const onNo = () => cleanup(false);
+                yesBtn.addEventListener('click', onYes);
+                noBtn.addEventListener('click', onNo);
+            });
+        }
+
+        function openPasswordModal() {
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('passwordError').classList.add('hidden');
+            const modal = document.getElementById('passwordModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => document.getElementById('passwordInput').focus(), 50);
+        }
+
+        function closePasswordModal() {
+            const modal = document.getElementById('passwordModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function submitPassword() {
+            const pass = document.getElementById('passwordInput').value;
+            if (pass === "admin123") {
+                closePasswordModal();
+                document.getElementById('adminShopName').value = shopData.name;
+                document.getElementById('adminPhone').value = shopData.phone;
+                document.getElementById('adminLine').value = shopData.line;
+                document.getElementById('adminFb').value = shopData.fb;
+                document.getElementById('adminAddress').value = shopData.address;
+                document.getElementById('adminMap').value = shopData.mapUrl;
+                renderAdminProducts();
+                document.getElementById('adminPanel').classList.add('active');
+            } else {
+                document.getElementById('passwordError').classList.remove('hidden');
+            }
+        }
+
+        // ---------- App logic ----------
         function init() {
             document.getElementById('ghOwner').value = localStorage.getItem('gh_owner') || '';
             document.getElementById('ghRepo').value = localStorage.getItem('gh_repo') || '';
             document.getElementById('ghPath').value = localStorage.getItem('gh_path') || 'data/shop.json';
             document.getElementById('ghToken').value = localStorage.getItem('gh_token') || '';
-            
+
             const autoRefreshEnabled = localStorage.getItem('auto_refresh') !== 'false';
             document.getElementById('autoRefresh').checked = autoRefreshEnabled;
 
@@ -311,27 +427,32 @@
 
             hideLoading();
             renderAll();
-            
+
             if (localStorage.getItem('gh_owner') && localStorage.getItem('gh_token')) {
                 setTimeout(() => loadFromGitHub(true), 1000);
             }
-            
+
             setupAutoRefresh();
+
+            // Allow Enter key to submit the password modal
+            document.getElementById('passwordInput').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') submitPassword();
+            });
         }
 
         function setupAutoRefresh() {
             if (autoRefreshInterval) {
                 clearInterval(autoRefreshInterval);
             }
-            
+
             const autoRefreshEnabled = document.getElementById('autoRefresh').checked;
             localStorage.setItem('auto_refresh', autoRefreshEnabled);
-            
+
             if (autoRefreshEnabled && localStorage.getItem('gh_owner') && localStorage.getItem('gh_token')) {
                 autoRefreshInterval = setInterval(() => {
                     checkForUpdates();
                 }, 30000);
-                
+
                 document.getElementById('autoRefreshInfo').textContent = '(อัปเดตอัตโนมัติทุก 30 วินาที)';
             } else {
                 document.getElementById('autoRefreshInfo').textContent = '';
@@ -365,7 +486,7 @@
             localStorage.setItem('shop_lang', lang);
             document.documentElement.lang = lang;
             document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            
+
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (i18n[lang][key]) el.textContent = i18n[lang][key];
@@ -388,7 +509,7 @@
             document.getElementById('linkLine').href = `https://line.me/ti/p/~${shopData.line.replace('@', '')}`;
             document.getElementById('linkFb').href = shopData.fb;
             document.getElementById('mapFrame').src = shopData.mapUrl;
-            
+
             if (shopData.lastUpdated) {
                 const date = new Date(shopData.lastUpdated);
                 document.getElementById('lastUpdateTime').textContent = date.toLocaleString(currentLang === 'th' ? 'th-TH' : 'en-US');
@@ -399,9 +520,9 @@
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const grid = document.getElementById('productGrid');
             grid.innerHTML = '';
-            
-            const filtered = shopData.products.filter(p => 
-                p.brand.toLowerCase().includes(searchTerm) || 
+
+            const filtered = shopData.products.filter(p =>
+                p.brand.toLowerCase().includes(searchTerm) ||
                 p.model.toLowerCase().includes(searchTerm)
             );
 
@@ -416,7 +537,7 @@
                                 <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">${p.brand}</span>
                                 <h4 class="font-bold text-lg mt-2 truncate">${p.model}</h4>
                                 <p class="text-xl font-bold text-red-600 mt-2">${p.price.toLocaleString()} <span data-i18n="baht">${i18n[currentLang].baht}</span></p>
-                                <button onclick="document.getElementById('calcPrice').value=${p.price}; document.getElementById('calcTitle').scrollIntoView({behavior: 'smooth'})" class="w-full mt-3 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition text-sm font-bold" data-i18n="calcBtn">${i18n[currentLang].calcBtn}</button>
+                                <button onclick="document.getElementById('calcPrice').value=${p.price}; document.getElementById('calcSectionTitle').scrollIntoView({behavior: 'smooth'})" class="w-full mt-3 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition text-sm font-bold" data-i18n="calcBtn">${i18n[currentLang].calcBtn}</button>
                             </div>
                         </div>
                     `;
@@ -450,12 +571,12 @@
             document.getElementById('calcResult').classList.remove('hidden');
         }
 
-        function evaluatePhone() {
+        async function evaluatePhone() {
             const basePrice = parseFloat(document.getElementById('evalModel').value) || 0;
             const condition = parseFloat(document.getElementById('evalCondition').value) || 1.0;
-            
+
             if (basePrice === 0) {
-                alert(currentLang === 'th' ? 'กรุณาเลือกรุ่นโทรศัพท์' : 'Please select a phone model');
+                await showAlert(currentLang === 'th' ? 'กรุณาเลือกรุ่นโทรศัพท์' : 'Please select a phone model');
                 return;
             }
 
@@ -494,7 +615,7 @@
                 if (response.ok) {
                     const data = await response.json();
                     const currentVersion = data.sha;
-                    
+
                     if (currentVersion !== lastDataVersion) {
                         console.log('New version detected! Reloading...');
                         lastDataVersion = currentVersion;
@@ -512,19 +633,7 @@
             if (panel.classList.contains('active')) {
                 panel.classList.remove('active');
             } else {
-                const pass = prompt("Enter Admin Password (default: admin123)");
-                if (pass === "admin123") {
-                    document.getElementById('adminShopName').value = shopData.name;
-                    document.getElementById('adminPhone').value = shopData.phone;
-                    document.getElementById('adminLine').value = shopData.line;
-                    document.getElementById('adminFb').value = shopData.fb;
-                    document.getElementById('adminAddress').value = shopData.address;
-                    document.getElementById('adminMap').value = shopData.mapUrl;
-                    renderAdminProducts();
-                    panel.classList.add('active');
-                } else if (pass !== null) {
-                    alert("Wrong password!");
-                }
+                openPasswordModal();
             }
         }
 
@@ -562,14 +671,15 @@
             renderAdminProducts();
         }
 
-        function deleteProduct(index) {
-            if (confirm("Delete this product?")) {
+        async function deleteProduct(index) {
+            const ok = await showConfirm("Delete this product?");
+            if (ok) {
                 shopData.products.splice(index, 1);
                 renderAdminProducts();
             }
         }
 
-        function applyChangesLocally() {
+        async function applyChangesLocally() {
             shopData.name = document.getElementById('adminShopName').value;
             shopData.phone = document.getElementById('adminPhone').value;
             shopData.line = document.getElementById('adminLine').value;
@@ -578,15 +688,15 @@
             shopData.mapUrl = document.getElementById('adminMap').value;
             shopData.lastUpdated = new Date().toISOString();
             renderAll();
-            alert("Changes applied locally! Don't forget to 'Save to GitHub' to make them permanent.");
+            await showAlert("Changes applied locally! Don't forget to 'Save to GitHub' to make them permanent.");
         }
 
-        function saveGithubConfig() {
+        async function saveGithubConfig() {
             localStorage.setItem('gh_owner', document.getElementById('ghOwner').value);
             localStorage.setItem('gh_repo', document.getElementById('ghRepo').value);
             localStorage.setItem('gh_path', document.getElementById('ghPath').value);
             localStorage.setItem('gh_token', document.getElementById('ghToken').value);
-            alert("GitHub configuration saved to your browser's LocalStorage.");
+            await showAlert("GitHub configuration saved to your browser's LocalStorage.");
         }
 
         async function loadFromGitHub(silent = false) {
@@ -596,7 +706,7 @@
             const token = document.getElementById('ghToken').value || localStorage.getItem('gh_token');
 
             if (!owner || !repo || !token) {
-                if (!silent) alert("Please fill in GitHub Owner, Repo, and Token");
+                if (!silent) await showAlert("Please fill in GitHub Owner, Repo, and Token");
                 return false;
             }
 
@@ -615,34 +725,34 @@
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
-                
+
                 const data = await response.json();
                 lastDataVersion = data.sha;
-                
+
                 const decodedContent = decodeURIComponent(escape(atob(data.content)));
                 shopData = JSON.parse(decodedContent);
-                
+
                 document.getElementById('adminShopName').value = shopData.name || '';
                 document.getElementById('adminPhone').value = shopData.phone || '';
                 document.getElementById('adminLine').value = shopData.line || '';
                 document.getElementById('adminFb').value = shopData.fb || '';
                 document.getElementById('adminAddress').value = shopData.address || '';
                 document.getElementById('adminMap').value = shopData.mapUrl || '';
-                
+
                 renderAll();
-                
+
                 if (!silent) {
                     hideLoading();
-                    alert("Data loaded successfully from GitHub!");
+                    await showAlert("Data loaded successfully from GitHub!");
                     showUpdateNotification();
                 }
-                
+
                 return true;
             } catch (error) {
                 console.error('Load error:', error);
                 if (!silent) {
                     hideLoading();
-                    alert("Error loading from GitHub: " + error.message + "\n\nUsing default data instead.");
+                    await showAlert("Error loading from GitHub: " + error.message + "\n\nUsing default data instead.");
                 }
                 hideLoading();
                 return false;
@@ -650,7 +760,7 @@
         }
 
         async function saveToGitHub() {
-            applyChangesLocally();
+            await applyChangesLocally();
 
             const owner = document.getElementById('ghOwner').value || localStorage.getItem('gh_owner');
             const repo = document.getElementById('ghRepo').value || localStorage.getItem('gh_repo');
@@ -658,7 +768,7 @@
             const token = document.getElementById('ghToken').value || localStorage.getItem('gh_token');
 
             if (!owner || !repo || !token) {
-                alert("Please fill in GitHub Owner, Repo, and Token");
+                await showAlert("Please fill in GitHub Owner, Repo, and Token");
                 return;
             }
 
@@ -666,13 +776,13 @@
 
             try {
                 const getFileRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
-                    headers: { 
-                        'Authorization': `token ${token}`, 
+                    headers: {
+                        'Authorization': `token ${token}`,
                         'Accept': 'application/vnd.github.v3+json',
                         'Cache-Control': 'no-cache'
                     }
                 });
-                
+
                 let sha = '';
                 if (getFileRes.ok) {
                     const fileData = await getFileRes.json();
@@ -697,23 +807,21 @@
 
                 if (putRes.ok) {
                     hideLoading();
-                    alert("✅ Successfully saved to GitHub!\n\n All visitors will see the updated data within 1-2 minutes.\n\nAuto-refresh is enabled - data will sync every 30 seconds.");
-                    
+
                     const result = await putRes.json();
                     lastDataVersion = result.content.sha;
-                    
+
                     showUpdateNotification();
-                    
-                    setTimeout(() => {
-                        toggleAdmin();
-                    }, 1500);
+                    await showAlert("✅ Successfully saved to GitHub!\n\nAll visitors will see the updated data within 1-2 minutes.\n\nAuto-refresh is enabled - data will sync every 30 seconds.");
+
+                    toggleAdmin();
                 } else {
                     const err = await putRes.json();
                     throw new Error(err.message);
                 }
             } catch (error) {
                 hideLoading();
-                alert("Error saving to GitHub: " + error.message);
+                await showAlert("Error saving to GitHub: " + error.message);
             }
         }
 
