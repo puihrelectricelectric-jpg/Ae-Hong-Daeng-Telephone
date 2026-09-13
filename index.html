@@ -598,12 +598,14 @@
             showLoading('กำลังเตรียมข้อมูล...');
 
             // Try to load from GitHub if config exists, else use default
-            if (localStorage.getItem('gh_owner') && localStorage.getItem('gh_token')) {
-                loadFromGitHub(true); // true = silent mode (show loading overlay)
-            } else {
-                hideLoading();
-                renderAll();
-            }
+            // Use default data first, then try GitHub
+hideLoading();
+renderAll();
+
+// Try load from GitHub in background (don't block UI)
+if (localStorage.getItem('gh_owner') && localStorage.getItem('gh_token')) {
+    setTimeout(() => loadFromGitHub(true), 1000);
+}
             
             // Setup auto-refresh
             setupAutoRefresh();
@@ -904,7 +906,17 @@
             }
 
             if (!silent) showLoading('กำลังโหลดข้อมูลจาก GitHub...');
-
+                } catch (error) {
+        console.error('Load error:', error);
+        if (!silent) {
+            hideLoading();
+            alert("Error loading from GitHub: " + error.message + "\n\nUsing default data instead.");
+        }
+        // สำคัญ: ต้อง hideLoading เสมอแม้จะ error
+        hideLoading();
+        return false;
+    }
+}
             try {
                 // Add timestamp to bypass browser cache
                 const timestamp = new Date().getTime();
