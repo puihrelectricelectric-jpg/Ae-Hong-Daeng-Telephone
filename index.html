@@ -21,36 +21,14 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .hero { text-align: center; padding: 60px 20px; color: white; background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%); border-radius: 20px; margin-bottom: 30px; }
 .hero h1 { font-size: 3em; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); margin-bottom: 10px; }
 .hero p { font-size: 1.5em; color: #fde68a; font-style: italic; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
-
-/* ✅ แก้ไขการ์ดให้พอดีกับรูปภาพ */
-.card { 
-    background: white; 
-    border-radius: 15px; 
-    overflow: hidden; /* สำคัญ: ตัดรูปภาพที่ล้นออก */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-    border-top: 5px solid var(--primary); 
-    transition: 0.3s; 
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
+.card { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 5px solid var(--primary); transition: 0.3s; position: relative; }
 .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
-
-/* ✅ รูปภาพเต็มกรอบ */
-.card img { 
-    width: 100%; 
-    height: 280px; /* ความสูงคงที่ */
-    object-fit: cover; /* ตัดส่วนเกินออกแต่รักษาอัตราส่วน */
-    display: block;
-}
-
-.card-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5em; margin: 20px auto; }
-.card-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.card img, .card video, .card iframe { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
+.card-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5em; margin-bottom: 20px; }
 .card h3 { color: var(--dark); font-size: 1.4em; margin-bottom: 5px; }
 .card h4 { color: var(--primary); font-size: 1em; margin-bottom: 15px; font-weight: 600; }
-.card p { color: #555; font-size: 0.95em; line-height: 1.7; flex: 1; }
-
+.card p { color: #555; font-size: 0.95em; line-height: 1.7; }
 .info-box { background: white; border-radius: 15px; padding: 30px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
 .info-box h2 { color: var(--dark); margin-bottom: 20px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; }
 .step { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
@@ -68,7 +46,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .menu-item-info h4 { font-size: 1.2em; color: var(--dark); margin-bottom: 5px; }
 .menu-item-info p { color: #777; font-size: 0.9em; margin-bottom: 10px; }
 .menu-price { font-size: 1.5em; color: var(--primary); font-weight: bold; }
-.card-price-badge { position: absolute; top: 12px; right: 12px; background: var(--accent); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 1em; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid white; z-index: 2; }
+.card-price-badge { position: absolute; top: 12px; right: 12px; background: var(--accent); color: white; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 1em; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid white; z-index: 2; }
 [dir="rtl"] .card-price-badge { right: auto; left: 12px; }
 .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
 .price-card { background: white; border-radius: 15px; padding: 30px 25px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 6px solid var(--primary); transition: 0.3s; }
@@ -138,36 +116,34 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
 .calc-grid input, .calc-grid select { padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; }
 .calc-result { background: white; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center; font-size: 1.3em; font-weight: bold; color: var(--primary); }
-
 @media (max-width: 768px) {
-    .hero { padding: 30px 15px; }
-    .hero h1 { font-size: 1.6em; }
-    .hero p { font-size: 1.1em; }
-    .nav-toggle { display: block; }
-    .nav-container { display: none; flex-direction: column; align-items: stretch; padding: 10px 15px; }
-    .nav-container.open { display: flex; }
-    .nav-btn { width: 100%; justify-content: center; }
-    .grid { grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-    .card img { height: 200px; }
-    .card-content { padding: 15px; }
-    .logo-img { width: 90px; height: 90px; }
-    .logo-icon { width: 70px; height: 70px; font-size: 1.8em; }
-    .card h3 { font-size: 1.05em; }
-    .card h4 { font-size: 0.85em; }
-    .section { padding: 20px 15px; }
-    .modal-box { padding: 20px; max-height: 92vh; }
-    .modal-box iframe { height: 200px; }
-    .menu-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-    .menu-item-card img, .menu-item-card > div { height: 120px; }
-    .menu-item-info { padding: 24px 12px 12px; }
-    .menu-price-badge { font-size: 0.95em; padding: 4px 12px; }
-    .menu-item-info h4 { font-size: 0.95em; }
-    .menu-price { font-size: 1.2em; }
-    .promo-banner { padding: 20px 15px; }
-    .promo-banner h3 { font-size: 1.5em; }
+.hero { padding: 30px 15px; }
+.hero h1 { font-size: 1.6em; }
+.hero p { font-size: 1.1em; }
+.nav-toggle { display: block; }
+.nav-container { display: none; flex-direction: column; align-items: stretch; padding: 10px 15px; }
+.nav-container.open { display: flex; }
+.nav-btn { width: 100%; justify-content: center; }
+.grid { grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+.card { padding: 18px 15px; }
+.logo-img { width: 90px; height: 90px; }
+.logo-icon { width: 70px; height: 70px; font-size: 1.8em; }
+.card h3 { font-size: 1.05em; }
+.card h4 { font-size: 0.85em; }
+.section { padding: 20px 15px; }
+.modal-box { padding: 20px; max-height: 92vh; }
+.modal-box iframe { height: 200px; }
+.menu-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+.menu-item-card img, .menu-item-card > div { height: 120px; }
+.menu-item-info { padding: 24px 12px 12px; }
+.menu-price-badge { font-size: 0.95em; padding: 4px 12px; }
+.menu-item-info h4 { font-size: 0.95em; }
+.menu-price { font-size: 1.2em; }
+.promo-banner { padding: 20px 15px; }
+.promo-banner h3 { font-size: 1.5em; }
 }
 @media (max-width: 420px) {
-    .grid { grid-template-columns: 1fr; }
+.grid { grid-template-columns: 1fr; }
 }
 [dir="rtl"] .nav-toggle { text-align: left; }
 </style>
@@ -177,15 +153,15 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <div class="top-bar">
 <div class="lang-select">
 <select id="langSelect" onchange="changeLang(this.value)">
-<option value="th">🇭 ไทย</option>
-<option value="en">🇬🇧 English</option>
-<option value="zh">🇨 中文</option>
-<option value="ru">🇷🇺 Русский</option>
-<option value="hi">🇮🇳 हिन्दी</option>
-<option value="he">🇱 עברית</option>
-<option value="ja">🇯 日本語</option>
+<option value="th">🇹🇭 ไทย</option>
+<option value="en">🇧 English</option>
+<option value="zh">🇨🇳 中文</option>
+<option value="ru">🇷 Русский</option>
+<option value="hi">🇳 हिन्दी</option>
+<option value="he">🇱🇱 עברית</option>
+<option value="ja">🇯🇵 日本語</option>
 <option value="ko">🇰🇷 한국어</option>
-<option value="ar">🇸🇦 العربية</option>
+<option value="ar">🇦 العربية</option>
 </select>
 </div>
 </div>
@@ -349,7 +325,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <div class="tabs">
 <button class="tab active" onclick="showAdminTab('github')">🔧 ตั้งค่า GitHub</button>
 <button class="tab" onclick="showAdminTab('phones')">📱 โทรศัพท์</button>
-<button class="tab" onclick="showAdminTab('accessories')">🎧 อุปกรณ์เสริม</button>
+<button class="tab" onclick="showAdminTab('accessories')"> อุปกรณ์เสริม</button>
 <button class="tab" onclick="showAdminTab('content')">📝 เนื้อหา</button>
 </div>
 <div id="adminTabGithub" class="admin-section">
@@ -556,7 +532,7 @@ const siteData = {
 "price": 48900,
 "specs": "A17 Pro, 6.7 นิ้ว, กล้อง 48MP",
 "warranty": "1 ปี",
-"image": "https://via.placeholder.com/300x280?text=iPhone+15+Pro+Max",
+"image": "https://via.placeholder.com/300x200?text=iPhone+15+Pro+Max",
 "color": "#1e293b"
 },
 {
@@ -565,7 +541,7 @@ const siteData = {
 "price": 45900,
 "specs": "Snapdragon 8 Gen 3, 6.8 นิ้ว, กล้อง 200MP",
 "warranty": "1 ปี",
-"image": "https://via.placeholder.com/300x280?text=Galaxy+S24+Ultra",
+"image": "https://via.placeholder.com/300x200?text=Galaxy+S24+Ultra",
 "color": "#7c3aed"
 },
 {
@@ -574,7 +550,7 @@ const siteData = {
 "price": 11990,
 "specs": "Snapdragon 7s Gen 2, 6.67 นิ้ว, กล้อง 200MP",
 "warranty": "1 ปี",
-"image": "https://via.placeholder.com/300x280?text=Redmi+Note+13+Pro",
+"image": "https://via.placeholder.com/300x200?text=Redmi+Note+13+Pro",
 "color": "#f97316"
 }
 ],
@@ -585,7 +561,7 @@ const siteData = {
 "price": 48900,
 "specs": "A17 Pro, 6.7 inch, 48MP Camera",
 "warranty": "1 Year",
-"image": "https://via.placeholder.com/300x280?text=iPhone+15+Pro+Max",
+"image": "https://via.placeholder.com/300x200?text=iPhone+15+Pro+Max",
 "color": "#1e293b"
 },
 {
@@ -594,7 +570,7 @@ const siteData = {
 "price": 45900,
 "specs": "Snapdragon 8 Gen 3, 6.8 inch, 200MP Camera",
 "warranty": "1 Year",
-"image": "https://via.placeholder.com/300x280?text=Galaxy+S24+Ultra",
+"image": "https://via.placeholder.com/300x200?text=Galaxy+S24+Ultra",
 "color": "#7c3aed"
 },
 {
@@ -603,7 +579,7 @@ const siteData = {
 "price": 11990,
 "specs": "Snapdragon 7s Gen 2, 6.67 inch, 200MP Camera",
 "warranty": "1 Year",
-"image": "https://via.placeholder.com/300x280?text=Redmi+Note+13+Pro",
+"image": "https://via.placeholder.com/300x200?text=Redmi+Note+13+Pro",
 "color": "#f97316"
 }
 ]
@@ -694,13 +670,11 @@ const grid = document.getElementById('phonesGrid');
 grid.innerHTML = phones.map((item, i) => `
 <div class="card phone-card" style="border-top-color: ${item.color}" onclick="openPhoneDetail(${i})" role="button">
 <div class="card-price-badge">${item.price.toLocaleString()} ${t.baht || 'Baht'}</div>
-${item.image ? `<img src="${item.image}" alt="${item.brand} ${item.model}">` : `<div class="card-icon" style="background: ${item.color}"><i class="fas fa-mobile-alt"></i></div>`}
-<div class="card-content">
+${item.image ? `<img src="${item.image}" alt="${item.brand} ${item.model}">` : `<div class="card-icon logo-icon" style="background: ${item.color}"><i class="fas fa-mobile-alt"></i></div>`}
 <h3>${item.brand}</h3>
 <h4>${item.model}</h4>
 <p>${item.specs}</p>
 <div class="detail-hint"><i class="fas fa-hand-pointer"></i> ${t.tap_view || 'Tap to view details'}</div>
-</div>
 </div>
 `).join('');
 }
@@ -938,7 +912,7 @@ model: "New Model",
 price: 0,
 specs: "Specs...",
 warranty: "1 Year",
-image: "https://via.placeholder.com/300x280?text=New+Phone",
+image: "https://via.placeholder.com/300x200?text=New+Phone",
 color: "#3498db"
 });
 renderPhonesEditor();
@@ -1142,7 +1116,7 @@ if (updateResponse.ok) {
 alert('✅ บันทึกสำเร็จ! Cloudflare จะ Deploy อัตโนมัติภายใน 1-2 นาที ลูกค้าทุกคนจะเห็นการเปลี่ยนแปลง');
 } else {
 const errBody = await updateResponse.json().catch(() => ({}));
-alert(`❌ เกิดข้อผิดพลาดในการบันทึก (HTTP ${updateResponse.status})
+alert(` เกิดข้อผิดพลาดในการบันทึก (HTTP ${updateResponse.status})
 ${errBody.message || 'ไม่มีรายละเอียดเพิ่มเติม'}`);
 }
 } catch (error) {
