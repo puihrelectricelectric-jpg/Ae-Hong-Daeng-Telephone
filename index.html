@@ -21,14 +21,36 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .hero { text-align: center; padding: 60px 20px; color: white; background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%); border-radius: 20px; margin-bottom: 30px; }
 .hero h1 { font-size: 3em; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); margin-bottom: 10px; }
 .hero p { font-size: 1.5em; color: #fde68a; font-style: italic; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
-.card { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 5px solid var(--primary); transition: 0.3s; position: relative; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
+
+/* ✅ แก้ไขการ์ดให้พอดีกับรูปภาพ */
+.card { 
+    background: white; 
+    border-radius: 15px; 
+    overflow: hidden; /* สำคัญ: ตัดรูปภาพที่ล้นออก */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+    border-top: 5px solid var(--primary); 
+    transition: 0.3s; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
 .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
-.card img, .card video, .card iframe { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
-.card-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5em; margin-bottom: 20px; }
+
+/* ✅ รูปภาพเต็มกรอบ */
+.card img { 
+    width: 100%; 
+    height: 280px; /* ความสูงคงที่ */
+    object-fit: cover; /* ตัดส่วนเกินออกแต่รักษาอัตราส่วน */
+    display: block;
+}
+
+.card-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5em; margin: 20px auto; }
+.card-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
 .card h3 { color: var(--dark); font-size: 1.4em; margin-bottom: 5px; }
 .card h4 { color: var(--primary); font-size: 1em; margin-bottom: 15px; font-weight: 600; }
-.card p { color: #555; font-size: 0.95em; line-height: 1.7; }
+.card p { color: #555; font-size: 0.95em; line-height: 1.7; flex: 1; }
+
 .info-box { background: white; border-radius: 15px; padding: 30px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
 .info-box h2 { color: var(--dark); margin-bottom: 20px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; }
 .step { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
@@ -46,7 +68,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .menu-item-info h4 { font-size: 1.2em; color: var(--dark); margin-bottom: 5px; }
 .menu-item-info p { color: #777; font-size: 0.9em; margin-bottom: 10px; }
 .menu-price { font-size: 1.5em; color: var(--primary); font-weight: bold; }
-.card-price-badge { position: absolute; top: 12px; right: 12px; background: var(--accent); color: white; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 1em; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid white; z-index: 2; }
+.card-price-badge { position: absolute; top: 12px; right: 12px; background: var(--accent); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 1em; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid white; z-index: 2; }
 [dir="rtl"] .card-price-badge { right: auto; left: 12px; }
 .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
 .price-card { background: white; border-radius: 15px; padding: 30px 25px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 6px solid var(--primary); transition: 0.3s; }
@@ -116,34 +138,36 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
 .calc-grid input, .calc-grid select { padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; }
 .calc-result { background: white; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center; font-size: 1.3em; font-weight: bold; color: var(--primary); }
+
 @media (max-width: 768px) {
-.hero { padding: 30px 15px; }
-.hero h1 { font-size: 1.6em; }
-.hero p { font-size: 1.1em; }
-.nav-toggle { display: block; }
-.nav-container { display: none; flex-direction: column; align-items: stretch; padding: 10px 15px; }
-.nav-container.open { display: flex; }
-.nav-btn { width: 100%; justify-content: center; }
-.grid { grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-.card { padding: 18px 15px; }
-.logo-img { width: 90px; height: 90px; }
-.logo-icon { width: 70px; height: 70px; font-size: 1.8em; }
-.card h3 { font-size: 1.05em; }
-.card h4 { font-size: 0.85em; }
-.section { padding: 20px 15px; }
-.modal-box { padding: 20px; max-height: 92vh; }
-.modal-box iframe { height: 200px; }
-.menu-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-.menu-item-card img, .menu-item-card > div { height: 120px; }
-.menu-item-info { padding: 24px 12px 12px; }
-.menu-price-badge { font-size: 0.95em; padding: 4px 12px; }
-.menu-item-info h4 { font-size: 0.95em; }
-.menu-price { font-size: 1.2em; }
-.promo-banner { padding: 20px 15px; }
-.promo-banner h3 { font-size: 1.5em; }
+    .hero { padding: 30px 15px; }
+    .hero h1 { font-size: 1.6em; }
+    .hero p { font-size: 1.1em; }
+    .nav-toggle { display: block; }
+    .nav-container { display: none; flex-direction: column; align-items: stretch; padding: 10px 15px; }
+    .nav-container.open { display: flex; }
+    .nav-btn { width: 100%; justify-content: center; }
+    .grid { grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+    .card img { height: 200px; }
+    .card-content { padding: 15px; }
+    .logo-img { width: 90px; height: 90px; }
+    .logo-icon { width: 70px; height: 70px; font-size: 1.8em; }
+    .card h3 { font-size: 1.05em; }
+    .card h4 { font-size: 0.85em; }
+    .section { padding: 20px 15px; }
+    .modal-box { padding: 20px; max-height: 92vh; }
+    .modal-box iframe { height: 200px; }
+    .menu-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .menu-item-card img, .menu-item-card > div { height: 120px; }
+    .menu-item-info { padding: 24px 12px 12px; }
+    .menu-price-badge { font-size: 0.95em; padding: 4px 12px; }
+    .menu-item-info h4 { font-size: 0.95em; }
+    .menu-price { font-size: 1.2em; }
+    .promo-banner { padding: 20px 15px; }
+    .promo-banner h3 { font-size: 1.5em; }
 }
 @media (max-width: 420px) {
-.grid { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
 }
 [dir="rtl"] .nav-toggle { text-align: left; }
 </style>
@@ -153,15 +177,15 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <div class="top-bar">
 <div class="lang-select">
 <select id="langSelect" onchange="changeLang(this.value)">
-<option value="th">🇹 ไทย</option>
-<option value="en">🇬 English</option>
-<option value="zh">🇨🇳 中文</option>
-<option value="ru">🇷 Русский</option>
+<option value="th">🇭 ไทย</option>
+<option value="en">🇬🇧 English</option>
+<option value="zh">🇨 中文</option>
+<option value="ru">🇷🇺 Русский</option>
 <option value="hi">🇮🇳 हिन्दी</option>
 <option value="he">🇱 עברית</option>
 <option value="ja">🇯 日本語</option>
 <option value="ko">🇰🇷 한국어</option>
-<option value="ar">🇸 العربية</option>
+<option value="ar">🇸🇦 العربية</option>
 </select>
 </div>
 </div>
@@ -225,15 +249,28 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <h1 data-i18n="promo_title">โปรโมชั่นพิเศษ</h1>
 </div>
 <div class="promo-banner">
-<h3 data-i18n="promo_3for100_title">3 ชิ้น 100 บาท</h3>
-<p data-i18n="promo_3for100_desc">อุปกรณ์เสริม 3 ชิ้น เพียง 100 บาท!</p>
-<span class="highlight" data-i18n="promo_3for100_tag">คุ้มค่าที่สุดในราคาที่เป็นกันเอง</span>
+<h3 data-i18n="promo_0percent_title">ผ่อน 0% นาน 10 เดือน</h3>
+<p data-i18n="promo_0percent_desc">ซื้อโทรศัพท์มือถือ ผ่อน 0% นาน 10 เดือน ไม่มีดอกเบี้ย!</p>
+<span class="highlight" data-i18n="promo_0percent_tag">อนุมัติง่าย ใช้แค่บัตรประชาชน</span>
 </div>
 <div class="info-box">
 <h2><i class="fas fa-info-circle"></i> <span data-i18n="promo_how">วิธีรับโปรโมชั่น</span></h2>
-<div class="step"><div class="step-num">1</div><div data-i18n="promo_step1">เลือกอุปกรณ์เสริม 3 ชิ้นจากรายการที่กำหนด</div></div>
-<div class="step"><div class="step-num">2</div><div data-i18n="promo_step2">แจ้งพนักงานที่เคาน์เตอร์</div></div>
-<div class="step"><div class="step-num">3</div><div data-i18n="promo_step3">ชำระเงินในราคาพิเศษ 100 บาท</div></div>
+<div class="step"><div class="step-num">1</div><div data-i18n="promo_step1">เลือกโทรศัพท์มือถือรุ่นที่ต้องการ</div></div>
+<div class="step"><div class="step-num">2</div><div data-i18n="promo_step2">เตรียมบัตรประชาชนตัวจริง</div></div>
+<div class="step"><div class="step-num">3</div><div data-i18n="promo_step3">กรอกใบสมัครผ่อนชำระที่เคาน์เตอร์</div></div>
+<div class="step"><div class="step-num">4</div><div data-i18n="promo_step4">รออนุมัติภายใน 15 นาที รับเครื่องกลับบ้านได้ทันที</div></div>
+</div>
+<div class="promo-banner" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+<h3 data-i18n="promo_trade_title">แลกเครื่องเก่า รับส่วนลดสูงสุด 5,000 บาท</h3>
+<p data-i18n="promo_trade_desc">นำโทรศัพท์มือถือเครื่องเก่ามาแลกซื้อเครื่องใหม่ รับส่วนลดทันที!</p>
+<span class="highlight" data-i18n="promo_trade_tag">ประเมินราคาฟรี ไม่มีค่าใช้จ่าย</span>
+</div>
+<div class="info-box">
+<h2><i class="fas fa-exchange-alt"></i> <span data-i18n="promo_trade_how">วิธีเข้าร่วมโปรโมชั่นแลกเครื่อง</span></h2>
+<div class="step"><div class="step-num">1</div><div data-i18n="promo_trade_step1">นำโทรศัพท์เครื่องเก่าพร้อมอุปกรณ์ครบชุดมาที่ร้าน</div></div>
+<div class="step"><div class="step-num">2</div><div data-i18n="promo_trade_step2">เจ้าหน้าที่ประเมินราคาเครื่องเก่าให้ฟรี</div></div>
+<div class="step"><div class="step-num">3</div><div data-i18n="promo_trade_step3">เลือกรุ่นโทรศัพท์เครื่องใหม่ที่ต้องการ</div></div>
+<div class="step"><div class="step-num">4</div><div data-i18n="promo_trade_step4">ชำระส่วนต่าง รับเครื่องใหม่กลับบ้านทันที</div></div>
 </div>
 </section>
 <section id="accessories" class="section">
@@ -320,11 +357,11 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <p style="margin-bottom: 15px;">กรอกข้อมูล GitHub ของคุณเพื่อแก้ไขไฟล์โดยตรง:</p>
 <div class="form-group">
 <label>GitHub Username</label>
-<input type="text" id="githubUsername" placeholder="ananpipatponwirit-creator">
+<input type="text" id="githubUsername" placeholder="puihrelectricelectric-jpg">
 </div>
 <div class="form-group">
 <label>Repository Name</label>
-<input type="text" id="githubRepo" placeholder="ripleys-brochure">
+<input type="text" id="githubRepo" placeholder="Ae-Hong-Daeng-Telephone">
 </div>
 <div class="form-group">
 <label>Personal Access Token (PAT)</label>
@@ -384,1067 +421,232 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 </div>
 <script>
 const translations = {
-          "th": {
-                    "nav_home": "หน้าหลัก",
-                    "nav_pricing": "ราคา",
-                    "nav_promo": "โปรโมชั่น",
-                    "nav_accessories": "อุปกรณ์เสริม",
-                    "nav_services": "บริการ",
-                    "nav_contact": "ติดต่อเรา",
-                    "tagline": "ร้านขายโทรศัพท์มือถือคุณภาพดี ราคาถูก!",
-                    "pricing_title": "ราคาโทรศัพท์มือถือ",
-                    "pricing_sub": "ราคาพิเศษจากทางร้าน",
-                    "calc_title": "คำนวณผ่อนชำระ",
-                    "calc_btn": "คำนวณ",
-                    "calc_result": "ยอดผ่อนต่อเดือน: ",
-                    "baht": "บาท",
-                    "promo_title": "โปรโมชั่นพิเศษ",
-                    "promo_3for100_title": "3 ชิ้น 100 บาท",
-                    "promo_3for100_desc": "อุปกรณ์เสริม 3 ชิ้น เพียง 100 บาท!",
-                    "promo_3for100_tag": "คุ้มค่าที่สุดในราคาที่เป็นกันเอง",
-                    "promo_how": "วิธีรับโปรโมชั่น",
-                    "promo_step1": "เลือกอุปกรณ์เสริม 3 ชิ้นจากรายการที่กำหนด",
-                    "promo_step2": "แจ้งพนักงานที่เคาน์เตอร์",
-                    "promo_step3": "ชำระเงินในราคาพิเศษ 100 บาท",
-                    "acc_title": "อุปกรณ์เสริม",
-                    "acc_cases": "เคสโทรศัพท์",
-                    "acc_chargers": "ที่ชาร์จและสายชาร์จ",
-                    "acc_audio": "หูฟังและลำโพง",
-                    "svc_title": "บริการของเรา",
-                    "svc_repair_title": "บริการซ่อมโทรศัพท์",
-                    "svc_repair_1": "เปลี่ยนหน้าจอ - เริ่มต้น 1,500 บาท",
-                    "svc_repair_2": "เปลี่ยนแบตเตอรี่ - เริ่มต้น 800 บาท",
-                    "svc_repair_3": "ซ่อมชาร์จไม่เข้า - เริ่มต้น 500 บาท",
-                    "svc_repair_4": "ซ่อมเครื่องตกน้ำ - เริ่มต้น 1,200 บาท",
-                    "svc_trade_title": "รับซื้อมือถือเก่า / ประเมินราคา",
-                    "svc_trade_1": "ประเมินราคาฟรี ไม่มีค่าใช้จ่าย",
-                    "svc_trade_2": "รับซื้อมือถือทุกยี่ห้อ ทุกสภาพ",
-                    "svc_trade_3": "จ่ายเงินทันที หลังตกลงราคา",
-                    "contact_title": "ติดต่อเรา",
-                    "contact_hours": "เวลาทำการ",
-                    "contact_hours_time": "10:00 น. - 20:00 น.<br>เปิดทุกวัน",
-                    "contact_address": "ที่อยู่",
-                    "contact_address_text": "ซอย แบตแมน หนองปรือ2<br>อ.บางละมุง จ.ชลบุรี",
-                    "contact_phone": "ช่องทางการติดต่อ",
-                    "contact_phone_text": "โทร: 081-234-5678<br>Line: @aehongdaeng",
-                    "contact_map": "เปิดดูแผนที่บน Google Maps",
-                    "admin_login": "เข้าสู่ระบบ",
-                    "admin_error": "รหัสผ่านไม่ถูกต้อง",
-                    "tap_view": "แตะเพื่อดูรายละเอียด",
-                    "brand": "ยี่ห้อ",
-                    "model": "รุ่น",
-                    "price": "ราคา",
-                    "specs": "สเปค",
-                    "warranty": "การรับประกัน"
-          },
-          "en": {
-                    "nav_home": "Home",
-                    "nav_pricing": "Prices",
-                    "nav_promo": "Promotions",
-                    "nav_accessories": "Accessories",
-                    "nav_services": "Services",
-                    "nav_contact": "Contact",
-                    "tagline": "Quality mobile phones at great prices!",
-                    "pricing_title": "Mobile Phone Prices",
-                    "pricing_sub": "Special prices from our shop",
-                    "calc_title": "Installment Calculator",
-                    "calc_btn": "Calculate",
-                    "calc_result": "Monthly payment: ",
-                    "baht": "Baht",
-                    "promo_title": "Special Promotions",
-                    "promo_3for100_title": "3 Items for 100 Baht",
-                    "promo_3for100_desc": "3 accessories for only 100 Baht!",
-                    "promo_3for100_tag": "Best value at friendly price",
-                    "promo_how": "How to get promotion",
-                    "promo_step1": "Choose 3 accessories from the selected items",
-                    "promo_step2": "Inform staff at the counter",
-                    "promo_step3": "Pay special price of 100 Baht",
-                    "acc_title": "Accessories",
-                    "acc_cases": "Phone Cases",
-                    "acc_chargers": "Chargers & Cables",
-                    "acc_audio": "Headphones & Speakers",
-                    "svc_title": "Our Services",
-                    "svc_repair_title": "Phone Repair Services",
-                    "svc_repair_1": "Screen replacement - from 1,500 Baht",
-                    "svc_repair_2": "Battery replacement - from 800 Baht",
-                    "svc_repair_3": "Charging port repair - from 500 Baht",
-                    "svc_repair_4": "Water damage repair - from 1,200 Baht",
-                    "svc_trade_title": "Buy Used Phones / Price Evaluation",
-                    "svc_trade_1": "Free price evaluation, no charges",
-                    "svc_trade_2": "Buy all brands, all conditions",
-                    "svc_trade_3": "Immediate payment after price agreement",
-                    "contact_title": "Contact Us",
-                    "contact_hours": "Opening Hours",
-                    "contact_hours_time": "10:00 AM - 8:00 PM<br>Open daily",
-                    "contact_address": "Address",
-                    "contact_address_text": "Batman Soi, Nong Prue 2<br>Bang Lamung, Chonburi",
-                    "contact_phone": "Contact Channels",
-                    "contact_phone_text": "Tel: 081-234-5678<br>Line: @aehongdaeng",
-                    "contact_map": "View on Google Maps",
-                    "admin_login": "Login",
-                    "admin_error": "Incorrect password",
-                    "tap_view": "Tap to view details",
-                    "brand": "Brand",
-                    "model": "Model",
-                    "price": "Price",
-                    "specs": "Specs",
-                    "warranty": "Warranty"
-          },
-          "zh": {
-                    "nav_home": "首页",
-                    "nav_pricing": "价格",
-                    "nav_promo": "促销",
-                    "nav_accessories": "配件",
-                    "nav_services": "服务",
-                    "nav_contact": "联系我们",
-                    "tagline": "优质手机，价格实惠！",
-                    "pricing_title": "手机价格",
-                    "pricing_sub": "本店特价",
-                    "calc_title": "分期付款计算器",
-                    "calc_btn": "计算",
-                    "calc_result": "每月还款：",
-                    "baht": "泰铢",
-                    "promo_title": "特别促销",
-                    "promo_3for100_title": "3件100泰铢",
-                    "promo_3for100_desc": "3件配件仅需100泰铢！",
-                    "promo_3for100_tag": "最优惠的友好价格",
-                    "promo_how": "如何获得促销",
-                    "promo_step1": "从指定商品中选择3件配件",
-                    "promo_step2": "在柜台通知员工",
-                    "promo_step3": "以100泰铢特价付款",
-                    "acc_title": "配件",
-                    "acc_cases": "手机壳",
-                    "acc_chargers": "充电器和数据线",
-                    "acc_audio": "耳机和音箱",
-                    "svc_title": "我们的服务",
-                    "svc_repair_title": "手机维修服务",
-                    "svc_repair_1": "更换屏幕 - 1,500泰铢起",
-                    "svc_repair_2": "更换电池 - 800泰铢起",
-                    "svc_repair_3": "修理充电口 - 500泰铢起",
-                    "svc_repair_4": "修理进水 - 1,200泰铢起",
-                    "svc_trade_title": "回收旧手机/估价",
-                    "svc_trade_1": "免费估价，不收费",
-                    "svc_trade_2": "回收所有品牌，所有状况",
-                    "svc_trade_3": "价格谈妥后立即付款",
-                    "contact_title": "联系我们",
-                    "contact_hours": "营业时间",
-                    "contact_hours_time": "上午10:00 - 晚上8:00<br>每天营业",
-                    "contact_address": "地址",
-                    "contact_address_text": "Batman Soi, Nong Prue 2<br>Bang Lamung, Chonburi",
-                    "contact_phone": "联系方式",
-                    "contact_phone_text": "电话：081-234-5678<br>Line: @aehongdaeng",
-                    "contact_map": "在谷歌地图上查看",
-                    "admin_login": "登录",
-                    "admin_error": "密码错误",
-                    "tap_view": "点击查看详情",
-                    "brand": "品牌",
-                    "model": "型号",
-                    "price": "价格",
-                    "specs": "规格",
-                    "warranty": "保修"
-          },
-          "ru": {
-                    "nav_home": "Главная",
-                    "nav_pricing": "Цены",
-                    "nav_promo": "Акции",
-                    "nav_accessories": "Аксессуары",
-                    "nav_services": "Услуги",
-                    "nav_contact": "Контакты",
-                    "tagline": "Качественные мобильные телефоны по отличным ценам!",
-                    "pricing_title": "Цены на мобильные телефоны",
-                    "pricing_sub": "Специальные цены нашего магазина",
-                    "calc_title": "Калькулятор рассрочки",
-                    "calc_btn": "Рассчитать",
-                    "calc_result": "Ежемесячный платеж: ",
-                    "baht": "бат",
-                    "promo_title": "Специальные акции",
-                    "promo_3for100_title": "3 предмета за 100 бат",
-                    "promo_3for100_desc": "3 аксессуара всего за 100 бат!",
-                    "promo_3for100_tag": "Лучшая цена по доступной цене",
-                    "promo_how": "Как получить акцию",
-                    "promo_step1": "Выберите 3 аксессуара из указанных",
-                    "promo_step2": "Сообщите сотруднику на кассе",
-                    "promo_step3": "Оплатите по специальной цене 100 бат",
-                    "acc_title": "Аксессуары",
-                    "acc_cases": "Чехлы для телефонов",
-                    "acc_chargers": "Зарядные устройства и кабели",
-                    "acc_audio": "Наушники и колонки",
-                    "svc_title": "Наши услуги",
-                    "svc_repair_title": "Услуги ремонта телефонов",
-                    "svc_repair_1": "Замена экрана - от 1,500 бат",
-                    "svc_repair_2": "Замена батареи - от 800 бат",
-                    "svc_repair_3": "Ремонт порта зарядки - от 500 бат",
-                    "svc_repair_4": "Ремонт после попадания воды - от 1,200 бат",
-                    "svc_trade_title": "Покупка б/у телефонов / Оценка",
-                    "svc_trade_1": "Бесплатная оценка, без charges",
-                    "svc_trade_2": "Покупаем все бренды, все состояния",
-                    "svc_trade_3": "Мгновенная оплата после согласования цены",
-                    "contact_title": "Свяжитесь с нами",
-                    "contact_hours": "Часы работы",
-                    "contact_hours_time": "10:00 - 20:00<br>Ежедневно",
-                    "contact_address": "Адрес",
-                    "contact_address_text": "Batman Soi, Nong Prue 2<br>Bang Lamung, Chonburi",
-                    "contact_phone": "Контакты",
-                    "contact_phone_text": "Тел: 081-234-5678<br>Line: @aehongdaeng",
-                    "contact_map": "Открыть на Google Картах",
-                    "admin_login": "Войти",
-                    "admin_error": "Неверный пароль",
-                    "tap_view": "Нажмите, чтобы подробнее",
-                    "brand": "Бренд",
-                    "model": "Модель",
-                    "price": "Цена",
-                    "specs": "Характеристики",
-                    "warranty": "Гарантия"
-          },
-          "hi": {
-                    "nav_home": "होम",
-                    "nav_pricing": "कीमतें",
-                    "nav_promo": "प्रोमोशन",
-                    "nav_accessories": "एक्सेसरीज",
-                    "nav_services": "सेवाएं",
-                    "nav_contact": "संपर्क",
-                    "tagline": "बेहतरीन कीमत पर गुणवत्तापूर्ण मोबाइल फोन!",
-                    "pricing_title": "मोबाइल फोन की कीमतें",
-                    "pricing_sub": "हमारी दुकान की विशेष कीमतें",
-                    "calc_title": "किस्त कैलकुलेटर",
-                    "calc_btn": "गणना करें",
-                    "calc_result": "मासिक किस्त: ",
-                    "baht": "बात",
-                    "promo_title": "विशेष प्रोमोशन",
-                    "promo_3for100_title": "3 आइटम 100 बात में",
-                    "promo_3for100_desc": "केवल 100 बात में 3 एक्सेसरीज!",
-                    "promo_3for100_tag": "सबसे अच्छा मूल्य",
-                    "promo_how": "प्रोमोशन कैसे प्राप्त करें",
-                    "promo_step1": "चयनित वस्तुओं में से 3 एक्सेसरीज चुनें",
-                    "promo_step2": "काउंटर पर कर्मचारी को सूचित करें",
-                    "promo_step3": "100 बात की विशेष कीमत का भुगतान करें",
-                    "acc_title": "एक्सेसरीज",
-                    "acc_cases": "फोन केस",
-                    "acc_chargers": "चार्जर और केबल",
-                    "acc_audio": "हेडफोन और स्पीकर",
-                    "svc_title": "हमारी सेवाएं",
-                    "svc_repair_title": "फोन मरम्मत सेवाएं",
-                    "svc_repair_1": "स्क्रीन बदलना - 1,500 बात से",
-                    "svc_repair_2": "बैटरी बदलना - 800 बात से",
-                    "svc_repair_3": "चार्जिंग पोर्ट मरम्मत - 500 बात से",
-                    "svc_repair_4": "पानी की क्षति मरम्मत - 1,200 बात से",
-                    "svc_trade_title": "पुराने फोन खरीदें / मूल्यांकन",
-                    "svc_trade_1": "मुफ्त मूल्यांकन, कोई शुल्क नहीं",
-                    "svc_trade_2": "सभी ब्रांड, सभी स्थितियां खरीदते हैं",
-                    "svc_trade_3": "कीमत तय होने पर तुरंत भुगतान",
-                    "contact_title": "हमसे संपर्क करें",
-                    "contact_hours": "खुलने का समय",
-                    "contact_hours_time": "सुबह 10:00 - रात 8:00<br>रोज खुला",
-                    "contact_address": "पता",
-                    "contact_address_text": "Batman Soi, Nong Prue 2<br>Bang Lamung, Chonburi",
-                    "contact_phone": "संपर्क माध्यम",
-                    "contact_phone_text": "फोन: 081-234-5678<br>Line: @aehongdaeng",
-                    "contact_map": "गूगल मैप्स पर देखें",
-                    "admin_login": "लॉगिन",
-                    "admin_error": "गलत पासवर्ड",
-                    "tap_view": "विवरण देखने के लिए टैप करें",
-                    "brand": "ब्रांड",
-                    "model": "मॉडल",
-                    "price": "कीमत",
-                    "specs": "विशेषताएं",
-                    "warranty": "वारंटी"
-          },
-          "he": {
-                    "nav_home": "דף הבית",
-                    "nav_pricing": "מחירים",
-                    "nav_promo": "מבצעים",
-                    "nav_accessories": "אביזרים",
-                    "nav_services": "שירותים",
-                    "nav_contact": "צור קשר",
-                    "tagline": "טלפונים ניידים איכותיים במחירים מעולים!",
-                    "pricing_title": "מחירי טלפונים ניידים",
-                    "pricing_sub": "מחירים מיוחדים מהחנות שלנו",
-                    "calc_title": "מחשבון תשלומים",
-                    "calc_btn": "חשב",
-                    "calc_result": "תשלום חודשי: ",
-                    "baht": "באט",
-                    "promo_title": "מבצעים מיוחדים",
-                    "promo_3for100_title": "3 פריטים ב-100 באט",
-                    "promo_3for100_desc": "3 אביזרים ב-100 באט בלבד!",
-                    "promo_3for100_tag": "הערך הטוב ביותר במחיר הוגן",
-                    "promo_how": "איך לקבל מבצע",
-                    "promo_step1": "בחר 3 אביזרים מהפריטים הנבחרים",
-                    "promo_step2": "הודע לעובד בדלפק",
-                    "promo_step3": "שלם מחיר מיוחד של 100 באט",
-                    "acc_title": "אביזרים",
-                    "acc_cases": "כיסויים לטלפון",
-                    "acc_chargers": "מטענים וכבלים",
-                    "acc_audio": "אוזניות ורמקולים",
-                    "svc_title": "השירותים שלנו",
-                    "svc_repair_title": "שירותי תיקון טלפונים",
-                    "svc_repair_1": "החלפת מסך - מ-1,500 באט",
-                    "svc_repair_2": "החלפת סוללה - מ-800 באט",
-                    "svc_repair_3": "תיקון יציאת טעינה - מ-500 באט",
-                    "svc_repair_4": "תיקון נזקי מים - מ-1,200 באט",
-                    "svc_trade_title": "קניית טלפונים יד שנייה / הערכת מחיר",
-                    "svc_trade_1": "הערכת מחיר חינם, ללא חיובים",
-                    "svc_trade_2": "קונים את כל המותגים, בכל מצב",
-                    "svc_trade_3": "תשלום מיידי לאחר הסכמה על מחיר",
-                    "contact_title": "צור קשר",
-                    "contact_hours": "שעות פתיחה",
-                    "contact_hours_time": "10:00 - 20:00<br>פתוח daily",
-                    "contact_address": "כתובת",
-                    "contact_address_text": "Batman Soi, Nong Prue 2<br>Bang Lamung, Chonburi",
-                    "contact_phone": "ערוצי יצירת קשר",
-                    "contact_phone_text": "טלפון: 081-234-5678<br>Line: @aehongdaeng",
-                    "contact_map": "צפייה במפות גוגל",
-                    "admin_login": "כניסה",
-                    "admin_error": "סיסמה שגויה",
-                    "tap_view": "הקש לפרטים",
-                    "brand": "מותג",
-                    "model": "דגם",
-                    "price": "מחיר",
-                    "specs": "מפרט",
-                    "warranty": "אחריות"
-          },
-          "ja": {
-                    "nav_home": "ホーム",
-                    "nav_pricing": "料金",
-                    "nav_promo": "プロモーション",
-                    "nav_accessories": "アクセサリー",
-                    "nav_services": "サービス",
-                    "nav_contact": "お問い合わせ",
-                    "tagline": "高品質な携帯電話をお手頃価格で！",
-                    "pricing_title": "携帯電話の価格",
-                    "pricing_sub": "当店特別価格",
-                    "calc_title": "分割払い計算機",
-                    "calc_btn": "計算",
-                    "calc_result": "月々のお支払い：",
-                    "baht": "バーツ",
-                    "promo_title": "特別プロモーション",
-                    "promo_3for100_title": "3点で100バーツ",
-                    "promo_3for100_desc": "アクセサリー3点がわずか100バーツ！",
-                    "promo_3for100_tag": "フレンドリー価格で最高価値",
-                    "promo_how": "プロモーションの受け方",
-                    "promo_step1": "指定商品からアクセサリー3点を選択",
-                    "promo_step2": "カウンターでスタッフに通知",
-                    "promo_step3": "特別価格100バーツでお支払い",
-                    "acc_title": "アクセサリー",
-                    "acc_cases": "電話ケース",
-                    "acc_chargers": "充電器とケーブル",
-                    "acc_audio": "イヤホンとスピーカー",
-                    "svc_title": "私たちのサービス",
-                    "svc_repair_title": "電話修理サービス",
-                    "svc_repair_1": "画面交換 - 1,500バーツから",
-                    "svc_repair_2": "バッテリー交換 - 800バーツから",
-                    "svc_repair_3": "充電ポート修理 - 500バーツから",
-                    "svc_repair_4": "水没修理 - 1,200バーツから",
-                    "svc_trade_title": "中古電話買取/価格評価",
-                    "svc_trade_1": "無料価格評価、料金なし",
-                    "svc_trade_2": "全ブランド、全状態買取",
-                    "svc_trade_3": "価格合意後即金払い",
-                    "contact_title": "お問い合わせ",
-                    "contact_hours": "営業時間",
-                    "contact_hours_time": "午前10:00 ～ 午後8:00<br>毎日営業",
-                    "contact_address": "住所",
-                    "contact_address_text": "Batman Soi, Nong Prue 2<br>Bang Lamung, Chonburi",
-                    "contact_phone": "お問い合わせ先",
-                    "contact_phone_text": "電話: 081-234-5678<br>Line: @aehongdaeng",
-                    "contact_map": "Googleマップで見る",
-                    "admin_login": "ログイン",
-                    "admin_error": "パスワードが間違っています",
-                    "tap_view": "タップして詳細を見る",
-                    "brand": "ブランド",
-                    "model": "モデル",
-                    "price": "価格",
-                    "specs": "仕様",
-                    "warranty": "保証"
-          },
-          "ko": {
-                    "nav_home": "홈",
-                    "nav_pricing": "가격",
-                    "nav_promo": "프로모션",
-                    "nav_accessories": "액세서리",
-                    "nav_services": "서비스",
-                    "nav_contact": "연락처",
-                    "tagline": "훌륭한 가격의 품질 좋은 휴대폰!",
-                    "pricing_title": "휴대폰 가격",
-                    "pricing_sub": "当店 특별 가격",
-                    "calc_title": "할부 계산기",
-                    "calc_btn": "계산",
-                    "calc_result": "월 할부금: ",
-                    "baht": "바트",
-                    "promo_title": "특별 프로모션",
-                    "promo_3for100_title": "3개에 100바트",
-                    "promo_3for100_desc": "액세서리 3개를わずか 100바트에!",
-                    "promo_3for100_tag": "친근한 가격의 최고의 가치",
-                    "promo_how": "프로모션 받는 방법",
-                    "promo_step1": "지정된 항목에서 액세서리 3개 선택",
-                    "promo_step2": "카운터에서 직원에게 알림",
-                    "promo_step3": "특별 가격 100바트 결제",
-                    "acc_title": "액세서리",
-                    "acc_cases": "전화 케이스",
-                    "acc_chargers": "충전기와 케이블",
-                    "acc_audio": "이어폰과 스피커",
-                    "svc_title": "우리의 서비스",
-                    "svc_repair_title": "전화 수리 서비스",
-                    "svc_repair_1": "화면 교체 - 1,500바트부터",
-                    "svc_repair_2": "배터리 교체 - 800바트부터",
-                    "svc_repair_3": "충전 포트 수리 - 500바트부터",
-                    "svc_repair_4": "수손상 수리 - 1,200바트부터",
-                    "svc_trade_title": "중고 전화 매입/가격 평가",
-                    "svc_trade_1": "무료 가격 평가, 비용 없음",
-                    "svc_trade_2": "모든 브랜드, 모든 상태 매입",
-                    "svc_trade_3": "가격 합의 후 즉시 지급",
-                    "contact_title": "문의하기",
-                    "contact_hours": "운영 시간",
-                    "contact_hours_time": "오전 10:00 - 오후 8:00<br>매일 영업",
-                    "contact_address": "주소",
-                    "contact_address_text": "Batman Soi, Nong Prue 2<br>Bang Lamung, Chonburi",
-                    "contact_phone": "연락처",
-                    "contact_phone_text": "전화: 081-234-5678<br>Line: @aehongdaeng",
-                    "contact_map": "구글 지도에서 보기",
-                    "admin_login": "로그인",
-                    "admin_error": "비밀번호가 틀렸습니다",
-                    "tap_view": "탭하여 상세 보기",
-                    "brand": "브랜드",
-                    "model": "모델",
-                    "price": "가격",
-                    "specs": "사양",
-                    "warranty": "보증"
-          },
-          "ar": {
-                    "nav_home": "الرئيسية",
-                    "nav_pricing": "الأسعار",
-                    "nav_promo": "العروض",
-                    "nav_accessories": "الإكسسوارات",
-                    "nav_services": "الخدمات",
-                    "nav_contact": "اتصل بنا",
-                    "tagline": "هواتف محمولة عالية الجودة بأسعار رائعة!",
-                    "pricing_title": "أسعار الهواتف المحمولة",
-                    "pricing_sub": "أسعار خاصة من متجرنا",
-                    "calc_title": "حاسبة التقسيط",
-                    "calc_btn": "احسب",
-                    "calc_result": "القسط الشهري: ",
-                    "baht": "بات",
-                    "promo_title": "عروض خاصة",
-                    "promo_3for100_title": "3 قطع بـ 100 بات",
-                    "promo_3for100_desc": "3 إكسسوارات بـ 100 بات فقط!",
-                    "promo_3for100_tag": "أفضل قيمة بسعر مناسب",
-                    "promo_how": "كيفية الحصول على العرض",
-                    "promo_step1": "اختر 3 إكسسوارات من العناصر المحددة",
-                    "promo_step2": "أبلغ الموظف عند الكاونتر",
-                    "promo_step3": "ادفع السعر الخاص 100 بات",
-                    "acc_title": "الإكسسوارات",
-                    "acc_cases": "أغطية الهواتف",
-                    "acc_chargers": "الشواحن والكابلات",
-                    "acc_audio": "السماعات ومكبرات الصوت",
-                    "svc_title": "خدماتنا",
-                    "svc_repair_title": "خدمات إصلاح الهواتف",
-                    "svc_repair_1": "استبدال الشاشة - من 1,500 بات",
-                    "svc_repair_2": "استبدال البطارية - من 800 بات",
-                    "svc_repair_3": "إصلاح منفذ الشحن - من 500 بات",
-                    "svc_repair_4": "إصلاح أضرار المياه - من 1,200 بات",
-                    "svc_trade_title": "شراء الهواتف المستعملة / تقييم السعر",
-                    "svc_trade_1": "تقييم سعر مجاني، بدون رسوم",
-                    "svc_trade_2": "نشتري جميع العلامات التجارية، جميع الحالات",
-                    "svc_trade_3": "دفع فوري بعد الاتفاق على السعر",
-                    "contact_title": "اتصل بنا",
-                    "contact_hours": "ساعات العمل",
-                    "contact_hours_time": "10:00 صباحًا - 8:00 مساءً<br>مفتوح يوميًا",
-                    "contact_address": "العنوان",
-                    "contact_address_text": "Batman Soi, Nong Prue 2<br>Bang Lamung, Chonburi",
-                    "contact_phone": "قنوات الاتصال",
-                    "contact_phone_text": "هاتف: 081-234-5678<br>Line: @aehongdaeng",
-                    "contact_map": "عرض على خرائط جوجل",
-                    "admin_login": "تسجيل الدخول",
-                    "admin_error": "كلمة مرور غير صحيحة",
-                    "tap_view": "اضغط لعرض التفاصيل",
-                    "brand": "العلامة التجارية",
-                    "model": "الموديل",
-                    "price": "السعر",
-                    "specs": "المواصفات",
-                    "warranty": "الضمان"
-          }
-};;;
+"th": {
+"nav_home": "หน้าหลัก",
+"nav_pricing": "ราคา",
+"nav_promo": "โปรโมชั่น",
+"nav_accessories": "อุปกรณ์เสริม",
+"nav_services": "บริการ",
+"nav_contact": "ติดต่อเรา",
+"tagline": "ร้านขายโทรศัพท์มือถือคุณภาพดี ราคาถูก!",
+"pricing_title": "ราคาโทรศัพท์มือถือ",
+"pricing_sub": "ราคาพิเศษจากทางร้าน",
+"calc_title": "คำนวณผ่อนชำระ",
+"calc_btn": "คำนวณ",
+"calc_result": "ยอดผ่อนต่อเดือน: ",
+"baht": "บาท",
+"promo_title": "โปรโมชั่นพิเศษ",
+"promo_0percent_title": "ผ่อน 0% นาน 10 เดือน",
+"promo_0percent_desc": "ซื้อโทรศัพท์มือถือ ผ่อน 0% นาน 10 เดือน ไม่มีดอกเบี้ย!",
+"promo_0percent_tag": "อนุมัติง่าย ใช้แค่บัตรประชาชน",
+"promo_trade_title": "แลกเครื่องเก่า รับส่วนลดสูงสุด 5,000 บาท",
+"promo_trade_desc": "นำโทรศัพท์มือถือเครื่องเก่ามาแลกซื้อเครื่องใหม่ รับส่วนลดทันที!",
+"promo_trade_tag": "ประเมินราคาฟรี ไม่มีค่าใช้จ่าย",
+"promo_how": "วิธีรับโปรโมชั่น",
+"promo_step1": "เลือกโทรศัพท์มือถือรุ่นที่ต้องการ",
+"promo_step2": "เตรียมบัตรประชาชนตัวจริง",
+"promo_step3": "กรอกใบสมัครผ่อนชำระที่เคาน์เตอร์",
+"promo_step4": "รออนุมัติภายใน 15 นาที รับเครื่องกลับบ้านได้ทันที",
+"promo_trade_how": "วิธีเข้าร่วมโปรโมชั่นแลกเครื่อง",
+"promo_trade_step1": "นำโทรศัพท์เครื่องเก่าพร้อมอุปกรณ์ครบชุดมาที่ร้าน",
+"promo_trade_step2": "เจ้าหน้าที่ประเมินราคาเครื่องเก่าให้ฟรี",
+"promo_trade_step3": "เลือกรุ่นโทรศัพท์เครื่องใหม่ที่ต้องการ",
+"promo_trade_step4": "ชำระส่วนต่าง รับเครื่องใหม่กลับบ้านทันที",
+"acc_title": "อุปกรณ์เสริม",
+"acc_cases": "เคสโทรศัพท์",
+"acc_chargers": "ที่ชาร์จและสายชาร์จ",
+"acc_audio": "หูฟังและลำโพง",
+"svc_title": "บริการของเรา",
+"svc_repair_title": "บริการซ่อมโทรศัพท์",
+"svc_repair_1": "เปลี่ยนหน้าจอ - เริ่มต้น 1,500 บาท",
+"svc_repair_2": "เปลี่ยนแบตเตอรี่ - เริ่มต้น 800 บาท",
+"svc_repair_3": "ซ่อมชาร์จไม่เข้า - เริ่มต้น 500 บาท",
+"svc_repair_4": "ซ่อมเครื่องตกน้ำ - เริ่มต้น 1,200 บาท",
+"svc_trade_title": "รับซื้อมือถือเก่า / ประเมินราคา",
+"svc_trade_1": "ประเมินราคาฟรี ไม่มีค่าใช้จ่าย",
+"svc_trade_2": "รับซื้อมือถือทุกยี่ห้อ ทุกสภาพ",
+"svc_trade_3": "จ่ายเงินทันที หลังตกลงราคา",
+"contact_title": "ติดต่อเรา",
+"contact_hours": "เวลาทำการ",
+"contact_hours_time": "10:00 น. - 20:00 น.<br>เปิดทุกวัน",
+"contact_address": "ที่อยู่",
+"contact_address_text": "ซอย แบตแมน หนองปรือ2<br>อ.บางละมุง จ.ชลบุรี",
+"contact_phone": "ช่องทางการติดต่อ",
+"contact_phone_text": "โทร: 081-234-5678<br>Line: @aehongdaeng",
+"contact_map": "เปิดดูแผนที่บน Google Maps",
+"admin_login": "เข้าสู่ระบบ",
+"admin_error": "รหัสผ่านไม่ถูกต้อง",
+"tap_view": "แตะเพื่อดูรายละเอียด",
+"brand": "ยี่ห้อ",
+"model": "รุ่น",
+"price": "ราคา",
+"specs": "สเปค",
+"warranty": "การรับประกัน"
+},
+"en": {
+"nav_home": "Home",
+"nav_pricing": "Prices",
+"nav_promo": "Promotions",
+"nav_accessories": "Accessories",
+"nav_services": "Services",
+"nav_contact": "Contact",
+"tagline": "Quality mobile phones at great prices!",
+"pricing_title": "Mobile Phone Prices",
+"pricing_sub": "Special prices from our shop",
+"calc_title": "Installment Calculator",
+"calc_btn": "Calculate",
+"calc_result": "Monthly payment: ",
+"baht": "Baht",
+"promo_title": "Special Promotions",
+"promo_0percent_title": "0% Interest for 10 Months",
+"promo_0percent_desc": "Buy mobile phones with 0% interest for 10 months!",
+"promo_0percent_tag": "Easy approval, ID card only",
+"promo_trade_title": "Trade-in Old Phone, Get up to 5,000 Baht Discount",
+"promo_trade_desc": "Bring your old phone to trade for a new one and get instant discount!",
+"promo_trade_tag": "Free evaluation, no charges",
+"promo_how": "How to Get Promotion",
+"promo_step1": "Choose the mobile phone model you want",
+"promo_step2": "Prepare your original ID card",
+"promo_step3": "Fill out installment application at the counter",
+"promo_step4": "Wait for approval within 15 minutes, take phone home immediately",
+"promo_trade_how": "How to Join Trade-in Promotion",
+"promo_trade_step1": "Bring your old phone with complete accessories to the shop",
+"promo_trade_step2": "Staff will evaluate your old phone for free",
+"promo_trade_step3": "Choose the new phone model you want",
+"promo_trade_step4": "Pay the difference, take new phone home immediately",
+"acc_title": "Accessories",
+"acc_cases": "Phone Cases",
+"acc_chargers": "Chargers & Cables",
+"acc_audio": "Headphones & Speakers",
+"svc_title": "Our Services",
+"svc_repair_title": "Phone Repair Services",
+"svc_repair_1": "Screen replacement - from 1,500 Baht",
+"svc_repair_2": "Battery replacement - from 800 Baht",
+"svc_repair_3": "Charging port repair - from 500 Baht",
+"svc_repair_4": "Water damage repair - from 1,200 Baht",
+"svc_trade_title": "Buy Used Phones / Price Evaluation",
+"svc_trade_1": "Free price evaluation, no charges",
+"svc_trade_2": "Buy all brands, all conditions",
+"svc_trade_3": "Immediate payment after price agreement",
+"contact_title": "Contact Us",
+"contact_hours": "Opening Hours",
+"contact_hours_time": "10:00 AM - 8:00 PM<br>Open daily",
+"contact_address": "Address",
+"contact_address_text": "Batman Soi, Nong Prue 2<br>Bang Lamung, Chonburi",
+"contact_phone": "Contact Channels",
+"contact_phone_text": "Tel: 081-234-5678<br>Line: @aehongdaeng",
+"contact_map": "View on Google Maps",
+"admin_login": "Login",
+"admin_error": "Incorrect password",
+"tap_view": "Tap to view details",
+"brand": "Brand",
+"model": "Model",
+"price": "Price",
+"specs": "Specs",
+"warranty": "Warranty"
+}
+};
 
 const siteData = {
-          "phones": {
-                    "th": [
-                              {
-                                        "brand": "Apple",
-                                        "model": "iPhone 15 Pro Max 256GB",
-                                        "price": 48900,
-                                        "specs": "A17 Pro, 6.7 นิ้ว, กล้อง 48MP",
-                                        "warranty": "1 ปี",
-                                        "image": "https://media.studio7thailand.com/153365/iPhone-15-Pro-Max_Natural-Titanium.png",
-                                        "color": "#1e293b"
-                              },
-                              {
-                                        "brand": "Samsung",
-                                        "model": "Galaxy S24 Ultra 256GB",
-                                        "price": 45900,
-                                        "specs": "Snapdragon 8 Gen 3, 6.8 นิ้ว, กล้อง 200MP",
-                                        "warranty": "1 ปี",
-                                        "image": "https://www.central.co.th/_next/image?url=https%3A%2F%2Fassets.central.co.th%2Ffile-assets%2FCDSPIM%2Fweb%2FImage%2FMKP1960%2FSAMSUNG-BlackSamsungS24Ultra6812256GB-MKP1960184-1.webp&w=1080&q=75",
-                                        "color": "#7c3aed"
-                              },
-                              {
-                                        "brand": "Xiaomi",
-                                        "model": "Redmi Note 13 Pro 256GB",
-                                        "price": 11990,
-                                        "specs": "Snapdragon 7s Gen 2, 6.67 นิ้ว, กล้อง 200MP",
-                                        "warranty": "1 ปี",
-                                        "image": "https://i02.appmifile.com/905_item_th/29/03/2024/60e6d8572a80dc22951ae2253d6c9e45.png",
-                                        "color": "#f97316"
-                              },
-                              {
-                                        "brand": "OPPO",
-                                        "model": "Find X7 Ultra 256GB",
-                                        "price": 39990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.82 นิ้ว, กล้อง Hasselblad",
-                                        "warranty": "1 ปี",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGb_i5NbQL0jWlLaqMZhH2io_6mlptbRRlsB6_knGVSg&s=10",
-                                        "color": "#059669"
-                              },
-                              {
-                                        "brand": "Vivo",
-                                        "model": "X100 Pro 256GB",
-                                        "price": 36990,
-                                        "specs": "Dimensity 9300, 6.78 นิ้ว, กล้อง Zeiss",
-                                        "warranty": "1 ปี",
-                                        "image": "https://static-jaymart.com/ecom/public/2bfEBcS9OzdHa1RRU30BNeEn4v8.jpg",
-                                        "color": "#2563eb"
-                              },
-                              {
-                                        "brand": "Realme",
-                                        "model": "GT 5 Pro 256GB",
-                                        "price": 19990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.78 นิ้ว, กล้อง 50MP",
-                                        "warranty": "1 ปี",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT04101Mg2sD4YYona-XC9mJyhCWzfsyWfarouh6b4GjQ&s=10",
-                                        "color": "#eab308"
-                              }
-                    ],
-                    "en": [
-                              {
-                                        "brand": "Apple",
-                                        "model": "iPhone 15 Pro Max 256GB",
-                                        "price": 48900,
-                                        "specs": "A17 Pro, 6.7 inch, 48MP Camera",
-                                        "warranty": "1 Year",
-                                        "image": "https://media.studio7thailand.com/153365/iPhone-15-Pro-Max_Natural-Titanium.png",
-                                        "color": "#1e293b"
-                              },
-                              {
-                                        "brand": "Samsung",
-                                        "model": "Galaxy S24 Ultra 256GB",
-                                        "price": 45900,
-                                        "specs": "Snapdragon 8 Gen 3, 6.8 inch, 200MP Camera",
-                                        "warranty": "1 Year",
-                                        "image": "https://www.central.co.th/_next/image?url=https%3A%2F%2Fassets.central.co.th%2Ffile-assets%2FCDSPIM%2Fweb%2FImage%2FMKP1960%2FSAMSUNG-BlackSamsungS24Ultra6812256GB-MKP1960184-1.webp&w=1080&q=75",
-                                        "color": "#7c3aed"
-                              },
-                              {
-                                        "brand": "Xiaomi",
-                                        "model": "Redmi Note 13 Pro 256GB",
-                                        "price": 11990,
-                                        "specs": "Snapdragon 7s Gen 2, 6.67 inch, 200MP Camera",
-                                        "warranty": "1 Year",
-                                        "image": "https://i02.appmifile.com/905_item_th/29/03/2024/60e6d8572a80dc22951ae2253d6c9e45.png",
-                                        "color": "#f97316"
-                              },
-                              {
-                                        "brand": "OPPO",
-                                        "model": "Find X7 Ultra 256GB",
-                                        "price": 39990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.82 inch, Hasselblad Camera",
-                                        "warranty": "1 Year",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGb_i5NbQL0jWlLaqMZhH2io_6mlptbRRlsB6_knGVSg&s=10",
-                                        "color": "#059669"
-                              },
-                              {
-                                        "brand": "Vivo",
-                                        "model": "X100 Pro 256GB",
-                                        "price": 36990,
-                                        "specs": "Dimensity 9300, 6.78 inch, Zeiss Camera",
-                                        "warranty": "1 Year",
-                                        "image": "https://static-jaymart.com/ecom/public/2bfEBcS9OzdHa1RRU30BNeEn4v8.jpg",
-                                        "color": "#2563eb"
-                              },
-                              {
-                                        "brand": "Realme",
-                                        "model": "GT 5 Pro 256GB",
-                                        "price": 19990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.78 inch, 50MP Camera",
-                                        "warranty": "1 Year",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT04101Mg2sD4YYona-XC9mJyhCWzfsyWfarouh6b4GjQ&s=10",
-                                        "color": "#eab308"
-                              }
-                    ],
-                    "zh": [
-                              {
-                                        "brand": "苹果",
-                                        "model": "iPhone 15 Pro Max 256GB",
-                                        "price": 48900,
-                                        "specs": "A17 Pro, 6.7英寸, 4800万像素",
-                                        "warranty": "1年",
-                                        "image": "https://media.studio7thailand.com/153365/iPhone-15-Pro-Max_Natural-Titanium.png",
-                                        "color": "#1e293b"
-                              },
-                              {
-                                        "brand": "三星",
-                                        "model": "Galaxy S24 Ultra 256GB",
-                                        "price": 45900,
-                                        "specs": "骁龙8 Gen 3, 6.8英寸, 2亿像素",
-                                        "warranty": "1年",
-                                        "image": "https://www.central.co.th/_next/image?url=https%3A%2F%2Fassets.central.co.th%2Ffile-assets%2FCDSPIM%2Fweb%2FImage%2FMKP1960%2FSAMSUNG-BlackSamsungS24Ultra6812256GB-MKP1960184-1.webp&w=1080&q=75",
-                                        "color": "#7c3aed"
-                              },
-                              {
-                                        "brand": "小米",
-                                        "model": "Redmi Note 13 Pro 256GB",
-                                        "price": 11990,
-                                        "specs": "骁龙7s Gen 2, 6.67英寸, 2亿像素",
-                                        "warranty": "1年",
-                                        "image": "https://i02.appmifile.com/905_item_th/29/03/2024/60e6d8572a80dc22951ae2253d6c9e45.png",
-                                        "color": "#f97316"
-                              },
-                              {
-                                        "brand": "OPPO",
-                                        "model": "Find X7 Ultra 256GB",
-                                        "price": 39990,
-                                        "specs": "骁龙8 Gen 3, 6.82英寸, 哈苏相机",
-                                        "warranty": "1年",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGb_i5NbQL0jWlLaqMZhH2io_6mlptbRRlsB6_knGVSg&s=10",
-                                        "color": "#059669"
-                              },
-                              {
-                                        "brand": "Vivo",
-                                        "model": "X100 Pro 256GB",
-                                        "price": 36990,
-                                        "specs": "天玑9300, 6.78英寸, 蔡司相机",
-                                        "warranty": "1年",
-                                        "image": "https://static-jaymart.com/ecom/public/2bfEBcS9OzdHa1RRU30BNeEn4v8.jpg",
-                                        "color": "#2563eb"
-                              },
-                              {
-                                        "brand": "Realme",
-                                        "model": "GT 5 Pro 256GB",
-                                        "price": 19990,
-                                        "specs": "骁龙8 Gen 3, 6.78英寸, 5000万像素",
-                                        "warranty": "1年",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT04101Mg2sD4YYona-XC9mJyhCWzfsyWfarouh6b4GjQ&s=10",
-                                        "color": "#eab308"
-                              }
-                    ],
-                    "ru": [
-                              {
-                                        "brand": "Apple",
-                                        "model": "iPhone 15 Pro Max 256GB",
-                                        "price": 48900,
-                                        "specs": "A17 Pro, 6.7 дюйма, 48MP камера",
-                                        "warranty": "1 год",
-                                        "image": "https://media.studio7thailand.com/153365/iPhone-15-Pro-Max_Natural-Titanium.png",
-                                        "color": "#1e293b"
-                              },
-                              {
-                                        "brand": "Samsung",
-                                        "model": "Galaxy S24 Ultra 256GB",
-                                        "price": 45900,
-                                        "specs": "Snapdragon 8 Gen 3, 6.8 дюйма, 200MP камера",
-                                        "warranty": "1 год",
-                                        "image": "https://www.central.co.th/_next/image?url=https%3A%2F%2Fassets.central.co.th%2Ffile-assets%2FCDSPIM%2Fweb%2FImage%2FMKP1960%2FSAMSUNG-BlackSamsungS24Ultra6812256GB-MKP1960184-1.webp&w=1080&q=75",
-                                        "color": "#7c3aed"
-                              },
-                              {
-                                        "brand": "Xiaomi",
-                                        "model": "Redmi Note 13 Pro 256GB",
-                                        "price": 11990,
-                                        "specs": "Snapdragon 7s Gen 2, 6.67 дюйма, 200MP камера",
-                                        "warranty": "1 год",
-                                        "image": "https://i02.appmifile.com/905_item_th/29/03/2024/60e6d8572a80dc22951ae2253d6c9e45.png",
-                                        "color": "#f97316"
-                              },
-                              {
-                                        "brand": "OPPO",
-                                        "model": "Find X7 Ultra 256GB",
-                                        "price": 39990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.82 дюйма, камера Hasselblad",
-                                        "warranty": "1 год",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGb_i5NbQL0jWlLaqMZhH2io_6mlptbRRlsB6_knGVSg&s=10",
-                                        "color": "#059669"
-                              },
-                              {
-                                        "brand": "Vivo",
-                                        "model": "X100 Pro 256GB",
-                                        "price": 36990,
-                                        "specs": "Dimensity 9300, 6.78 дюйма, камера Zeiss",
-                                        "warranty": "1 год",
-                                        "image": "https://static-jaymart.com/ecom/public/2bfEBcS9OzdHa1RRU30BNeEn4v8.jpg",
-                                        "color": "#2563eb"
-                              },
-                              {
-                                        "brand": "Realme",
-                                        "model": "GT 5 Pro 256GB",
-                                        "price": 19990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.78 дюйма, 50MP камера",
-                                        "warranty": "1 год",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT04101Mg2sD4YYona-XC9mJyhCWzfsyWfarouh6b4GjQ&s=10",
-                                        "color": "#eab308"
-                              }
-                    ],
-                    "hi": [
-                              {
-                                        "brand": "Apple",
-                                        "model": "iPhone 15 Pro Max 256GB",
-                                        "price": 48900,
-                                        "specs": "A17 Pro, 6.7 इंच, 48MP कैमरा",
-                                        "warranty": "1 वर्ष",
-                                        "image": "https://media.studio7thailand.com/153365/iPhone-15-Pro-Max_Natural-Titanium.png",
-                                        "color": "#1e293b"
-                              },
-                              {
-                                        "brand": "Samsung",
-                                        "model": "Galaxy S24 Ultra 256GB",
-                                        "price": 45900,
-                                        "specs": "Snapdragon 8 Gen 3, 6.8 इंच, 200MP कैमरा",
-                                        "warranty": "1 वर्ष",
-                                        "image": "https://www.central.co.th/_next/image?url=https%3A%2F%2Fassets.central.co.th%2Ffile-assets%2FCDSPIM%2Fweb%2FImage%2FMKP1960%2FSAMSUNG-BlackSamsungS24Ultra6812256GB-MKP1960184-1.webp&w=1080&q=75",
-                                        "color": "#7c3aed"
-                              },
-                              {
-                                        "brand": "Xiaomi",
-                                        "model": "Redmi Note 13 Pro 256GB",
-                                        "price": 11990,
-                                        "specs": "Snapdragon 7s Gen 2, 6.67 इंच, 200MP कैमरा",
-                                        "warranty": "1 वर्ष",
-                                        "image": "https://i02.appmifile.com/905_item_th/29/03/2024/60e6d8572a80dc22951ae2253d6c9e45.png",
-                                        "color": "#f97316"
-                              },
-                              {
-                                        "brand": "OPPO",
-                                        "model": "Find X7 Ultra 256GB",
-                                        "price": 39990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.82 इंच, Hasselblad कैमरा",
-                                        "warranty": "1 वर्ष",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGb_i5NbQL0jWlLaqMZhH2io_6mlptbRRlsB6_knGVSg&s=10",
-                                        "color": "#059669"
-                              },
-                              {
-                                        "brand": "Vivo",
-                                        "model": "X100 Pro 256GB",
-                                        "price": 36990,
-                                        "specs": "Dimensity 9300, 6.78 इंच, Zeiss कैमरा",
-                                        "warranty": "1 वर्ष",
-                                        "image": "https://static-jaymart.com/ecom/public/2bfEBcS9OzdHa1RRU30BNeEn4v8.jpg",
-                                        "color": "#2563eb"
-                              },
-                              {
-                                        "brand": "Realme",
-                                        "model": "GT 5 Pro 256GB",
-                                        "price": 19990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.78 इंच, 50MP कैमरा",
-                                        "warranty": "1 वर्ष",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT04101Mg2sD4YYona-XC9mJyhCWzfsyWfarouh6b4GjQ&s=10",
-                                        "color": "#eab308"
-                              }
-                    ],
-                    "he": [
-                              {
-                                        "brand": "Apple",
-                                        "model": "iPhone 15 Pro Max 256GB",
-                                        "price": 48900,
-                                        "specs": "A17 Pro, 6.7 אינץ', מצלמת 48MP",
-                                        "warranty": "שנה אחת",
-                                        "image": "https://media.studio7thailand.com/153365/iPhone-15-Pro-Max_Natural-Titanium.png",
-                                        "color": "#1e293b"
-                              },
-                              {
-                                        "brand": "Samsung",
-                                        "model": "Galaxy S24 Ultra 256GB",
-                                        "price": 45900,
-                                        "specs": "Snapdragon 8 Gen 3, 6.8 אינץ', מצלמת 200MP",
-                                        "warranty": "שנה אחת",
-                                        "image": "https://www.central.co.th/_next/image?url=https%3A%2F%2Fassets.central.co.th%2Ffile-assets%2FCDSPIM%2Fweb%2FImage%2FMKP1960%2FSAMSUNG-BlackSamsungS24Ultra6812256GB-MKP1960184-1.webp&w=1080&q=75",
-                                        "color": "#7c3aed"
-                              },
-                              {
-                                        "brand": "Xiaomi",
-                                        "model": "Redmi Note 13 Pro 256GB",
-                                        "price": 11990,
-                                        "specs": "Snapdragon 7s Gen 2, 6.67 אינץ', מצלמת 200MP",
-                                        "warranty": "שנה אחת",
-                                        "image": "https://i02.appmifile.com/905_item_th/29/03/2024/60e6d8572a80dc22951ae2253d6c9e45.png",
-                                        "color": "#f97316"
-                              },
-                              {
-                                        "brand": "OPPO",
-                                        "model": "Find X7 Ultra 256GB",
-                                        "price": 39990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.82 אינץ', מצלמת Hasselblad",
-                                        "warranty": "שנה אחת",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGb_i5NbQL0jWlLaqMZhH2io_6mlptbRRlsB6_knGVSg&s=10",
-                                        "color": "#059669"
-                              },
-                              {
-                                        "brand": "Vivo",
-                                        "model": "X100 Pro 256GB",
-                                        "price": 36990,
-                                        "specs": "Dimensity 9300, 6.78 אינץ', מצלמת Zeiss",
-                                        "warranty": "שנה אחת",
-                                        "image": "https://static-jaymart.com/ecom/public/2bfEBcS9OzdHa1RRU30BNeEn4v8.jpg",
-                                        "color": "#2563eb"
-                              },
-                              {
-                                        "brand": "Realme",
-                                        "model": "GT 5 Pro 256GB",
-                                        "price": 19990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.78 אינץ', מצלמת 50MP",
-                                        "warranty": "שנה אחת",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT04101Mg2sD4YYona-XC9mJyhCWzfsyWfarouh6b4GjQ&s=10",
-                                        "color": "#eab308"
-                              }
-                    ],
-                    "ja": [
-                              {
-                                        "brand": "Apple",
-                                        "model": "iPhone 15 Pro Max 256GB",
-                                        "price": 48900,
-                                        "specs": "A17 Pro, 6.7インチ, 48MPカメラ",
-                                        "warranty": "1年間",
-                                        "image": "https://media.studio7thailand.com/153365/iPhone-15-Pro-Max_Natural-Titanium.png",
-                                        "color": "#1e293b"
-                              },
-                              {
-                                        "brand": "Samsung",
-                                        "model": "Galaxy S24 Ultra 256GB",
-                                        "price": 45900,
-                                        "specs": "Snapdragon 8 Gen 3, 6.8インチ, 200MPカメラ",
-                                        "warranty": "1年間",
-                                        "image": "https://www.central.co.th/_next/image?url=https%3A%2F%2Fassets.central.co.th%2Ffile-assets%2FCDSPIM%2Fweb%2FImage%2FMKP1960%2FSAMSUNG-BlackSamsungS24Ultra6812256GB-MKP1960184-1.webp&w=1080&q=75",
-                                        "color": "#7c3aed"
-                              },
-                              {
-                                        "brand": "Xiaomi",
-                                        "model": "Redmi Note 13 Pro 256GB",
-                                        "price": 11990,
-                                        "specs": "Snapdragon 7s Gen 2, 6.67インチ, 200MPカメラ",
-                                        "warranty": "1年間",
-                                        "image": "https://i02.appmifile.com/905_item_th/29/03/2024/60e6d8572a80dc22951ae2253d6c9e45.png",
-                                        "color": "#f97316"
-                              },
-                              {
-                                        "brand": "OPPO",
-                                        "model": "Find X7 Ultra 256GB",
-                                        "price": 39990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.82インチ, Hasselbladカメラ",
-                                        "warranty": "1年間",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGb_i5NbQL0jWlLaqMZhH2io_6mlptbRRlsB6_knGVSg&s=10",
-                                        "color": "#059669"
-                              },
-                              {
-                                        "brand": "Vivo",
-                                        "model": "X100 Pro 256GB",
-                                        "price": 36990,
-                                        "specs": "Dimensity 9300, 6.78インチ, Zeissカメラ",
-                                        "warranty": "1年間",
-                                        "image": "https://static-jaymart.com/ecom/public/2bfEBcS9OzdHa1RRU30BNeEn4v8.jpg",
-                                        "color": "#2563eb"
-                              },
-                              {
-                                        "brand": "Realme",
-                                        "model": "GT 5 Pro 256GB",
-                                        "price": 19990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.78インチ, 50MPカメラ",
-                                        "warranty": "1年間",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT04101Mg2sD4YYona-XC9mJyhCWzfsyWfarouh6b4GjQ&s=10",
-                                        "color": "#eab308"
-                              }
-                    ],
-                    "ko": [
-                              {
-                                        "brand": "Apple",
-                                        "model": "iPhone 15 Pro Max 256GB",
-                                        "price": 48900,
-                                        "specs": "A17 Pro, 6.7인치, 48MP 카메라",
-                                        "warranty": "1년",
-                                        "image": "https://media.studio7thailand.com/153365/iPhone-15-Pro-Max_Natural-Titanium.png",
-                                        "color": "#1e293b"
-                              },
-                              {
-                                        "brand": "Samsung",
-                                        "model": "Galaxy S24 Ultra 256GB",
-                                        "price": 45900,
-                                        "specs": "Snapdragon 8 Gen 3, 6.8인치, 200MP 카메라",
-                                        "warranty": "1년",
-                                        "image": "https://www.central.co.th/_next/image?url=https%3A%2F%2Fassets.central.co.th%2Ffile-assets%2FCDSPIM%2Fweb%2FImage%2FMKP1960%2FSAMSUNG-BlackSamsungS24Ultra6812256GB-MKP1960184-1.webp&w=1080&q=75",
-                                        "color": "#7c3aed"
-                              },
-                              {
-                                        "brand": "Xiaomi",
-                                        "model": "Redmi Note 13 Pro 256GB",
-                                        "price": 11990,
-                                        "specs": "Snapdragon 7s Gen 2, 6.67인치, 200MP 카메라",
-                                        "warranty": "1년",
-                                        "image": "https://i02.appmifile.com/905_item_th/29/03/2024/60e6d8572a80dc22951ae2253d6c9e45.png",
-                                        "color": "#f97316"
-                              },
-                              {
-                                        "brand": "OPPO",
-                                        "model": "Find X7 Ultra 256GB",
-                                        "price": 39990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.82인치, Hasselblad 카메라",
-                                        "warranty": "1년",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGb_i5NbQL0jWlLaqMZhH2io_6mlptbRRlsB6_knGVSg&s=10",
-                                        "color": "#059669"
-                              },
-                              {
-                                        "brand": "Vivo",
-                                        "model": "X100 Pro 256GB",
-                                        "price": 36990,
-                                        "specs": "Dimensity 9300, 6.78인치, Zeiss 카메라",
-                                        "warranty": "1년",
-                                        "image": "https://static-jaymart.com/ecom/public/2bfEBcS9OzdHa1RRU30BNeEn4v8.jpg",
-                                        "color": "#2563eb"
-                              },
-                              {
-                                        "brand": "Realme",
-                                        "model": "GT 5 Pro 256GB",
-                                        "price": 19990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.78인치, 50MP 카메라",
-                                        "warranty": "1년",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT04101Mg2sD4YYona-XC9mJyhCWzfsyWfarouh6b4GjQ&s=10",
-                                        "color": "#eab308"
-                              }
-                    ],
-                    "ar": [
-                              {
-                                        "brand": "Apple",
-                                        "model": "iPhone 15 Pro Max 256GB",
-                                        "price": 48900,
-                                        "specs": "A17 Pro, 6.7 بوصة, كاميرا 48MP",
-                                        "warranty": "سنة واحدة",
-                                        "image": "https://media.studio7thailand.com/153365/iPhone-15-Pro-Max_Natural-Titanium.png",
-                                        "color": "#1e293b"
-                              },
-                              {
-                                        "brand": "Samsung",
-                                        "model": "Galaxy S24 Ultra 256GB",
-                                        "price": 45900,
-                                        "specs": "Snapdragon 8 Gen 3, 6.8 بوصة, كاميرا 200MP",
-                                        "warranty": "سنة واحدة",
-                                        "image": "https://www.central.co.th/_next/image?url=https%3A%2F%2Fassets.central.co.th%2Ffile-assets%2FCDSPIM%2Fweb%2FImage%2FMKP1960%2FSAMSUNG-BlackSamsungS24Ultra6812256GB-MKP1960184-1.webp&w=1080&q=75",
-                                        "color": "#7c3aed"
-                              },
-                              {
-                                        "brand": "Xiaomi",
-                                        "model": "Redmi Note 13 Pro 256GB",
-                                        "price": 11990,
-                                        "specs": "Snapdragon 7s Gen 2, 6.67 بوصة, كاميرا 200MP",
-                                        "warranty": "سنة واحدة",
-                                        "image": "https://i02.appmifile.com/905_item_th/29/03/2024/60e6d8572a80dc22951ae2253d6c9e45.png",
-                                        "color": "#f97316"
-                              },
-                              {
-                                        "brand": "OPPO",
-                                        "model": "Find X7 Ultra 256GB",
-                                        "price": 39990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.82 بوصة, كاميرا Hasselblad",
-                                        "warranty": "سنة واحدة",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGb_i5NbQL0jWlLaqMZhH2io_6mlptbRRlsB6_knGVSg&s=10",
-                                        "color": "#059669"
-                              },
-                              {
-                                        "brand": "Vivo",
-                                        "model": "X100 Pro 256GB",
-                                        "price": 36990,
-                                        "specs": "Dimensity 9300, 6.78 بوصة, كاميرا Zeiss",
-                                        "warranty": "سنة واحدة",
-                                        "image": "https://static-jaymart.com/ecom/public/2bfEBcS9OzdHa1RRU30BNeEn4v8.jpg",
-                                        "color": "#2563eb"
-                              },
-                              {
-                                        "brand": "Realme",
-                                        "model": "GT 5 Pro 256GB",
-                                        "price": 19990,
-                                        "specs": "Snapdragon 8 Gen 3, 6.78 بوصة, كاميرا 50MP",
-                                        "warranty": "سنة واحدة",
-                                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT04101Mg2sD4YYona-XC9mJyhCWzfsyWfarouh6b4GjQ&s=10",
-                                        "color": "#eab308"
-                              }
-                    ]
-          },
-          "accessories": {
-                    "cases": [
-                              {
-                                        "name": "Silicone Case",
-                                        "nameTh": "เคสซิลิโคน",
-                                        "price": 290,
-                                        "image": "https://via.placeholder.com/300x200?text=Silicone+Case"
-                              },
-                              {
-                                        "name": "Leather Case",
-                                        "nameTh": "เคสหนัง",
-                                        "price": 590,
-                                        "image": "https://via.placeholder.com/300x200?text=Leather+Case"
-                              },
-                              {
-                                        "name": "Clear Case",
-                                        "nameTh": "เคสใส",
-                                        "price": 190,
-                                        "image": "https://via.placeholder.com/300x200?text=Clear+Case"
-                              },
-                              {
-                                        "name": "Rugged Case",
-                                        "nameTh": "เคสกันกระแทก",
-                                        "price": 490,
-                                        "image": "https://via.placeholder.com/300x200?text=Rugged+Case"
-                              }
-                    ],
-                    "chargers": [
-                              {
-                                        "name": "20W Fast Charger",
-                                        "nameTh": "ที่ชาร์จเร็ว 20W",
-                                        "price": 590,
-                                        "image": "https://via.placeholder.com/300x200?text=20W+Charger"
-                              },
-                              {
-                                        "name": "USB-C Cable 1m",
-                                        "nameTh": "สาย USB-C 1 เมตร",
-                                        "price": 190,
-                                        "image": "https://via.placeholder.com/300x200?text=USB-C+Cable"
-                              },
-                              {
-                                        "name": "Wireless Charger",
-                                        "nameTh": "แท่นชาร์จไร้สาย",
-                                        "price": 890,
-                                        "image": "https://via.placeholder.com/300x200?text=Wireless+Charger"
-                              },
-                              {
-                                        "name": "Power Bank 10000mAh",
-                                        "nameTh": "แบตสำรอง 10000mAh",
-                                        "price": 790,
-                                        "image": "https://via.placeholder.com/300x200?text=Power+Bank"
-                              }
-                    ],
-                    "audio": [
-                              {
-                                        "name": "Wireless Earbuds",
-                                        "nameTh": "หูฟังไร้สาย",
-                                        "price": 1290,
-                                        "image": "https://via.placeholder.com/300x200?text=Wireless+Earbuds"
-                              },
-                              {
-                                        "name": "Bluetooth Speaker",
-                                        "nameTh": "ลำโพงบลูทูธ",
-                                        "price": 1590,
-                                        "image": "https://via.placeholder.com/300x200?text=BT+Speaker"
-                              },
-                              {
-                                        "name": "Wired Earphones",
-                                        "nameTh": "หูฟังมีสาย",
-                                        "price": 390,
-                                        "image": "https://via.placeholder.com/300x200?text=Wired+Earphones"
-                              }
-                    ]
-          }
-};;;
+"phones": {
+"th": [
+{
+"brand": "Apple",
+"model": "iPhone 15 Pro Max 256GB",
+"price": 48900,
+"specs": "A17 Pro, 6.7 นิ้ว, กล้อง 48MP",
+"warranty": "1 ปี",
+"image": "https://via.placeholder.com/300x280?text=iPhone+15+Pro+Max",
+"color": "#1e293b"
+},
+{
+"brand": "Samsung",
+"model": "Galaxy S24 Ultra 256GB",
+"price": 45900,
+"specs": "Snapdragon 8 Gen 3, 6.8 นิ้ว, กล้อง 200MP",
+"warranty": "1 ปี",
+"image": "https://via.placeholder.com/300x280?text=Galaxy+S24+Ultra",
+"color": "#7c3aed"
+},
+{
+"brand": "Xiaomi",
+"model": "Redmi Note 13 Pro 256GB",
+"price": 11990,
+"specs": "Snapdragon 7s Gen 2, 6.67 นิ้ว, กล้อง 200MP",
+"warranty": "1 ปี",
+"image": "https://via.placeholder.com/300x280?text=Redmi+Note+13+Pro",
+"color": "#f97316"
+}
+],
+"en": [
+{
+"brand": "Apple",
+"model": "iPhone 15 Pro Max 256GB",
+"price": 48900,
+"specs": "A17 Pro, 6.7 inch, 48MP Camera",
+"warranty": "1 Year",
+"image": "https://via.placeholder.com/300x280?text=iPhone+15+Pro+Max",
+"color": "#1e293b"
+},
+{
+"brand": "Samsung",
+"model": "Galaxy S24 Ultra 256GB",
+"price": 45900,
+"specs": "Snapdragon 8 Gen 3, 6.8 inch, 200MP Camera",
+"warranty": "1 Year",
+"image": "https://via.placeholder.com/300x280?text=Galaxy+S24+Ultra",
+"color": "#7c3aed"
+},
+{
+"brand": "Xiaomi",
+"model": "Redmi Note 13 Pro 256GB",
+"price": 11990,
+"specs": "Snapdragon 7s Gen 2, 6.67 inch, 200MP Camera",
+"warranty": "1 Year",
+"image": "https://via.placeholder.com/300x280?text=Redmi+Note+13+Pro",
+"color": "#f97316"
+}
+]
+},
+"accessories": {
+"cases": [
+{
+"name": "Silicone Case",
+"nameTh": "เคสซิลิโคน",
+"price": 290,
+"image": "https://via.placeholder.com/300x200?text=Silicone+Case"
+},
+{
+"name": "Leather Case",
+"nameTh": "เคสหนัง",
+"price": 590,
+"image": "https://via.placeholder.com/300x200?text=Leather+Case"
+}
+],
+"chargers": [
+{
+"name": "20W Fast Charger",
+"nameTh": "ที่ชาร์จเร็ว 20W",
+"price": 590,
+"image": "https://via.placeholder.com/300x200?text=20W+Charger"
+},
+{
+"name": "USB-C Cable 1m",
+"nameTh": "สาย USB-C 1 เมตร",
+"price": 190,
+"image": "https://via.placeholder.com/300x200?text=USB-C+Cable"
+}
+],
+"audio": [
+{
+"name": "Wireless Earbuds",
+"nameTh": "หูฟังไร้สาย",
+"price": 1290,
+"image": "https://via.placeholder.com/300x200?text=Wireless+Earbuds"
+}
+]
+}
+};
 
 let currentLang = localStorage.getItem('phoneShopLang') || 'th';
 
@@ -1483,10 +685,6 @@ if (t[key]) el.innerHTML = t[key];
 renderPhones();
 renderPrices();
 renderAccessories();
-const phonesTab = document.getElementById('adminTabPhones');
-if (phonesTab && phonesTab.style.display !== 'none') {
-renderPhonesEditor();
-}
 }
 
 function renderPhones() {
@@ -1496,11 +694,13 @@ const grid = document.getElementById('phonesGrid');
 grid.innerHTML = phones.map((item, i) => `
 <div class="card phone-card" style="border-top-color: ${item.color}" onclick="openPhoneDetail(${i})" role="button">
 <div class="card-price-badge">${item.price.toLocaleString()} ${t.baht || 'Baht'}</div>
-${item.image ? `<img src="${item.image}" alt="${item.brand} ${item.model}">` : `<div class="card-icon logo-icon" style="background: ${item.color}"><i class="fas fa-mobile-alt"></i></div>`}
+${item.image ? `<img src="${item.image}" alt="${item.brand} ${item.model}">` : `<div class="card-icon" style="background: ${item.color}"><i class="fas fa-mobile-alt"></i></div>`}
+<div class="card-content">
 <h3>${item.brand}</h3>
 <h4>${item.model}</h4>
 <p>${item.specs}</p>
 <div class="detail-hint"><i class="fas fa-hand-pointer"></i> ${t.tap_view || 'Tap to view details'}</div>
+</div>
 </div>
 `).join('');
 }
@@ -1666,7 +866,7 @@ status.innerHTML = '<div class="warning-box"><i class="fas fa-times"></i> เก
 }
 
 function renderPhonesEditor() {
-const langNames = { th: 'ไทย', en: 'English', zh: '中文', ru: 'Русский', hi: 'हिन्दी', he: 'עברית', ja: '日本語', ko: '한국어', ar: 'العربية' };
+const langNames = { th: 'ไทย', en: 'English' };
 const noteEl = document.getElementById('phonesLangNote');
 const hadLangBefore = !!siteData.phones[currentLang];
 const phones = ensurePhonesLang(currentLang);
@@ -1738,7 +938,7 @@ model: "New Model",
 price: 0,
 specs: "Specs...",
 warranty: "1 Year",
-image: "https://via.placeholder.com/300x200?text=New+Phone",
+image: "https://via.placeholder.com/300x280?text=New+Phone",
 color: "#3498db"
 });
 renderPhonesEditor();
