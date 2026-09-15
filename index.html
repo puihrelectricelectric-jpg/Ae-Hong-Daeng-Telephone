@@ -22,35 +22,14 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .hero h1 { font-size: 3em; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); margin-bottom: 10px; }
 .hero p { font-size: 1.5em; color: #fde68a; font-style: italic; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
-
-/* ✅ แก้ไขการ์ดให้พอดีกับรูปภาพ */
-.card { 
-    background: white; 
-    border-radius: 15px; 
-    overflow: hidden; /* สำคัญ: ตัดรูปภาพที่ล้นออก */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-    border-top: 5px solid var(--primary); 
-    transition: 0.3s; 
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
+.card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 5px solid var(--primary); transition: 0.3s; position: relative; display: flex; flex-direction: column; }
 .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
-
-/* ✅ รูปภาพเต็มกรอบ */
-.card img { 
-    width: 100%; 
-    height: 280px; /* ความสูงคงที่ */
-    object-fit: cover; /* ตัดส่วนเกินออกแต่รักษาอัตราส่วน */
-    display: block;
-}
-
+.card img { width: 100%; height: 280px; object-fit: cover; display: block; }
 .card-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5em; margin: 20px auto; }
 .card-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
 .card h3 { color: var(--dark); font-size: 1.4em; margin-bottom: 5px; }
 .card h4 { color: var(--primary); font-size: 1em; margin-bottom: 15px; font-weight: 600; }
 .card p { color: #555; font-size: 0.95em; line-height: 1.7; flex: 1; }
-
 .info-box { background: white; border-radius: 15px; padding: 30px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
 .info-box h2 { color: var(--dark); margin-bottom: 20px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; }
 .step { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
@@ -67,7 +46,6 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 [dir="rtl"] .menu-price-badge { right: auto; left: 12px; }
 .menu-item-info h4 { font-size: 1.2em; color: var(--dark); margin-bottom: 5px; }
 .menu-item-info p { color: #777; font-size: 0.9em; margin-bottom: 10px; }
-.menu-price { font-size: 1.5em; color: var(--primary); font-weight: bold; }
 .card-price-badge { position: absolute; top: 12px; right: 12px; background: var(--accent); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 1em; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid white; z-index: 2; }
 [dir="rtl"] .card-price-badge { right: auto; left: 12px; }
 .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
@@ -85,11 +63,13 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .promo-banner h3 { font-size: 2.5em; margin-bottom: 10px; }
 .promo-banner p { font-size: 1.2em; margin-bottom: 20px; }
 .promo-banner .highlight { background: white; color: #ef4444; padding: 5px 20px; border-radius: 25px; display: inline-block; font-weight: bold; }
-.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.contact-card { background: white; padding: 30px; border-radius: 15px; text-align: center; }
-.contact-card i { font-size: 2.5em; color: var(--primary); margin-bottom: 15px; }
-.map-btn { display: inline-block; margin-top: 20px; padding: 15px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 30px; font-weight: bold; transition: 0.3s; }
-.map-btn:hover { background: #1e40af; transform: scale(1.05); }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.contact-card { background: white; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.contact-card i { font-size: 2.5em; margin-bottom: 15px; }
+.contact-card h3 { color: var(--dark); margin-bottom: 10px; font-size: 1.2em; }
+.contact-card p { color: #666; margin-bottom: 15px; font-size: 0.95em; }
+.map-btn { display: inline-block; padding: 12px 25px; color: white; text-decoration: none; border-radius: 30px; font-weight: bold; transition: 0.3s; border: none; cursor: pointer; font-size: 0.95em; }
+.map-btn:hover { transform: scale(1.05); }
 .login-box { max-width: 500px; margin: 100px auto; background: white; padding: 40px; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 .login-box input, .login-box textarea { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; }
 .login-box textarea { min-height: 100px; resize: vertical; }
@@ -119,8 +99,6 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 [dir="rtl"] .top-bar { justify-content: flex-start; }
 [dir="rtl"] .step { flex-direction: row-reverse; }
 .nav-toggle { display: none; background: rgba(0,0,0,0.9); border: none; color: white; font-size: 1.5em; padding: 12px 18px; cursor: pointer; width: 100%; text-align: right; }
-.logo-img { width: 120px; height: 120px; object-fit: contain; margin: 0 auto 15px; display: block; }
-.logo-icon { width: 90px; height: 90px; font-size: 2.2em; margin: 0 auto 15px; }
 .phone-card { text-align: center; cursor: pointer; }
 .detail-hint { margin-top: 12px; color: var(--primary); font-size: 0.9em; font-weight: 600; }
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 15px; }
@@ -129,7 +107,6 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .modal-close { position: absolute; top: 12px; right: 12px; background: var(--primary); color: white; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 1.1em; cursor: pointer; z-index: 10; }
 [dir="rtl"] .modal-close { right: auto; left: 12px; }
 .modal-box > img, .modal-box img.modal-photo { width: 100%; border-radius: 10px; margin-bottom: 15px; }
-.modal-box video, .modal-box iframe { width: 100%; border-radius: 10px; margin-bottom: 15px; border: 0; }
 .modal-box h2 { color: var(--dark); margin-bottom: 5px; }
 .modal-box h4 { color: var(--primary); margin-bottom: 15px; }
 .modal-box p { color: #555; line-height: 1.8; }
@@ -138,6 +115,8 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
 .calc-grid input, .calc-grid select { padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; }
 .calc-result { background: white; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center; font-size: 1.3em; font-weight: bold; color: var(--primary); }
+.map-container { width: 100%; height: 400px; border-radius: 15px; overflow: hidden; margin-top: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+.map-container iframe { width: 100%; height: 100%; border: 0; }
 
 @media (max-width: 768px) {
     .hero { padding: 30px 15px; }
@@ -150,21 +129,19 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
     .grid { grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
     .card img { height: 200px; }
     .card-content { padding: 15px; }
-    .logo-img { width: 90px; height: 90px; }
-    .logo-icon { width: 70px; height: 70px; font-size: 1.8em; }
     .card h3 { font-size: 1.05em; }
     .card h4 { font-size: 0.85em; }
     .section { padding: 20px 15px; }
     .modal-box { padding: 20px; max-height: 92vh; }
-    .modal-box iframe { height: 200px; }
     .menu-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-    .menu-item-card img, .menu-item-card > div { height: 120px; }
+    .menu-item-card img { height: 120px; }
     .menu-item-info { padding: 24px 12px 12px; }
     .menu-price-badge { font-size: 0.95em; padding: 4px 12px; }
     .menu-item-info h4 { font-size: 0.95em; }
-    .menu-price { font-size: 1.2em; }
     .promo-banner { padding: 20px 15px; }
     .promo-banner h3 { font-size: 1.5em; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .map-container { height: 300px; }
 }
 @media (max-width: 420px) {
     .grid { grid-template-columns: 1fr; }
@@ -177,13 +154,13 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <div class="top-bar">
 <div class="lang-select">
 <select id="langSelect" onchange="changeLang(this.value)">
-<option value="th">🇭 ไทย</option>
+<option value="th">🇹🇭 ไทย</option>
 <option value="en">🇬🇧 English</option>
-<option value="zh">🇨 中文</option>
+<option value="zh">🇨🇳 中文</option>
 <option value="ru">🇷🇺 Русский</option>
 <option value="hi">🇮🇳 हिन्दी</option>
-<option value="he">🇱 עברית</option>
-<option value="ja">🇯 日本語</option>
+<option value="he">🇮🇱 עברית</option>
+<option value="ja">🇯🇵 日本語</option>
 <option value="ko">🇰🇷 한국어</option>
 <option value="ar">🇸🇦 العربية</option>
 </select>
@@ -192,36 +169,60 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <nav class="navbar">
 <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu"><i class="fas fa-bars"></i></button>
 <div class="nav-container" id="navContainer">
-<button class="nav-btn active" onclick="showSection('home')">
-<i class="fas fa-home"></i> <span data-i18n="nav_home">หน้าหลัก</span>
-</button>
-<button class="nav-btn" onclick="showSection('pricing')">
-<i class="fas fa-tag"></i> <span data-i18n="nav_pricing">ราคา</span>
-</button>
-<button class="nav-btn" onclick="showSection('promo')">
-<i class="fas fa-gift"></i> <span data-i18n="nav_promo">โปรโมชั่น</span>
-</button>
-<button class="nav-btn" onclick="showSection('accessories')">
-<i class="fas fa-headphones"></i> <span data-i18n="nav_accessories">อุปกรณ์เสริม</span>
-</button>
-<button class="nav-btn" onclick="showSection('services')">
-<i class="fas fa-tools"></i> <span data-i18n="nav_services">บริการ</span>
-</button>
-<button class="nav-btn" onclick="showSection('contact')">
-<i class="fas fa-map-marker-alt"></i> <span data-i18n="nav_contact">ติดต่อเรา</span>
-</button>
-<button class="nav-btn" onclick="showSection('admin')">
-<i class="fas fa-lock"></i> Admin
-</button>
+<button class="nav-btn active" onclick="showSection('home')"><i class="fas fa-home"></i> <span data-i18n="nav_home">หน้าหลัก</span></button>
+<button class="nav-btn" onclick="showSection('pricing')"><i class="fas fa-tag"></i> <span data-i18n="nav_pricing">ราคา</span></button>
+<button class="nav-btn" onclick="showSection('promo')"><i class="fas fa-gift"></i> <span data-i18n="nav_promo">โปรโมชั่น</span></button>
+<button class="nav-btn" onclick="showSection('accessories')"><i class="fas fa-headphones"></i> <span data-i18n="nav_accessories">อุปกรณ์เสริม</span></button>
+<button class="nav-btn" onclick="showSection('services')"><i class="fas fa-tools"></i> <span data-i18n="nav_services">บริการ</span></button>
+<button class="nav-btn" onclick="showSection('contact')"><i class="fas fa-map-marker-alt"></i> <span data-i18n="nav_contact">ติดต่อเรา</span></button>
+<button class="nav-btn" onclick="showSection('admin')"><i class="fas fa-lock"></i> Admin</button>
 </div>
 </nav>
+
 <section id="home" class="section active">
 <div class="hero">
 <h1>AE Hong Daeng Telephone</h1>
 <p id="tagline" data-i18n="tagline">ร้านขายโทรศัพท์มือถือคุณภาพดี ราคาถูก!</p>
 </div>
 <div class="grid" id="phonesGrid"></div>
+
+<!-- ✅ ช่องทางติดต่อในหน้าแรก -->
+<div class="info-box" style="margin-top: 40px;">
+<h2><i class="fas fa-phone-alt"></i> <span data-i18n="home_contact_title">ช่องทางติดต่อ</span></h2>
+<div class="contact-grid" style="margin-top: 20px;">
+<div class="contact-card">
+<i class="fas fa-phone-alt" style="color: #25d366;"></i>
+<h3 data-i18n="home_contact_phone_label">โทรศัพท์</h3>
+<p id="homePhoneDisplay">-</p>
+<a id="homePhoneLink" href="#" class="map-btn" style="background: #25d366;"><i class="fas fa-phone"></i> <span data-i18n="home_call_btn">โทรเลย</span></a>
+</div>
+<div class="contact-card">
+<i class="fab fa-line" style="color: #06c755;"></i>
+<h3>Line</h3>
+<p id="homeLineDisplay">-</p>
+<a id="homeLineLink" href="#" target="_blank" class="map-btn" style="background: #06c755;"><i class="fab fa-line"></i> <span data-i18n="home_add_line">เพิ่มเพื่อน</span></a>
+</div>
+<div class="contact-card">
+<i class="fab fa-facebook" style="color: #1877f2;"></i>
+<h3>Facebook</h3>
+<p id="homeFbDisplay">-</p>
+<a id="homeFbLink" href="#" target="_blank" class="map-btn" style="background: #1877f2;"><i class="fab fa-facebook"></i> <span data-i18n="home_visit_fb">เข้าชมเพจ</span></a>
+</div>
+</div>
+</div>
+
+<!-- ✅ แผนที่ร้านในหน้าแรก -->
+<div class="info-box">
+<h2><i class="fas fa-map-marked-alt"></i> <span data-i18n="home_map_title">แผนที่ร้าน</span></h2>
+<div class="map-container">
+<iframe id="homeMapFrame" src="" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+<div style="text-align: center; margin-top: 20px;">
+<a id="homeMapExternalLink" href="#" target="_blank" class="map-btn" style="background: var(--primary);"><i class="fas fa-directions"></i> <span data-i18n="home_open_maps">เปิดใน Google Maps</span></a>
+</div>
+</div>
 </section>
+
 <section id="pricing" class="section">
 <div class="hero">
 <h1 data-i18n="pricing_title">ราคาโทรศัพท์มือถือ</h1>
@@ -244,6 +245,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <div id="calcResult" class="calc-result" style="display:none;"></div>
 </div>
 </section>
+
 <section id="promo" class="section">
 <div class="hero">
 <h1 data-i18n="promo_title">โปรโมชั่นพิเศษ</h1>
@@ -273,6 +275,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <div class="step"><div class="step-num">4</div><div data-i18n="promo_trade_step4">ชำระส่วนต่าง รับเครื่องใหม่กลับบ้านทันที</div></div>
 </div>
 </section>
+
 <section id="accessories" class="section">
 <div class="hero">
 <h1 data-i18n="acc_title">อุปกรณ์เสริม</h1>
@@ -290,6 +293,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <div class="menu-grid" id="audioGrid"></div>
 </div>
 </section>
+
 <section id="services" class="section">
 <div class="hero">
 <h1 data-i18n="svc_title">บริการของเรา</h1>
@@ -308,33 +312,33 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <div class="step"><div class="step-num"><i class="fas fa-money-bill-wave"></i></div><div data-i18n="svc_trade_3">จ่ายเงินทันที หลังตกลงราคา</div></div>
 </div>
 </section>
+
 <section id="contact" class="section">
 <div class="hero">
 <h1 data-i18n="contact_title">ติดต่อเรา</h1>
 </div>
 <div class="contact-grid">
 <div class="contact-card">
-<i class="fas fa-clock"></i>
+<i class="fas fa-clock" style="color: var(--primary);"></i>
 <h3 data-i18n="contact_hours">เวลาทำการ</h3>
 <p data-i18n="contact_hours_time">10:00 น. - 20:00 น.<br>เปิดทุกวัน</p>
 </div>
 <div class="contact-card">
-<i class="fas fa-map-marker-alt"></i>
+<i class="fas fa-map-marker-alt" style="color: var(--primary);"></i>
 <h3 data-i18n="contact_address">ที่อยู่</h3>
 <p data-i18n="contact_address_text">ซอย แบตแมน หนองปรือ2<br>อ.บางละมุง จ.ชลบุรี</p>
 </div>
 <div class="contact-card">
-<i class="fas fa-phone-alt"></i>
+<i class="fas fa-phone-alt" style="color: var(--primary);"></i>
 <h3 data-i18n="contact_phone">ช่องทางการติดต่อ</h3>
 <p data-i18n="contact_phone_text">โทร: 081-234-5678<br>Line: @aehongdaeng</p>
 </div>
 </div>
 <div style="text-align: center; margin-top: 40px;">
-<a href="https://maps.app.goo.gl/GvKaetCQbaCtduwH6" target="_blank" class="map-btn">
-<i class="fas fa-map-marked-alt"></i> <span data-i18n="contact_map">เปิดดูแผนที่บน Google Maps</span>
-</a>
+<a id="contactMapLink" href="https://maps.app.goo.gl/GvKaetCQbaCtduwH6" target="_blank" class="map-btn" style="background: var(--primary);"><i class="fas fa-map-marked-alt"></i> <span data-i18n="contact_map">เปิดดูแผนที่บน Google Maps</span></a>
 </div>
 </section>
+
 <section id="admin" class="section">
 <div id="adminLogin" class="login-box">
 <h2><i class="fas fa-lock"></i> Admin Login</h2>
@@ -350,7 +354,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <button class="tab active" onclick="showAdminTab('github')">🔧 ตั้งค่า GitHub</button>
 <button class="tab" onclick="showAdminTab('phones')">📱 โทรศัพท์</button>
 <button class="tab" onclick="showAdminTab('accessories')">🎧 อุปกรณ์เสริม</button>
-<button class="tab" onclick="showAdminTab('content')">📝 เนื้อหา</button>
+<button class="tab" onclick="showAdminTab('content')">📞 ติดต่อ/เนื้อหา</button>
 </div>
 <div id="adminTabGithub" class="admin-section">
 <h3><i class="fab fa-github"></i> ตั้งค่า GitHub API</h3>
@@ -372,299 +376,137 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <label>Branch</label>
 <input type="text" id="githubBranch" placeholder="main" value="main">
 </div>
-<button class="btn btn-success" onclick="saveGithubConfig()">
-<i class="fas fa-save"></i> บันทึกการตั้งค่า
-</button>
-<button class="btn btn-secondary" onclick="testGithubConnection()">
-<i class="fas fa-plug"></i> ทดสอบการเชื่อมต่อ
-</button>
+<button class="btn btn-success" onclick="saveGithubConfig()"><i class="fas fa-save"></i> บันทึกการตั้งค่า</button>
+<button class="btn btn-secondary" onclick="testGithubConnection()"><i class="fas fa-plug"></i> ทดสอบการเชื่อมต่อ</button>
 <div id="githubStatus"></div>
 </div>
 <div id="adminTabPhones" class="admin-section" style="display:none;">
 <h3><i class="fas fa-mobile-alt"></i> จัดการโทรศัพท์</h3>
 <div id="phonesLangNote" class="lang-editing-note"></div>
 <div id="phonesEditor"></div>
-<button class="btn btn-success" onclick="addPhone()">
-<i class="fas fa-plus"></i> เพิ่มโทรศัพท์ใหม่
-</button>
-<button class="btn" onclick="saveAllChanges()" style="margin-top: 20px;">
-<i class="fas fa-save"></i> บันทึกการเปลี่ยนแปลงทั้งหมดไปยัง GitHub
-</button>
+<button class="btn btn-success" onclick="addPhone()"><i class="fas fa-plus"></i> เพิ่มโทรศัพท์ใหม่</button>
+<button class="btn" onclick="saveAllChanges()" style="margin-top: 20px;"><i class="fas fa-save"></i> บันทึกการเปลี่ยนแปลงทั้งหมดไปยัง GitHub</button>
 </div>
 <div id="adminTabAccessories" class="admin-section" style="display:none;">
 <h3><i class="fas fa-headphones"></i> จัดการอุปกรณ์เสริม</h3>
 <div id="accessoriesEditor"></div>
-<button class="btn btn-success" onclick="addAccessory()">
-<i class="fas fa-plus"></i> เพิ่มอุปกรณ์เสริมใหม่
-</button>
-<button class="btn" onclick="saveAllChanges()" style="margin-top: 20px;">
-<i class="fas fa-save"></i> บันทึกการเปลี่ยนแปลงทั้งหมดไปยัง GitHub
-</button>
+<button class="btn btn-success" onclick="addAccessory()"><i class="fas fa-plus"></i> เพิ่มอุปกรณ์เสริมใหม่</button>
+<button class="btn" onclick="saveAllChanges()" style="margin-top: 20px;"><i class="fas fa-save"></i> บันทึกการเปลี่ยนแปลงทั้งหมดไปยัง GitHub</button>
 </div>
 <div id="adminTabContent" class="admin-section" style="display:none;">
-<h3><i class="fas fa-edit"></i> แก้ไขเนื้อหาทั่วไป</h3>
+<h3><i class="fas fa-edit"></i> แก้ไขเนื้อหาและข้อมูลติดต่อ</h3>
 <div id="contentEditor"></div>
-<button class="btn" onclick="saveAllChanges()" style="margin-top: 20px;">
-<i class="fas fa-save"></i> บันทึกการเปลี่ยนแปลงทั้งหมดไปยัง GitHub
-</button>
+<button class="btn" onclick="saveAllChanges()" style="margin-top: 20px;"><i class="fas fa-save"></i> บันทึกการเปลี่ยนแปลงทั้งหมดไปยัง GitHub</button>
 </div>
-<button class="btn btn-danger" onclick="logout()" style="margin-top: 20px;">
-<i class="fas fa-sign-out-alt"></i> ออกจากระบบ
-</button>
+<button class="btn btn-danger" onclick="logout()" style="margin-top: 20px;"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</button>
 </div>
 </section>
+
 <div class="modal-overlay" id="phoneModal" onclick="if(event.target===this)closePhoneModal()">
 <div class="modal-box">
 <button class="modal-close" onclick="closePhoneModal()" aria-label="Close"><i class="fas fa-times"></i></button>
 <div id="modalContent"></div>
 </div>
 </div>
+
 <script>
 const translations = {
-          "th": {
-                    "nav_home": "หน้าหลัก",
-                    "nav_pricing": "ราคา",
-                    "nav_promo": "โปรโมชั่น",
-                    "nav_accessories": "อุปกรณ์เสริม",
-                    "nav_services": "บริการ",
-                    "nav_contact": "ติดต่อเรา",
-                    "tagline": "ร้านขายโทรศัพท์มือถือคุณภาพดี ราคาถูก!",
-                    "pricing_title": "ราคาโทรศัพท์มือถือ",
-                    "pricing_sub": "ราคาพิเศษจากทางร้าน",
-                    "calc_title": "คำนวณผ่อนชำระ",
-                    "calc_btn": "คำนวณ",
-                    "calc_result": "ยอดผ่อนต่อเดือน: ",
-                    "baht": "บาท",
-                    "promo_title": "โปรโมชั่นพิเศษ",
-                    "promo_0percent_title": "ผ่อน 0% นาน 10 เดือน",
-                    "promo_0percent_desc": "ซื้อโทรศัพท์มือถือ ผ่อน 0% นาน 10 เดือน ไม่มีดอกเบี้ย!",
-                    "promo_0percent_tag": "อนุมัติง่าย ใช้แค่บัตรประชาชน",
-                    "promo_trade_title": "แลกเครื่องเก่า รับส่วนลดสูงสุด 5,000 บาท",
-                    "promo_trade_desc": "นำโทรศัพท์มือถือเครื่องเก่ามาแลกซื้อเครื่องใหม่ รับส่วนลดทันที!",
-                    "promo_trade_tag": "ประเมินราคาฟรี ไม่มีค่าใช้จ่าย",
-                    "promo_how": "วิธีรับโปรโมชั่น",
-                    "promo_step1": "เลือกโทรศัพท์มือถือรุ่นที่ต้องการ",
-                    "promo_step2": "เตรียมบัตรประชาชนตัวจริง",
-                    "promo_step3": "กรอกใบสมัครผ่อนชำระที่เคาน์เตอร์",
-                    "promo_step4": "รออนุมัติภายใน 15 นาที รับเครื่องกลับบ้านได้ทันที",
-                    "promo_trade_how": "วิธีเข้าร่วมโปรโมชั่นแลกเครื่อง",
-                    "promo_trade_step1": "นำโทรศัพท์เครื่องเก่าพร้อมอุปกรณ์ครบชุดมาที่ร้าน",
-                    "promo_trade_step2": "เจ้าหน้าที่ประเมินราคาเครื่องเก่าให้ฟรี",
-                    "promo_trade_step3": "เลือกรุ่นโทรศัพท์เครื่องใหม่ที่ต้องการ",
-                    "promo_trade_step4": "ชำระส่วนต่าง รับเครื่องใหม่กลับบ้านทันที",
-                    "acc_title": "อุปกรณ์เสริม",
-                    "acc_cases": "เคสโทรศัพท์",
-                    "acc_chargers": "ที่ชาร์จและสายชาร์จ",
-                    "acc_audio": "หูฟังและลำโพง",
-                    "svc_title": "บริการของเรา",
-                    "svc_repair_title": "บริการซ่อมโทรศัพท์",
-                    "svc_repair_1": "เปลี่ยนหน้าจอ - เริ่มต้น 1,500 บาท",
-                    "svc_repair_2": "เปลี่ยนแบตเตอรี่ - เริ่มต้น 800 บาท",
-                    "svc_repair_3": "ซ่อมชาร์จไม่เข้า - เริ่มต้น 500 บาท",
-                    "svc_repair_4": "ซ่อมเครื่องตกน้ำ - เริ่มต้น 1,200 บาท",
-                    "svc_trade_title": "รับซื้อมือถือเก่า / ประเมินราคา",
-                    "svc_trade_1": "ประเมินราคาฟรี ไม่มีค่าใช้จ่าย",
-                    "svc_trade_2": "รับซื้อมือถือทุกยี่ห้อ ทุกสภาพ",
-                    "svc_trade_3": "จ่ายเงินทันที หลังตกลงราคา",
-                    "contact_title": "ติดต่อเรา",
-                    "contact_hours": "เวลาทำการ",
-                    "contact_hours_time": "10:00 น. - 20:00 น.<br>เปิดทุกวัน",
-                    "contact_address": "ที่อยู่",
-                    "contact_address_text": "ซอย แบตแมน หนองปรือ2<br>อ.บางละมุง จ.ชลบุรี",
-                    "contact_phone": "ช่องทางการติดต่อ",
-                    "contact_phone_text": "โทร: 081-234-5678<br>Line: @aehongdaeng",
-                    "contact_map": "เปิดดูแผนที่บน Google Maps",
-                    "admin_login": "เข้าสู่ระบบ",
-                    "admin_error": "รหัสผ่านไม่ถูกต้อง",
-                    "tap_view": "แตะเพื่อดูรายละเอียด",
-                    "brand": "ยี่ห้อ",
-                    "model": "รุ่น",
-                    "price": "ราคา",
-                    "specs": "สเปค",
-                    "warranty": "การรับประกัน"
-          },
-          "en": {
-                    "nav_home": "Home",
-                    "nav_pricing": "Prices",
-                    "nav_promo": "Promotions",
-                    "nav_accessories": "Accessories",
-                    "nav_services": "Services",
-                    "nav_contact": "Contact",
-                    "tagline": "Quality mobile phones at great prices!",
-                    "pricing_title": "Mobile Phone Prices",
-                    "pricing_sub": "Special prices from our shop",
-                    "calc_title": "Installment Calculator",
-                    "calc_btn": "Calculate",
-                    "calc_result": "Monthly payment: ",
-                    "baht": "Baht",
-                    "promo_title": "Special Promotions",
-                    "promo_0percent_title": "0% Interest for 10 Months",
-                    "promo_0percent_desc": "Buy mobile phones with 0% interest for 10 months!",
-                    "promo_0percent_tag": "Easy approval, ID card only",
-                    "promo_trade_title": "Trade-in Old Phone, Get up to 5,000 Baht Discount",
-                    "promo_trade_desc": "Bring your old phone to trade for a new one and get instant discount!",
-                    "promo_trade_tag": "Free evaluation, no charges",
-                    "promo_how": "How to Get Promotion",
-                    "promo_step1": "Choose the mobile phone model you want",
-                    "promo_step2": "Prepare your original ID card",
-                    "promo_step3": "Fill out installment application at the counter",
-                    "promo_step4": "Wait for approval within 15 minutes, take phone home immediately",
-                    "promo_trade_how": "How to Join Trade-in Promotion",
-                    "promo_trade_step1": "Bring your old phone with complete accessories to the shop",
-                    "promo_trade_step2": "Staff will evaluate your old phone for free",
-                    "promo_trade_step3": "Choose the new phone model you want",
-                    "promo_trade_step4": "Pay the difference, take new phone home immediately",
-                    "acc_title": "Accessories",
-                    "acc_cases": "Phone Cases",
-                    "acc_chargers": "Chargers & Cables",
-                    "acc_audio": "Headphones & Speakers",
-                    "svc_title": "Our Services",
-                    "svc_repair_title": "Phone Repair Services",
-                    "svc_repair_1": "Screen replacement - from 1,500 Baht",
-                    "svc_repair_2": "Battery replacement - from 800 Baht",
-                    "svc_repair_3": "Charging port repair - from 500 Baht",
-                    "svc_repair_4": "Water damage repair - from 1,200 Baht",
-                    "svc_trade_title": "Buy Used Phones / Price Evaluation",
-                    "svc_trade_1": "Free price evaluation, no charges",
-                    "svc_trade_2": "Buy all brands, all conditions",
-                    "svc_trade_3": "Immediate payment after price agreement",
-                    "contact_title": "Contact Us",
-                    "contact_hours": "Opening Hours",
-                    "contact_hours_time": "10:00 AM - 8:00 PM<br>Open daily",
-                    "contact_address": "Address",
-                    "contact_address_text": "Batman Soi, Nong Prue 2<br>Bang Lamung, Chonburi",
-                    "contact_phone": "Contact Channels",
-                    "contact_phone_text": "Tel: 081-234-5678<br>Line: @aehongdaeng",
-                    "contact_map": "View on Google Maps",
-                    "admin_login": "Login",
-                    "admin_error": "Incorrect password",
-                    "tap_view": "Tap to view details",
-                    "brand": "Brand",
-                    "model": "Model",
-                    "price": "Price",
-                    "specs": "Specs",
-                    "warranty": "Warranty"
-          }
-};;;;;;;;
+"th": {
+"nav_home": "หน้าหลัก", "nav_pricing": "ราคา", "nav_promo": "โปรโมชั่น", "nav_accessories": "อุปกรณ์เสริม", "nav_services": "บริการ", "nav_contact": "ติดต่อเรา",
+"tagline": "ร้านขายโทรศัพท์มือถือคุณภาพดี ราคาถูก!",
+"pricing_title": "ราคาโทรศัพท์มือถือ", "pricing_sub": "ราคาพิเศษจากทางร้าน",
+"calc_title": "คำนวณผ่อนชำระ", "calc_btn": "คำนวณ", "calc_result": "ยอดผ่อนต่อเดือน: ", "baht": "บาท",
+"promo_title": "โปรโมชั่นพิเศษ",
+"promo_0percent_title": "ผ่อน 0% นาน 10 เดือน", "promo_0percent_desc": "ซื้อโทรศัพท์มือถือ ผ่อน 0% นาน 10 เดือน ไม่มีดอกเบี้ย!", "promo_0percent_tag": "อนุมัติง่าย ใช้แค่บัตรประชาชน",
+"promo_trade_title": "แลกเครื่องเก่า รับส่วนลดสูงสุด 5,000 บาท", "promo_trade_desc": "นำโทรศัพท์มือถือเครื่องเก่ามาแลกซื้อเครื่องใหม่ รับส่วนลดทันที!", "promo_trade_tag": "ประเมินราคาฟรี ไม่มีค่าใช้จ่าย",
+"promo_how": "วิธีรับโปรโมชั่น", "promo_step1": "เลือกโทรศัพท์มือถือรุ่นที่ต้องการ", "promo_step2": "เตรียมบัตรประชาชนตัวจริง", "promo_step3": "กรอกใบสมัครผ่อนชำระที่เคาน์เตอร์", "promo_step4": "รออนุมัติภายใน 15 นาที รับเครื่องกลับบ้านได้ทันที",
+"promo_trade_how": "วิธีเข้าร่วมโปรโมชั่นแลกเครื่อง", "promo_trade_step1": "นำโทรศัพท์เครื่องเก่าพร้อมอุปกรณ์ครบชุดมาที่ร้าน", "promo_trade_step2": "เจ้าหน้าที่ประเมินราคาเครื่องเก่าให้ฟรี", "promo_trade_step3": "เลือกรุ่นโทรศัพท์เครื่องใหม่ที่ต้องการ", "promo_trade_step4": "ชำระส่วนต่าง รับเครื่องใหม่กลับบ้านทันที",
+"acc_title": "อุปกรณ์เสริม", "acc_cases": "เคสโทรศัพท์", "acc_chargers": "ที่ชาร์จและสายชาร์จ", "acc_audio": "หูฟังและลำโพง",
+"svc_title": "บริการของเรา", "svc_repair_title": "บริการซ่อมโทรศัพท์",
+"svc_repair_1": "เปลี่ยนหน้าจอ - เริ่มต้น 1,500 บาท", "svc_repair_2": "เปลี่ยนแบตเตอรี่ - เริ่มต้น 800 บาท", "svc_repair_3": "ซ่อมชาร์จไม่เข้า - เริ่มต้น 500 บาท", "svc_repair_4": "ซ่อมเครื่องตกน้ำ - เริ่มต้น 1,200 บาท",
+"svc_trade_title": "รับซื้อมือถือเก่า / ประเมินราคา", "svc_trade_1": "ประเมินราคาฟรี ไม่มีค่าใช้จ่าย", "svc_trade_2": "รับซื้อมือถือทุกยี่ห้อ ทุกสภาพ", "svc_trade_3": "จ่ายเงินทันที หลังตกลงราคา",
+"contact_title": "ติดต่อเรา", "contact_hours": "เวลาทำการ", "contact_hours_time": "10:00 น. - 20:00 น.<br>เปิดทุกวัน",
+"contact_address": "ที่อยู่", "contact_address_text": "ซอย แบตแมน หนองปรือ2<br>อ.บางละมุง จ.ชลบุรี",
+"contact_phone": "ช่องทางการติดต่อ", "contact_phone_text": "โทร: 081-234-5678<br>Line: @aehongdaeng",
+"contact_map": "เปิดดูแผนที่บน Google Maps",
+"admin_login": "เข้าสู่ระบบ", "admin_error": "รหัสผ่านไม่ถูกต้อง",
+"tap_view": "แตะเพื่อดูรายละเอียด", "brand": "ยี่ห้อ", "model": "รุ่น", "price": "ราคา", "specs": "สเปค", "warranty": "การรับประกัน",
+"home_contact_title": "ช่องทางติดต่อ", "home_contact_phone_label": "โทรศัพท์", "home_call_btn": "โทรเลย", "home_add_line": "เพิ่มเพื่อน", "home_visit_fb": "เข้าชมเพจ",
+"home_map_title": "แผนที่ร้าน", "home_open_maps": "เปิดใน Google Maps"
+},
+"en": {
+"nav_home": "Home", "nav_pricing": "Prices", "nav_promo": "Promotions", "nav_accessories": "Accessories", "nav_services": "Services", "nav_contact": "Contact",
+"tagline": "Quality mobile phones at great prices!",
+"pricing_title": "Mobile Phone Prices", "pricing_sub": "Special prices from our shop",
+"calc_title": "Installment Calculator", "calc_btn": "Calculate", "calc_result": "Monthly payment: ", "baht": "Baht",
+"promo_title": "Special Promotions",
+"promo_0percent_title": "0% Interest for 10 Months", "promo_0percent_desc": "Buy mobile phones with 0% interest for 10 months!", "promo_0percent_tag": "Easy approval, ID card only",
+"promo_trade_title": "Trade-in Old Phone, Get up to 5,000 Baht Discount", "promo_trade_desc": "Bring your old phone to trade for a new one and get instant discount!", "promo_trade_tag": "Free evaluation, no charges",
+"promo_how": "How to Get Promotion", "promo_step1": "Choose the mobile phone model you want", "promo_step2": "Prepare your original ID card", "promo_step3": "Fill out installment application at the counter", "promo_step4": "Wait for approval within 15 minutes, take phone home immediately",
+"promo_trade_how": "How to Join Trade-in Promotion", "promo_trade_step1": "Bring your old phone with complete accessories to the shop", "promo_trade_step2": "Staff will evaluate your old phone for free", "promo_trade_step3": "Choose the new phone model you want", "promo_trade_step4": "Pay the difference, take new phone home immediately",
+"acc_title": "Accessories", "acc_cases": "Phone Cases", "acc_chargers": "Chargers & Cables", "acc_audio": "Headphones & Speakers",
+"svc_title": "Our Services", "svc_repair_title": "Phone Repair Services",
+"svc_repair_1": "Screen replacement - from 1,500 Baht", "svc_repair_2": "Battery replacement - from 800 Baht", "svc_repair_3": "Charging port repair - from 500 Baht", "svc_repair_4": "Water damage repair - from 1,200 Baht",
+"svc_trade_title": "Buy Used Phones / Price Evaluation", "svc_trade_1": "Free price evaluation, no charges", "svc_trade_2": "Buy all brands, all conditions", "svc_trade_3": "Immediate payment after price agreement",
+"contact_title": "Contact Us", "contact_hours": "Opening Hours", "contact_hours_time": "10:00 AM - 8:00 PM<br>Open daily",
+"contact_address": "Address", "contact_address_text": "Batman Soi, Nong Prue 2<br>Bang Lamung, Chonburi",
+"contact_phone": "Contact Channels", "contact_phone_text": "Tel: 081-234-5678<br>Line: @aehongdaeng",
+"contact_map": "View on Google Maps",
+"admin_login": "Login", "admin_error": "Incorrect password",
+"tap_view": "Tap to view details", "brand": "Brand", "model": "Model", "price": "Price", "specs": "Specs", "warranty": "Warranty",
+"home_contact_title": "Contact Channels", "home_contact_phone_label": "Phone", "home_call_btn": "Call Now", "home_add_line": "Add Friend", "home_visit_fb": "Visit Page",
+"home_map_title": "Shop Map", "home_open_maps": "Open in Google Maps"
+}
+};
 
 const siteData = {
-          "phones": {
-                    "th": [
-                              {
-                                        "brand": "Apple",
-                                        "model": "iPhone 15 Pro Max 256GB",
-                                        "price": 48900,
-                                        "specs": "A17 Pro, 6.7 นิ้ว, กล้อง 48MP",
-                                        "warranty": "1 ปี",
-                                        "image": "https://mediam.istudio.store/media/catalog/product/cache/3b7e899159f673788675d87d1d929a98/i/p/iphone-15-pro-max-blue-titanium-1a_blue_titanium_color_2.jpg",
-                                        "color": "#1e293b"
-                              },
-                              {
-                                        "brand": "Samsung",
-                                        "model": "Galaxy S24 Ultra 256GB",
-                                        "price": 45900,
-                                        "specs": "Snapdragon 8 Gen 3, 6.8 นิ้ว, กล้อง 200MP",
-                                        "warranty": "1 ปี",
-                                        "image": "https://images.samsung.com/is/image/samsung/assets/th/smartphones/galaxy-s24-ultra/buy/S24Ultra-Color-Titanium_Grey_MO_0527_final.jpg?imbypass=true",
-                                        "color": "#7c3aed"
-                              },
-                              {
-                                        "brand": "Xiaomi",
-                                        "model": "Redmi Note 13 Pro 256GB",
-                                        "price": 11990,
-                                        "specs": "Snapdragon 7s Gen 2, 6.67 นิ้ว, กล้อง 200MP",
-                                        "warranty": "1 ปี",
-                                        "image": "https://m.media-amazon.com/images/I/71nrf4zgq5L.jpg",
-                                        "color": "#f97316"
-                              }
-                    ],
-                    "en": [
-                              {
-                                        "brand": "Apple",
-                                        "model": "iPhone 15 Pro Max 256GB",
-                                        "price": 48900,
-                                        "specs": "A17 Pro, 6.7 inch, 48MP Camera",
-                                        "warranty": "1 Year",
-                                        "image": "https://mediam.istudio.store/media/catalog/product/cache/3b7e899159f673788675d87d1d929a98/i/p/iphone-15-pro-max-blue-titanium-1a_blue_titanium_color_2.jpg",
-                                        "color": "#1e293b"
-                              },
-                              {
-                                        "brand": "Samsung",
-                                        "model": "Galaxy S24 Ultra 256GB",
-                                        "price": 45900,
-                                        "specs": "Snapdragon 8 Gen 3, 6.8 inch, 200MP Camera",
-                                        "warranty": "1 Year",
-                                        "image": "https://images.samsung.com/is/image/samsung/assets/th/smartphones/galaxy-s24-ultra/buy/S24Ultra-Color-Titanium_Grey_MO_0527_final.jpg?imbypass=true",
-                                        "color": "#7c3aed"
-                              },
-                              {
-                                        "brand": "Xiaomi",
-                                        "model": "Redmi Note 13 Pro 256GB",
-                                        "price": 11990,
-                                        "specs": "Snapdragon 7s Gen 2, 6.67 inch, 200MP Camera",
-                                        "warranty": "1 Year",
-                                        "image": "https://m.media-amazon.com/images/I/71nrf4zgq5L.jpg",
-                                        "color": "#f97316"
-                              }
-                    ]
-          },
-          "accessories": {
-                    "cases": [
-                              {
-                                        "name": "Silicone Case",
-                                        "nameTh": "เคสซิลิโคน",
-                                        "price": 290,
-                                        "image": "https://via.placeholder.com/300x200?text=Silicone+Case"
-                              },
-                              {
-                                        "name": "Leather Case",
-                                        "nameTh": "เคสหนัง",
-                                        "price": 590,
-                                        "image": "https://via.placeholder.com/300x200?text=Leather+Case"
-                              }
-                    ],
-                    "chargers": [
-                              {
-                                        "name": "20W Fast Charger",
-                                        "nameTh": "ที่ชาร์จเร็ว 20W",
-                                        "price": 590,
-                                        "image": "https://via.placeholder.com/300x200?text=20W+Charger"
-                              },
-                              {
-                                        "name": "USB-C Cable 1m",
-                                        "nameTh": "สาย USB-C 1 เมตร",
-                                        "price": 190,
-                                        "image": "https://via.placeholder.com/300x200?text=USB-C+Cable"
-                              }
-                    ],
-                    "audio": [
-                              {
-                                        "name": "Wireless Earbuds",
-                                        "nameTh": "หูฟังไร้สาย",
-                                        "price": 1290,
-                                        "image": "https://via.placeholder.com/300x200?text=Wireless+Earbuds"
-                              }
-                    ]
-          }
-};;;;;;;;
+"phones": {
+"th": [
+{"brand": "Apple", "model": "iPhone 15 Pro Max 256GB", "price": 48900, "specs": "A17 Pro, 6.7 นิ้ว, กล้อง 48MP", "warranty": "1 ปี", "image": "https://via.placeholder.com/300x280?text=iPhone+15+Pro+Max", "color": "#1e293b"},
+{"brand": "Samsung", "model": "Galaxy S24 Ultra 256GB", "price": 45900, "specs": "Snapdragon 8 Gen 3, 6.8 นิ้ว, กล้อง 200MP", "warranty": "1 ปี", "image": "https://via.placeholder.com/300x280?text=Galaxy+S24+Ultra", "color": "#7c3aed"},
+{"brand": "Xiaomi", "model": "Redmi Note 13 Pro 256GB", "price": 11990, "specs": "Snapdragon 7s Gen 2, 6.67 นิ้ว, กล้อง 200MP", "warranty": "1 ปี", "image": "https://via.placeholder.com/300x280?text=Redmi+Note+13+Pro", "color": "#f97316"}
+],
+"en": [
+{"brand": "Apple", "model": "iPhone 15 Pro Max 256GB", "price": 48900, "specs": "A17 Pro, 6.7 inch, 48MP Camera", "warranty": "1 Year", "image": "https://via.placeholder.com/300x280?text=iPhone+15+Pro+Max", "color": "#1e293b"},
+{"brand": "Samsung", "model": "Galaxy S24 Ultra 256GB", "price": 45900, "specs": "Snapdragon 8 Gen 3, 6.8 inch, 200MP Camera", "warranty": "1 Year", "image": "https://via.placeholder.com/300x280?text=Galaxy+S24+Ultra", "color": "#7c3aed"},
+{"brand": "Xiaomi", "model": "Redmi Note 13 Pro 256GB", "price": 11990, "specs": "Snapdragon 7s Gen 2, 6.67 inch, 200MP Camera", "warranty": "1 Year", "image": "https://via.placeholder.com/300x280?text=Redmi+Note+13+Pro", "color": "#f97316"}
+]
+},
+"accessories": {
+"cases": [
+{"name": "Silicone Case", "nameTh": "เคสซิลิโคน", "price": 290, "image": "https://via.placeholder.com/300x200?text=Silicone+Case"},
+{"name": "Leather Case", "nameTh": "เคสหนัง", "price": 590, "image": "https://via.placeholder.com/300x200?text=Leather+Case"},
+{"name": "Clear Case", "nameTh": "เคสใส", "price": 190, "image": "https://via.placeholder.com/300x200?text=Clear+Case"}
+],
+"chargers": [
+{"name": "20W Fast Charger", "nameTh": "ที่ชาร์จเร็ว 20W", "price": 590, "image": "https://via.placeholder.com/300x200?text=20W+Charger"},
+{"name": "USB-C Cable 1m", "nameTh": "สาย USB-C 1 เมตร", "price": 190, "image": "https://via.placeholder.com/300x200?text=USB-C+Cable"},
+{"name": "Wireless Charger", "nameTh": "แท่นชาร์จไร้สาย", "price": 890, "image": "https://via.placeholder.com/300x200?text=Wireless+Charger"}
+],
+"audio": [
+{"name": "Wireless Earbuds", "nameTh": "หูฟังไร้สาย", "price": 1290, "image": "https://via.placeholder.com/300x200?text=Wireless+Earbuds"},
+{"name": "Bluetooth Speaker", "nameTh": "ลำโพงบลูทูธ", "price": 1590, "image": "https://via.placeholder.com/300x200?text=BT+Speaker"}
+]
+},
+"contact": {
+"phone": "081-234-5678",
+"line": "@aehongdaeng",
+"facebook": "https://facebook.com/aehongdaeng",
+"mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.5!2d100.5!3d13.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQyJzAwLjAiTiAxMDDCsDMwJzAwLjAiRQ!5e0!3m2!1sen!2sth!4v1600000000000!5m2!1sen!2sth",
+"mapExternal": "https://maps.app.goo.gl/GvKaetCQbaCtduwH6"
+}
+};
 
 let currentLang = localStorage.getItem('phoneShopLang') || 'th';
 
 function getPhones(lang) {
 const items = siteData.phones[lang] || siteData.phones['en'] || [];
 const base = siteData.phones['th'] || [];
-return items.map((item, i) => ({
-...item,
-price: (item.price !== undefined ? item.price : (base[i] ? base[i].price : undefined)),
-image: item.image || (base[i] ? base[i].image : '') || ''
-}));
+return items.map((item, i) => ({...item, price: (item.price !== undefined ? item.price : (base[i] ? base[i].price : undefined)), image: item.image || (base[i] ? base[i].image : '') || ''}));
 }
 
 function ensurePhonesLang(lang) {
-if (!siteData.phones[lang]) {
-const base = siteData.phones['en'] || [];
-siteData.phones[lang] = JSON.parse(JSON.stringify(base));
-}
+if (!siteData.phones[lang]) { const base = siteData.phones['en'] || []; siteData.phones[lang] = JSON.parse(JSON.stringify(base)); }
 return siteData.phones[lang];
 }
 
@@ -672,19 +514,26 @@ function changeLang(lang) {
 currentLang = lang;
 localStorage.setItem('phoneShopLang', lang);
 document.getElementById('langSelect').value = lang;
-if (lang === 'ar' || lang === 'he') {
-document.documentElement.setAttribute('dir', 'rtl');
-} else {
-document.documentElement.setAttribute('dir', 'ltr');
-}
+if (lang === 'ar' || lang === 'he') { document.documentElement.setAttribute('dir', 'rtl'); } else { document.documentElement.setAttribute('dir', 'ltr'); }
 const t = translations[lang] || translations['en'];
-document.querySelectorAll('[data-i18n]').forEach(el => {
-const key = el.getAttribute('data-i18n');
-if (t[key]) el.innerHTML = t[key];
-});
-renderPhones();
-renderPrices();
-renderAccessories();
+document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); if (t[key]) el.innerHTML = t[key]; });
+renderPhones(); renderPrices(); renderAccessories(); renderHomeContact();
+}
+
+function renderHomeContact() {
+const contact = siteData.contact || {};
+const phone = contact.phone || '-';
+document.getElementById('homePhoneDisplay').textContent = phone;
+document.getElementById('homePhoneLink').href = `tel:${phone}`;
+const line = contact.line || '-';
+document.getElementById('homeLineDisplay').textContent = line;
+document.getElementById('homeLineLink').href = `https://line.me/ti/p/~${line.replace('@', '')}`;
+const fb = contact.facebook || '-';
+document.getElementById('homeFbDisplay').textContent = fb.replace('https://', '').replace('http://', '').replace('www.', '');
+document.getElementById('homeFbLink').href = fb;
+document.getElementById('homeMapFrame').src = contact.mapEmbed || '';
+document.getElementById('homeMapExternalLink').href = contact.mapExternal || '#';
+document.getElementById('contactMapLink').href = contact.mapExternal || 'https://maps.app.goo.gl/GvKaetCQbaCtduwH6';
 }
 
 function renderPhones() {
@@ -701,8 +550,7 @@ ${item.image ? `<img src="${item.image}" alt="${item.brand} ${item.model}">` : `
 <p>${item.specs}</p>
 <div class="detail-hint"><i class="fas fa-hand-pointer"></i> ${t.tap_view || 'Tap to view details'}</div>
 </div>
-</div>
-`).join('');
+</div>`).join('');
 }
 
 function openPhoneDetail(index) {
@@ -712,11 +560,10 @@ const t = translations[currentLang] || translations['en'];
 document.getElementById('modalContent').innerHTML = `
 ${item.image ? `<img class="modal-photo" src="${item.image}" alt="${item.brand} ${item.model}">` : ''}
 <h2>${item.brand} ${item.model}</h2>
-<div class="modal-price" style="display:inline-block; background:var(--accent); color:white; padding:8px 22px; border-radius:25px; font-size:1.3em; font-weight:bold; margin-bottom:15px;">${item.price.toLocaleString()} ${t.baht || 'Baht'}</div>
+<div style="display:inline-block; background:var(--accent); color:white; padding:8px 22px; border-radius:25px; font-size:1.3em; font-weight:bold; margin-bottom:15px;">${item.price.toLocaleString()} ${t.baht || 'Baht'}</div>
 <p><strong>${t.specs || 'Specs'}:</strong> ${item.specs}</p>
 <p><strong>${t.warranty || 'Warranty'}:</strong> ${item.warranty}</p>
-<button class="btn" onclick="document.getElementById('calcPrice').value=${item.price}; showSection('pricing'); closePhoneModal();"><i class="fas fa-calculator"></i> ${t.calc_btn || 'Calculate'}</button>
-`;
+<button class="btn" onclick="document.getElementById('calcPrice').value=${item.price}; showSection('pricing'); closePhoneModal();"><i class="fas fa-calculator"></i> ${t.calc_btn || 'Calculate'}</button>`;
 document.getElementById('phoneModal').classList.add('show');
 document.body.style.overflow = 'hidden';
 }
@@ -727,9 +574,7 @@ document.getElementById('modalContent').innerHTML = '';
 document.body.style.overflow = '';
 }
 
-document.addEventListener('keydown', e => {
-if (e.key === 'Escape') closePhoneModal();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePhoneModal(); });
 
 function renderPrices() {
 const phones = getPhones(currentLang);
@@ -747,8 +592,7 @@ grid.innerHTML = phones.map(item => `
 <div class="price-unit">${t.baht || 'Baht'}</div>
 </div>
 </div>
-</div>
-`).join('');
+</div>`).join('');
 }
 
 function calculateInstallment() {
@@ -757,9 +601,7 @@ const down = parseFloat(document.getElementById('calcDown').value) || 0;
 const months = parseInt(document.getElementById('calcMonths').value) || 10;
 const t = translations[currentLang] || translations['en'];
 const remaining = Math.max(0, price - down);
-const interestRate = 0.05;
-const totalInterest = remaining * interestRate;
-const monthly = (remaining + totalInterest) / months;
+const monthly = (remaining + (remaining * 0.05)) / months;
 document.getElementById('calcResult').style.display = 'block';
 document.getElementById('calcResult').innerHTML = `${t.calc_result || 'Monthly: '}<span style="font-size:1.5em; color:var(--accent);">${monthly.toLocaleString(undefined, {maximumFractionDigits: 2})}</span> ${t.baht || 'Baht'}`;
 }
@@ -776,8 +618,7 @@ ${item.image ? `<img src="${item.image}" alt="${item.name}">` : '<div style="hei
 <h4>${item.name}</h4>
 <p>${currentLang === 'th' ? item.nameTh : item.name}</p>
 </div>
-</div>
-`;
+</div>`;
 document.getElementById('casesGrid').innerHTML = siteData.accessories.cases.map(renderItem).join('');
 document.getElementById('chargersGrid').innerHTML = siteData.accessories.chargers.map(renderItem).join('');
 document.getElementById('audioGrid').innerHTML = siteData.accessories.audio.map(renderItem).join('');
@@ -790,14 +631,12 @@ document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'))
 const navBtn = event.target.closest('.nav-btn');
 if (navBtn) navBtn.classList.add('active');
 document.getElementById('navContainer').classList.remove('open');
-if (id === 'home') renderPhones();
+if (id === 'home') { renderPhones(); renderHomeContact(); }
 if (id === 'pricing') renderPrices();
 if (id === 'accessories') renderAccessories();
 }
 
-function toggleNav() {
-document.getElementById('navContainer').classList.toggle('open');
-}
+function toggleNav() { document.getElementById('navContainer').classList.toggle('open'); }
 
 function checkAdmin() {
 const pass = document.getElementById('adminPass').value;
@@ -808,9 +647,7 @@ loadGithubConfig();
 renderPhonesEditor();
 renderAccessoriesEditor();
 renderContentEditor();
-} else {
-document.getElementById('loginError').style.display = 'block';
-}
+} else { document.getElementById('loginError').style.display = 'block'; }
 }
 
 function logout() {
@@ -826,6 +663,7 @@ document.getElementById('adminTab' + tab.charAt(0).toUpperCase() + tab.slice(1))
 event.target.classList.add('active');
 if (tab === 'phones') renderPhonesEditor();
 if (tab === 'accessories') renderAccessoriesEditor();
+if (tab === 'content') renderContentEditor();
 }
 
 function loadGithubConfig() {
@@ -837,12 +675,7 @@ document.getElementById('githubBranch').value = config.branch;
 }
 
 function saveGithubConfig() {
-const config = {
-username: document.getElementById('githubUsername').value,
-repo: document.getElementById('githubRepo').value,
-token: document.getElementById('githubToken').value,
-branch: document.getElementById('githubBranch').value
-};
+const config = { username: document.getElementById('githubUsername').value, repo: document.getElementById('githubRepo').value, token: document.getElementById('githubToken').value, branch: document.getElementById('githubBranch').value };
 localStorage.setItem('githubConfig', JSON.stringify(config));
 document.getElementById('githubStatus').innerHTML = '<div class="success-box"><i class="fas fa-check"></i> บันทึกการตั้งค่าสำเร็จ!</div>';
 }
@@ -852,17 +685,10 @@ const config = JSON.parse(localStorage.getItem('githubConfig'));
 const status = document.getElementById('githubStatus');
 status.innerHTML = '<p>กำลังทดสอบ...</p>';
 try {
-const response = await fetch(`https://api.github.com/repos/${config.username}/${config.repo}`, {
-headers: { 'Authorization': `token ${config.token}` }
-});
-if (response.ok) {
-status.innerHTML = '<div class="success-box"><i class="fas fa-check"></i> เชื่อมต่อ GitHub สำเร็จ!</div>';
-} else {
-status.innerHTML = '<div class="warning-box"><i class="fas fa-times"></i> ไม่สามารถเชื่อมต่อได้ ตรวจสอบ Token</div>';
-}
-} catch (error) {
-status.innerHTML = '<div class="warning-box"><i class="fas fa-times"></i> เกิดข้อผิดพลาด: ' + error.message + '</div>';
-}
+const response = await fetch(`https://api.github.com/repos/${config.username}/${config.repo}`, { headers: { 'Authorization': `token ${config.token}` } });
+if (response.ok) { status.innerHTML = '<div class="success-box"><i class="fas fa-check"></i> เชื่อมต่อ GitHub สำเร็จ!</div>'; }
+else { status.innerHTML = '<div class="warning-box"><i class="fas fa-times"></i> ไม่สามารถเชื่อมต่อได้ ตรวจสอบ Token</div>'; }
+} catch (error) { status.innerHTML = '<div class="warning-box"><i class="fas fa-times"></i> เกิดข้อผิดพลาด: ' + error.message + '</div>'; }
 }
 
 function renderPhonesEditor() {
@@ -870,86 +696,37 @@ const langNames = { th: 'ไทย', en: 'English' };
 const noteEl = document.getElementById('phonesLangNote');
 const hadLangBefore = !!siteData.phones[currentLang];
 const phones = ensurePhonesLang(currentLang);
-if (noteEl) {
-noteEl.innerHTML = `<i class="fas fa-language"></i> กำลังแก้ไขข้อมูลของภาษา: <strong>${langNames[currentLang] || currentLang}</strong>` +
-(!hadLangBefore ? ` (ยังไม่เคยมีข้อมูลภาษานี้ ระบบคัดลอกจากภาษาอังกฤษมาให้เริ่มแก้ไข)` : '') +
-`<br>สลับภาษาที่มุมขวาบนเพื่อแก้ไขเนื้อหาของภาษาอื่น` +
-`<br><i class="fas fa-image"></i> รูปภาพใช้ร่วมกันทุกภาษา แก้ครั้งเดียวมีผลทุกภาษา`;
-}
+if (noteEl) { noteEl.innerHTML = `<i class="fas fa-language"></i> กำลังแก้ไขข้อมูลของภาษา: <strong>${langNames[currentLang] || currentLang}</strong>` + (!hadLangBefore ? ` (ยังไม่เคยมีข้อมูลภาษานี้ ระบบคัดลอกจากภาษาอังกฤษมาให้เริ่มแก้ไข)` : '') + `<br>สลับภาษาที่มุมขวาบนเพื่อแก้ไขเนื้อหาของภาษาอื่น<br><i class="fas fa-image"></i> รูปภาพใช้ร่วมกันทุกภาษา แก้ครั้งเดียวมีผลทุกภาษา`; }
 const container = document.getElementById('phonesEditor');
 container.innerHTML = phones.map((item, index) => `
 <div class="admin-section">
 <h4>${item.brand} ${item.model}</h4>
-<div class="form-group">
-<label>ยี่ห้อ (Brand)</label>
-<input type="text" value="${item.brand}" onchange="updatePhone(${index}, 'brand', this.value)">
-</div>
-<div class="form-group">
-<label>รุ่น (Model)</label>
-<input type="text" value="${item.model}" onchange="updatePhone(${index}, 'model', this.value)">
-</div>
-<div class="form-group">
-<label>ราคา (Price)</label>
-<input type="number" value="${item.price}" onchange="updatePhone(${index}, 'price', this.value)">
-</div>
-<div class="form-group">
-<label>สเปค (Specs)</label>
-<textarea onchange="updatePhone(${index}, 'specs', this.value)">${item.specs}</textarea>
-</div>
-<div class="form-group">
-<label>การรับประกัน (Warranty)</label>
-<input type="text" value="${item.warranty}" onchange="updatePhone(${index}, 'warranty', this.value)">
-</div>
-<div class="form-group">
-<label>สี (Color Hex)</label>
-<input type="color" value="${item.color}" onchange="updatePhone(${index}, 'color', this.value)">
-</div>
-<div class="form-group">
-<label>รูปภาพ URL</label>
-<input type="text" value="${item.image}" onchange="updatePhone(${index}, 'image', this.value)" placeholder="https://example.com/image.jpg">
-${item.image ? `<img src="${item.image}" class="media-preview">` : ''}
-</div>
-<button class="btn btn-danger" onclick="deletePhone(${index})">
-<i class="fas fa-trash"></i> ลบ
-</button>
-</div>
-`).join('');
+<div class="form-group"><label>ยี่ห้อ (Brand)</label><input type="text" value="${item.brand}" onchange="updatePhone(${index}, 'brand', this.value)"></div>
+<div class="form-group"><label>รุ่น (Model)</label><input type="text" value="${item.model}" onchange="updatePhone(${index}, 'model', this.value)"></div>
+<div class="form-group"><label>ราคา (Price)</label><input type="number" value="${item.price}" onchange="updatePhone(${index}, 'price', this.value)"></div>
+<div class="form-group"><label>สเปค (Specs)</label><textarea onchange="updatePhone(${index}, 'specs', this.value)">${item.specs}</textarea></div>
+<div class="form-group"><label>การรับประกัน (Warranty)</label><input type="text" value="${item.warranty}" onchange="updatePhone(${index}, 'warranty', this.value)"></div>
+<div class="form-group"><label>สี (Color Hex)</label><input type="color" value="${item.color}" onchange="updatePhone(${index}, 'color', this.value)"></div>
+<div class="form-group"><label>รูปภาพ URL</label><input type="text" value="${item.image}" onchange="updatePhone(${index}, 'image', this.value)" placeholder="https://example.com/image.jpg">${item.image ? `<img src="${item.image}" class="media-preview">` : ''}</div>
+<button class="btn btn-danger" onclick="deletePhone(${index})"><i class="fas fa-trash"></i> ลบ</button>
+</div>`).join('');
 }
 
 function updatePhone(index, field, value) {
 const phones = ensurePhonesLang(currentLang);
 phones[index][field] = field === 'price' ? parseInt(value) : value;
-if (field === 'image') {
-Object.keys(siteData.phones).forEach(l => {
-if (siteData.phones[l] && siteData.phones[l][index]) {
-siteData.phones[l][index][field] = value;
-}
-});
-}
-renderPhonesEditor();
-renderPhones();
+if (field === 'image') { Object.keys(siteData.phones).forEach(l => { if (siteData.phones[l] && siteData.phones[l][index]) { siteData.phones[l][index][field] = value; } }); }
+renderPhonesEditor(); renderPhones();
 }
 
 function addPhone() {
 const phones = ensurePhonesLang(currentLang);
-phones.push({
-brand: "New Brand",
-model: "New Model",
-price: 0,
-specs: "Specs...",
-warranty: "1 Year",
-image: "https://via.placeholder.com/300x280?text=New+Phone",
-color: "#3498db"
-});
+phones.push({ brand: "New Brand", model: "New Model", price: 0, specs: "Specs...", warranty: "1 Year", image: "https://via.placeholder.com/300x280?text=New+Phone", color: "#3498db" });
 renderPhonesEditor();
 }
 
 function deletePhone(index) {
-if (confirm('ต้องการลบโทรศัพท์นี้?')) {
-const phones = ensurePhonesLang(currentLang);
-phones.splice(index, 1);
-renderPhonesEditor();
-}
+if (confirm('ต้องการลบโทรศัพท์นี้?')) { const phones = ensurePhonesLang(currentLang); phones.splice(index, 1); renderPhonesEditor(); }
 }
 
 function renderAccessoriesEditor() {
@@ -957,78 +734,30 @@ const container = document.getElementById('accessoriesEditor');
 let html = '<h4>เคสโทรศัพท์</h4>';
 html += siteData.accessories.cases.map((item, index) => `
 <div class="admin-section">
-<div class="form-group">
-<label>ชื่อ (English)</label>
-<input type="text" value="${item.name}" onchange="updateAccessory('cases', ${index}, 'name', this.value)">
-</div>
-<div class="form-group">
-<label>ชื่อ (ไทย)</label>
-<input type="text" value="${item.nameTh}" onchange="updateAccessory('cases', ${index}, 'nameTh', this.value)">
-</div>
-<div class="form-group">
-<label>ราคา</label>
-<input type="number" value="${item.price}" onchange="updateAccessory('cases', ${index}, 'price', this.value)">
-</div>
-<div class="form-group">
-<label>รูปภาพ URL</label>
-<input type="text" value="${item.image}" onchange="updateAccessory('cases', ${index}, 'image', this.value)">
-${item.image ? `<img src="${item.image}" class="media-preview">` : ''}
-</div>
-<button class="btn btn-danger" onclick="deleteAccessory('cases', ${index})">
-<i class="fas fa-trash"></i> ลบ
-</button>
-</div>
-`).join('');
+<div class="form-group"><label>ชื่อ (English)</label><input type="text" value="${item.name}" onchange="updateAccessory('cases', ${index}, 'name', this.value)"></div>
+<div class="form-group"><label>ชื่อ (ไทย)</label><input type="text" value="${item.nameTh}" onchange="updateAccessory('cases', ${index}, 'nameTh', this.value)"></div>
+<div class="form-group"><label>ราคา</label><input type="number" value="${item.price}" onchange="updateAccessory('cases', ${index}, 'price', this.value)"></div>
+<div class="form-group"><label>รูปภาพ URL</label><input type="text" value="${item.image}" onchange="updateAccessory('cases', ${index}, 'image', this.value)">${item.image ? `<img src="${item.image}" class="media-preview">` : ''}</div>
+<button class="btn btn-danger" onclick="deleteAccessory('cases', ${index})"><i class="fas fa-trash"></i> ลบ</button>
+</div>`).join('');
 html += '<h4 style="margin-top:30px;">ที่ชาร์จและสายชาร์จ</h4>';
 html += siteData.accessories.chargers.map((item, index) => `
 <div class="admin-section">
-<div class="form-group">
-<label>ชื่อ (English)</label>
-<input type="text" value="${item.name}" onchange="updateAccessory('chargers', ${index}, 'name', this.value)">
-</div>
-<div class="form-group">
-<label>ชื่อ (ไทย)</label>
-<input type="text" value="${item.nameTh}" onchange="updateAccessory('chargers', ${index}, 'nameTh', this.value)">
-</div>
-<div class="form-group">
-<label>ราคา</label>
-<input type="number" value="${item.price}" onchange="updateAccessory('chargers', ${index}, 'price', this.value)">
-</div>
-<div class="form-group">
-<label>รูปภาพ URL</label>
-<input type="text" value="${item.image}" onchange="updateAccessory('chargers', ${index}, 'image', this.value)">
-${item.image ? `<img src="${item.image}" class="media-preview">` : ''}
-</div>
-<button class="btn btn-danger" onclick="deleteAccessory('chargers', ${index})">
-<i class="fas fa-trash"></i> ลบ
-</button>
-</div>
-`).join('');
+<div class="form-group"><label>ชื่อ (English)</label><input type="text" value="${item.name}" onchange="updateAccessory('chargers', ${index}, 'name', this.value)"></div>
+<div class="form-group"><label>ชื่อ (ไทย)</label><input type="text" value="${item.nameTh}" onchange="updateAccessory('chargers', ${index}, 'nameTh', this.value)"></div>
+<div class="form-group"><label>ราคา</label><input type="number" value="${item.price}" onchange="updateAccessory('chargers', ${index}, 'price', this.value)"></div>
+<div class="form-group"><label>รูปภาพ URL</label><input type="text" value="${item.image}" onchange="updateAccessory('chargers', ${index}, 'image', this.value)">${item.image ? `<img src="${item.image}" class="media-preview">` : ''}</div>
+<button class="btn btn-danger" onclick="deleteAccessory('chargers', ${index})"><i class="fas fa-trash"></i> ลบ</button>
+</div>`).join('');
 html += '<h4 style="margin-top:30px;">หูฟังและลำโพง</h4>';
 html += siteData.accessories.audio.map((item, index) => `
 <div class="admin-section">
-<div class="form-group">
-<label>ชื่อ (English)</label>
-<input type="text" value="${item.name}" onchange="updateAccessory('audio', ${index}, 'name', this.value)">
-</div>
-<div class="form-group">
-<label>ชื่อ (ไทย)</label>
-<input type="text" value="${item.nameTh}" onchange="updateAccessory('audio', ${index}, 'nameTh', this.value)">
-</div>
-<div class="form-group">
-<label>ราคา</label>
-<input type="number" value="${item.price}" onchange="updateAccessory('audio', ${index}, 'price', this.value)">
-</div>
-<div class="form-group">
-<label>รูปภาพ URL</label>
-<input type="text" value="${item.image}" onchange="updateAccessory('audio', ${index}, 'image', this.value)">
-${item.image ? `<img src="${item.image}" class="media-preview">` : ''}
-</div>
-<button class="btn btn-danger" onclick="deleteAccessory('audio', ${index})">
-<i class="fas fa-trash"></i> ลบ
-</button>
-</div>
-`).join('');
+<div class="form-group"><label>ชื่อ (English)</label><input type="text" value="${item.name}" onchange="updateAccessory('audio', ${index}, 'name', this.value)"></div>
+<div class="form-group"><label>ชื่อ (ไทย)</label><input type="text" value="${item.nameTh}" onchange="updateAccessory('audio', ${index}, 'nameTh', this.value)"></div>
+<div class="form-group"><label>ราคา</label><input type="number" value="${item.price}" onchange="updateAccessory('audio', ${index}, 'price', this.value)"></div>
+<div class="form-group"><label>รูปภาพ URL</label><input type="text" value="${item.image}" onchange="updateAccessory('audio', ${index}, 'image', this.value)">${item.image ? `<img src="${item.image}" class="media-preview">` : ''}</div>
+<button class="btn btn-danger" onclick="deleteAccessory('audio', ${index})"><i class="fas fa-trash"></i> ลบ</button>
+</div>`).join('');
 container.innerHTML = html;
 }
 
@@ -1039,45 +768,30 @@ renderAccessories();
 
 function addAccessory() {
 const category = prompt('เพิ่มในหมวดใด? (cases/chargers/audio)');
-if (category === 'cases' || category === 'chargers' || category === 'audio') {
-siteData.accessories[category].push({
-name: "New Item",
-nameTh: "สินค้าใหม่",
-price: 0,
-image: ""
-});
-renderAccessoriesEditor();
-}
+if (category === 'cases' || category === 'chargers' || category === 'audio') { siteData.accessories[category].push({ name: "New Item", nameTh: "สินค้าใหม่", price: 0, image: "" }); renderAccessoriesEditor(); }
 }
 
 function deleteAccessory(category, index) {
-if (confirm('ต้องการลบสินค้านี้?')) {
-siteData.accessories[category].splice(index, 1);
-renderAccessoriesEditor();
-}
+if (confirm('ต้องการลบสินค้านี้?')) { siteData.accessories[category].splice(index, 1); renderAccessoriesEditor(); }
 }
 
 function renderContentEditor() {
 const container = document.getElementById('contentEditor');
 const t = translations[currentLang] || translations['en'];
+const contact = siteData.contact || {};
 container.innerHTML = `
-<div class="form-group">
-<label>Tagline (${currentLang.toUpperCase()})</label>
-<input type="text" value="${t.tagline}" onchange="translations['${currentLang}'].tagline = this.value">
-</div>
-<div class="form-group">
-<label>เวลาทำการ (${currentLang.toUpperCase()})</label>
-<input type="text" value="${t.contact_hours_time}" onchange="translations['${currentLang}'].contact_hours_time = this.value">
-</div>
-<div class="form-group">
-<label>ที่อยู่ (${currentLang.toUpperCase()})</label>
-<input type="text" value="${t.contact_address_text}" onchange="translations['${currentLang}'].contact_address_text = this.value">
-</div>
-<div class="form-group">
-<label>ช่องทางติดต่อ (${currentLang.toUpperCase()})</label>
-<input type="text" value="${t.contact_phone_text}" onchange="translations['${currentLang}'].contact_phone_text = this.value">
-</div>
-`;
+<h4 style="margin-bottom: 15px; color: var(--primary);"><i class="fas fa-language"></i> ข้อความทั่วไป (${currentLang.toUpperCase()})</h4>
+<div class="form-group"><label>Tagline</label><input type="text" value="${t.tagline}" onchange="translations['${currentLang}'].tagline = this.value"></div>
+<div class="form-group"><label>เวลาทำการ</label><input type="text" value="${t.contact_hours_time}" onchange="translations['${currentLang}'].contact_hours_time = this.value"></div>
+<div class="form-group"><label>ที่อยู่</label><input type="text" value="${t.contact_address_text}" onchange="translations['${currentLang}'].contact_address_text = this.value"></div>
+<div class="form-group"><label>ช่องทางติดต่อ</label><input type="text" value="${t.contact_phone_text}" onchange="translations['${currentLang}'].contact_phone_text = this.value"></div>
+<h4 style="margin: 25px 0 15px; color: var(--primary);"><i class="fas fa-address-book"></i> ข้อมูลติดต่อ (ใช้ร่วมกันทุกภาษา)</h4>
+<div class="form-group"><label>📞 เบอร์โทรศัพท์</label><input type="text" value="${contact.phone || ''}" onchange="siteData.contact.phone = this.value; renderHomeContact();" placeholder="081-234-5678"></div>
+<div class="form-group"><label>💬 Line ID</label><input type="text" value="${contact.line || ''}" onchange="siteData.contact.line = this.value; renderHomeContact();" placeholder="@aehongdaeng"></div>
+<div class="form-group"><label>📘 Facebook URL</label><input type="text" value="${contact.facebook || ''}" onchange="siteData.contact.facebook = this.value; renderHomeContact();" placeholder="https://facebook.com/..."></div>
+<h4 style="margin: 25px 0 15px; color: var(--primary);"><i class="fas fa-map"></i> แผนที่ร้าน (ใช้ร่วมกันทุกภาษา)</h4>
+<div class="form-group"><label>🗺️ Google Maps Embed URL</label><input type="text" value="${contact.mapEmbed || ''}" onchange="siteData.contact.mapEmbed = this.value; renderHomeContact();" placeholder="https://www.google.com/maps/embed?pb=..."><small style="color: #666;">วิธีได้ Embed URL: เปิด Google Maps → ค้นหาสถานที่ → คลิก "Share" → "Embed a map" → คัดลอก URL ใน src="..."</small></div>
+<div class="form-group"><label>🔗 Google Maps External Link</label><input type="text" value="${contact.mapExternal || ''}" onchange="siteData.contact.mapExternal = this.value; renderHomeContact();" placeholder="https://maps.app.goo.gl/..."><small style="color: #666;">ลิงก์สำหรับเปิดแอป Google Maps บนมือถือ</small></div>`;
 }
 
 function replaceObjectLiteral(source, varName, newValue) {
@@ -1087,13 +801,7 @@ if (startIdx === -1) return source;
 let i = startIdx + marker.length - 1;
 let depth = 0;
 let endIdx = -1;
-for (; i < source.length; i++) {
-if (source[i] === '{') depth++;
-if (source[i] === '}') {
-depth--;
-if (depth === 0) { endIdx = i; break; }
-}
-}
+for (; i < source.length; i++) { if (source[i] === '{') depth++; if (source[i] === '}') { depth--; if (depth === 0) { endIdx = i; break; } } }
 if (endIdx === -1) return source;
 const before = source.slice(0, startIdx);
 const after = source.slice(endIdx + 1);
@@ -1103,56 +811,24 @@ return `${before}const ${varName} = ${json};${after}`;
 
 async function saveAllChanges() {
 const config = JSON.parse(localStorage.getItem('githubConfig'));
-if (!config || !config.token) {
-alert('กรุณาตั้งค่า GitHub Token ก่อน!');
-showAdminTab('github');
-return;
-}
+if (!config || !config.token) { alert('กรุณาตั้งค่า GitHub Token ก่อน!'); showAdminTab('github'); return; }
 const status = confirm('ต้องการบันทึกการเปลี่ยนแปลงไปยัง GitHub? ลูกค้าทุกคนจะเห็นการอัปเดตภายใน 1-2 นาที');
 if (!status) return;
 try {
-const response = await fetch(`https://api.github.com/repos/${config.username}/${config.repo}/contents/index.html?ref=${config.branch}`, {
-headers: { 'Authorization': `token ${config.token}` }
-});
-if (!response.ok) {
-const errBody = await response.json().catch(() => ({}));
-alert(`❌ อ่านไฟล์เดิมไม่สำเร็จ (HTTP ${response.status})
-${errBody.message || 'ไม่มีรายละเอียดเพิ่มเติม'}`);
-return;
-}
+const response = await fetch(`https://api.github.com/repos/${config.username}/${config.repo}/contents/index.html?ref=${config.branch}`, { headers: { 'Authorization': `token ${config.token}` } });
+if (!response.ok) { const errBody = await response.json().catch(() => ({})); alert(`❌ อ่านไฟล์เดิมไม่สำเร็จ (HTTP ${response.status})\n${errBody.message || 'ไม่มีรายละเอียดเพิ่มเติม'}`); return; }
 const fileData = await response.json();
 const originalContent = decodeURIComponent(escape(atob(fileData.content)));
 let newContent = replaceObjectLiteral(originalContent, 'siteData', siteData);
 newContent = replaceObjectLiteral(newContent, 'translations', translations);
 const newContentBase64 = btoa(unescape(encodeURIComponent(newContent)));
-const updateResponse = await fetch(`https://api.github.com/repos/${config.username}/${config.repo}/contents/index.html`, {
-method: 'PUT',
-headers: {
-'Authorization': `token ${config.token}`,
-'Content-Type': 'application/json'
-},
-body: JSON.stringify({
-message: 'Update phone shop data via Admin Panel',
-content: newContentBase64,
-sha: fileData.sha,
-branch: config.branch
-})
-});
-if (updateResponse.ok) {
-alert('✅ บันทึกสำเร็จ! Cloudflare จะ Deploy อัตโนมัติภายใน 1-2 นาที ลูกค้าทุกคนจะเห็นการเปลี่ยนแปลง');
-} else {
-const errBody = await updateResponse.json().catch(() => ({}));
-alert(`❌ เกิดข้อผิดพลาดในการบันทึก (HTTP ${updateResponse.status})
-${errBody.message || 'ไม่มีรายละเอียดเพิ่มเติม'}`);
-}
-} catch (error) {
-alert('❌ เกิดข้อผิดพลาด: ' + error.message);
-}
+const updateResponse = await fetch(`https://api.github.com/repos/${config.username}/${config.repo}/contents/index.html`, { method: 'PUT', headers: { 'Authorization': `token ${config.token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'Update phone shop data via Admin Panel', content: newContentBase64, sha: fileData.sha, branch: config.branch }) });
+if (updateResponse.ok) { alert('✅ บันทึกสำเร็จ! Cloudflare จะ Deploy อัตโนมัติภายใน 1-2 นาที ลูกค้าทุกคนจะเห็นการเปลี่ยนแปลง'); }
+else { const errBody = await updateResponse.json().catch(() => ({})); alert(`❌ เกิดข้อผิดพลาดในการบันทึก (HTTP ${updateResponse.status})\n${errBody.message || 'ไม่มีรายละเอียดเพิ่มเติม'}`); }
+} catch (error) { alert('❌ เกิดข้อผิดพลาด: ' + error.message); }
 }
 
-window.onload = () => {
-changeLang(currentLang);
-};
+window.onload = () => { changeLang(currentLang); };
 </script>
 </body>
 </html>
