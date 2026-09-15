@@ -24,7 +24,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
 .card { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 5px solid var(--primary); transition: 0.3s; position: relative; }
 .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
-.card img, .card video, .card iframe { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
+.card img, .card video, .card iframe { width: 100%; height: 200px; object-fit: cover; object-position: center; border-radius: 10px; margin-bottom: 15px; display: block; background: #f0f0f0; }
 .card-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5em; margin-bottom: 20px; }
 .card h3 { color: var(--dark); font-size: 1.4em; margin-bottom: 5px; }
 .card h4 { color: var(--primary); font-size: 1em; margin-bottom: 15px; font-weight: 600; }
@@ -38,8 +38,8 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .menu-item-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; border: 2px solid #f0f0f0; }
 .menu-item-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-.menu-item-card img { width: 100%; height: 200px; object-fit: cover; background: #f0f0f0; }
-.img-wrap { position: relative; }
+.menu-item-card img { width: 100%; height: 200px; object-fit: cover; object-position: center; background: #f0f0f0; display: block; }
+.img-wrap { position: relative; overflow: hidden; }
 .menu-price-badge { position: absolute; bottom: 0; right: 12px; transform: translateY(50%); background: var(--primary); color: white; padding: 6px 16px; border-radius: 22px; font-size: 1.1em; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.35); border: 2px solid white; z-index: 2; white-space: nowrap; }
 .menu-item-info { padding: 28px 20px 20px; }
 [dir="rtl"] .menu-price-badge { right: auto; left: 12px; }
@@ -88,7 +88,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .success-box { background: #d1fae5; border: 1px solid #a7f3d0; color: #065f46; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
 .admin-section { margin-bottom: 30px; padding: 20px; background: #f8fafc; border-radius: 10px; }
 .admin-section h3 { color: var(--dark); margin-bottom: 15px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
-.media-preview { max-width: 300px; max-height: 200px; border-radius: 10px; margin: 10px 0; }
+.media-preview { max-width: 300px; max-height: 200px; border-radius: 10px; margin: 10px 0; object-fit: cover; }
 .tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
 .tab { padding: 10px 20px; background: white; border: 2px solid var(--primary); color: var(--primary); border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.3s; }
 .tab.active { background: var(--primary); color: white; }
@@ -106,7 +106,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .modal-box { background: white; border-radius: 15px; max-width: 720px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 30px; position: relative; animation: fadeIn 0.3s; }
 .modal-close { position: absolute; top: 12px; right: 12px; background: var(--primary); color: white; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 1.1em; cursor: pointer; z-index: 10; }
 [dir="rtl"] .modal-close { right: auto; left: 12px; }
-.modal-box > img, .modal-box img.modal-photo { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+.modal-box > img, .modal-box img.modal-photo { width: 100%; height: 280px; object-fit: cover; object-position: center; border-radius: 10px; margin-bottom: 15px; display: block; background: #f0f0f0; }
 .modal-box video, .modal-box iframe { width: 100%; border-radius: 10px; margin-bottom: 15px; border: 0; }
 .modal-box h2 { color: var(--dark); margin-bottom: 5px; }
 .modal-box h4 { color: var(--primary); margin-bottom: 15px; }
@@ -116,6 +116,16 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
 .calc-grid input, .calc-grid select { padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; }
 .calc-result { background: white; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center; font-size: 1.3em; font-weight: bold; color: var(--primary); }
+.map-section { background: white; border-radius: 15px; padding: 30px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; }
+.map-section h2 { color: var(--dark); margin-bottom: 20px; }
+.map-image-wrap { width: 100%; max-width: 700px; height: 320px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 2px solid #e2e8f0; }
+.map-image-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.quick-contact { background: white; border-radius: 15px; padding: 25px; margin-top: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+.quick-contact h3 { color: var(--dark); margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 10px; }
+.quick-contact h3 i { color: var(--primary); }
+.quick-contact-row { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+.quick-contact-info p { color: #555; margin: 0; }
+.quick-contact .map-btn { margin-top: 0; padding: 10px 22px; font-size: 0.95em; }
 @media (max-width: 768px) {
 .hero { padding: 30px 15px; }
 .hero h1 { font-size: 1.6em; }
@@ -133,6 +143,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .section { padding: 20px 15px; }
 .modal-box { padding: 20px; max-height: 92vh; }
 .modal-box iframe { height: 200px; }
+.modal-box > img, .modal-box img.modal-photo { height: 200px; }
 .menu-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
 .menu-item-card img, .menu-item-card > div { height: 120px; }
 .menu-item-info { padding: 24px 12px 12px; }
@@ -141,6 +152,8 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .menu-price { font-size: 1.2em; }
 .promo-banner { padding: 20px 15px; }
 .promo-banner h3 { font-size: 1.5em; }
+.map-image-wrap { height: 220px; }
+.quick-contact-row { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 420px) {
 .grid { grid-template-columns: 1fr; }
@@ -196,7 +209,19 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <h1>AE Hong Daeng Telephone</h1>
 <p id="tagline" data-i18n="tagline">ร้านขายโทรศัพท์มือถือคุณภาพดี ราคาถูก!</p>
 </div>
+<div class="map-section">
+<h2><i class="fas fa-map-marked-alt"></i> <span data-i18n="home_map_title">แผนที่ร้านของเรา</span></h2>
+<a href="https://maps.app.goo.gl/GvKaetCQbaCtduwH6" target="_blank">
+<div class="map-image-wrap">
+<img id="homeMapImage" src="https://via.placeholder.com/700x320?text=AE+Hong+Daeng+Telephone+-+Map" alt="แผนที่ร้าน AE Hong Daeng Telephone">
+</div>
+</a>
+<a href="https://maps.app.goo.gl/GvKaetCQbaCtduwH6" target="_blank" class="map-btn">
+<i class="fas fa-directions"></i> <span data-i18n="contact_map">เปิดดูแผนที่บน Google Maps</span>
+</a>
+</div>
 <div class="grid" id="phonesGrid"></div>
+<div class="quick-contact" id="quickContactHome"></div>
 </section>
 <section id="pricing" class="section">
 <div class="hero">
@@ -219,10 +244,21 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 </div>
 <div id="calcResult" class="calc-result" style="display:none;"></div>
 </div>
+<div class="quick-contact" id="quickContactPricing"></div>
 </section>
 <section id="promo" class="section">
 <div class="hero">
 <h1 data-i18n="promo_title">โปรโมชั่นพิเศษ</h1>
+</div>
+<div class="promo-banner">
+<h3 data-i18n="promo_newphone_title">ซื้อเครื่องใหม่ รับฟิล์มกระจกฟรี</h3>
+<p data-i18n="promo_newphone_desc">ซื้อโทรศัพท์มือถือเครื่องใหม่ทุกรุ่น รับฟรีฟิล์มกระจกกันรอย + เคสใส 1 ชิ้น</p>
+<span class="highlight" data-i18n="promo_newphone_tag">เฉพาะลูกค้าหน้าร้านเท่านั้น</span>
+</div>
+<div class="promo-banner" style="background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);">
+<h3 data-i18n="promo_tradein_title">เทิร์นเครื่องเก่า ลดสูงสุด 2,000 บาท</h3>
+<p data-i18n="promo_tradein_desc">นำโทรศัพท์เครื่องเก่ามาแลก รับส่วนลดทันทีเมื่อซื้อเครื่องใหม่ ทุกยี่ห้อ ทุกสภาพ</p>
+<span class="highlight" data-i18n="promo_tradein_tag">ประเมินราคาฟรีที่หน้าร้าน</span>
 </div>
 <div class="promo-banner">
 <h3 data-i18n="promo_3for100_title">3 ชิ้น 100 บาท</h3>
@@ -235,6 +271,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <div class="step"><div class="step-num">2</div><div data-i18n="promo_step2">แจ้งพนักงานที่เคาน์เตอร์</div></div>
 <div class="step"><div class="step-num">3</div><div data-i18n="promo_step3">ชำระเงินในราคาพิเศษ 100 บาท</div></div>
 </div>
+<div class="quick-contact" id="quickContactPromo"></div>
 </section>
 <section id="accessories" class="section">
 <div class="hero">
@@ -252,6 +289,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <h3 data-i18n="acc_audio">หูฟังและลำโพง</h3>
 <div class="menu-grid" id="audioGrid"></div>
 </div>
+<div class="quick-contact" id="quickContactAccessories"></div>
 </section>
 <section id="services" class="section">
 <div class="hero">
@@ -270,6 +308,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <div class="step"><div class="step-num"><i class="fas fa-check-circle"></i></div><div data-i18n="svc_trade_2">รับซื้อมือถือทุกยี่ห้อ ทุกสภาพ</div></div>
 <div class="step"><div class="step-num"><i class="fas fa-money-bill-wave"></i></div><div data-i18n="svc_trade_3">จ่ายเงินทันที หลังตกลงราคา</div></div>
 </div>
+<div class="quick-contact" id="quickContactServices"></div>
 </section>
 <section id="contact" class="section">
 <div class="hero">
@@ -313,6 +352,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <button class="tab active" onclick="showAdminTab('github')">🔧 ตั้งค่า GitHub</button>
 <button class="tab" onclick="showAdminTab('phones')">📱 โทรศัพท์</button>
 <button class="tab" onclick="showAdminTab('accessories')">🎧 อุปกรณ์เสริม</button>
+<button class="tab" onclick="showAdminTab('promo')">🎁 โปรโมชั่น</button>
 <button class="tab" onclick="showAdminTab('content')">📝 เนื้อหา</button>
 </div>
 <div id="adminTabGithub" class="admin-section">
@@ -364,8 +404,17 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <i class="fas fa-save"></i> บันทึกการเปลี่ยนแปลงทั้งหมดไปยัง GitHub
 </button>
 </div>
+<div id="adminTabPromo" class="admin-section" style="display:none;">
+<h3><i class="fas fa-gift"></i> จัดการโปรโมชั่น</h3>
+<div id="promoLangNote" class="lang-editing-note"></div>
+<div id="promoEditor"></div>
+<button class="btn" onclick="saveAllChanges()" style="margin-top: 20px;">
+<i class="fas fa-save"></i> บันทึกการเปลี่ยนแปลงทั้งหมดไปยัง GitHub
+</button>
+</div>
 <div id="adminTabContent" class="admin-section" style="display:none;">
 <h3><i class="fas fa-edit"></i> แก้ไขเนื้อหาทั่วไป</h3>
+<div id="contentLangNote" class="lang-editing-note"></div>
 <div id="contentEditor"></div>
 <button class="btn" onclick="saveAllChanges()" style="margin-top: 20px;">
 <i class="fas fa-save"></i> บันทึกการเปลี่ยนแปลงทั้งหมดไปยัง GitHub
@@ -392,6 +441,7 @@ const translations = {
 "nav_services": "บริการ",
 "nav_contact": "ติดต่อเรา",
 "tagline": "ร้านขายโทรศัพท์มือถือคุณภาพดี ราคาถูก!",
+"home_map_title": "แผนที่ร้านของเรา",
 "pricing_title": "ราคาโทรศัพท์มือถือ",
 "pricing_sub": "ราคาพิเศษจากทางร้าน",
 "calc_title": "คำนวณผ่อนชำระ",
@@ -399,6 +449,12 @@ const translations = {
 "calc_result": "ยอดผ่อนต่อเดือน: ",
 "baht": "บาท",
 "promo_title": "โปรโมชั่นพิเศษ",
+"promo_newphone_title": "ซื้อเครื่องใหม่ รับฟิล์มกระจกฟรี",
+"promo_newphone_desc": "ซื้อโทรศัพท์มือถือเครื่องใหม่ทุกรุ่น รับฟรีฟิล์มกระจกกันรอย + เคสใส 1 ชิ้น",
+"promo_newphone_tag": "เฉพาะลูกค้าหน้าร้านเท่านั้น",
+"promo_tradein_title": "เทิร์นเครื่องเก่า ลดสูงสุด 2,000 บาท",
+"promo_tradein_desc": "นำโทรศัพท์เครื่องเก่ามาแลก รับส่วนลดทันทีเมื่อซื้อเครื่องใหม่ ทุกยี่ห้อ ทุกสภาพ",
+"promo_tradein_tag": "ประเมินราคาฟรีที่หน้าร้าน",
 "promo_3for100_title": "3 ชิ้น 100 บาท",
 "promo_3for100_desc": "อุปกรณ์เสริม 3 ชิ้น เพียง 100 บาท!",
 "promo_3for100_tag": "คุ้มค่าที่สุดในราคาที่เป็นกันเอง",
@@ -428,6 +484,7 @@ const translations = {
 "contact_phone": "ช่องทางการติดต่อ",
 "contact_phone_text": "โทร: 081-234-5678<br>Line: @aehongdaeng",
 "contact_map": "เปิดดูแผนที่บน Google Maps",
+"quick_contact_title": "ติดต่อร้านได้เลย",
 "admin_login": "เข้าสู่ระบบ",
 "admin_error": "รหัสผ่านไม่ถูกต้อง",
 "tap_view": "แตะเพื่อดูรายละเอียด",
@@ -445,6 +502,7 @@ const translations = {
 "nav_services": "Services",
 "nav_contact": "Contact",
 "tagline": "Quality mobile phones at great prices!",
+"home_map_title": "Our Shop Location",
 "pricing_title": "Mobile Phone Prices",
 "pricing_sub": "Special prices from our shop",
 "calc_title": "Installment Calculator",
@@ -452,6 +510,12 @@ const translations = {
 "calc_result": "Monthly payment: ",
 "baht": "Baht",
 "promo_title": "Special Promotions",
+"promo_newphone_title": "Buy a New Phone, Get a Free Screen Protector",
+"promo_newphone_desc": "Buy any new phone and get a free tempered glass screen protector plus a clear case",
+"promo_newphone_tag": "In-store customers only",
+"promo_tradein_title": "Trade In, Save Up to 2,000 Baht",
+"promo_tradein_desc": "Trade in your old phone for an instant discount on a new one. All brands, any condition",
+"promo_tradein_tag": "Free in-store valuation",
 "promo_3for100_title": "3 Items for 100 Baht",
 "promo_3for100_desc": "3 accessories for only 100 Baht!",
 "promo_3for100_tag": "Best value at friendly price",
@@ -481,6 +545,7 @@ const translations = {
 "contact_phone": "Contact Channels",
 "contact_phone_text": "Tel: 081-234-5678<br>Line: @aehongdaeng",
 "contact_map": "View on Google Maps",
+"quick_contact_title": "Get in touch",
 "admin_login": "Login",
 "admin_error": "Incorrect password",
 "tap_view": "Tap to view details",
@@ -498,6 +563,7 @@ const translations = {
 "nav_services": "服务",
 "nav_contact": "联系我们",
 "tagline": "优质手机，价格实惠！",
+"home_map_title": "本店地图",
 "pricing_title": "手机价格",
 "pricing_sub": "本店特价",
 "calc_title": "分期付款计算器",
@@ -505,6 +571,12 @@ const translations = {
 "calc_result": "每月还款：",
 "baht": "泰铢",
 "promo_title": "特别促销",
+"promo_newphone_title": "购买新机，免费送钢化膜",
+"promo_newphone_desc": "购买任意新手机，免费获赠钢化玻璃膜和透明手机壳一个",
+"promo_newphone_tag": "仅限到店顾客",
+"promo_tradein_title": "以旧换新，最高立减2,000泰铢",
+"promo_tradein_desc": "旧手机换购新机立减，不限品牌不限成色",
+"promo_tradein_tag": "到店免费估价",
 "promo_3for100_title": "3件100泰铢",
 "promo_3for100_desc": "3件配件仅需100泰铢！",
 "promo_3for100_tag": "最优惠的友好价格",
@@ -534,6 +606,7 @@ const translations = {
 "contact_phone": "联系方式",
 "contact_phone_text": "电话：081-234-5678<br>Line: @aehongdaeng",
 "contact_map": "在谷歌地图上查看",
+"quick_contact_title": "联系我们",
 "admin_login": "登录",
 "admin_error": "密码错误",
 "tap_view": "点击查看详情",
@@ -551,6 +624,7 @@ const translations = {
 "nav_services": "Услуги",
 "nav_contact": "Контакты",
 "tagline": "Качественные мобильные телефоны по отличным ценам!",
+"home_map_title": "Расположение магазина",
 "pricing_title": "Цены на мобильные телефоны",
 "pricing_sub": "Специальные цены нашего магазина",
 "calc_title": "Калькулятор рассрочки",
@@ -558,6 +632,12 @@ const translations = {
 "calc_result": "Ежемесячный платеж: ",
 "baht": "бат",
 "promo_title": "Специальные акции",
+"promo_newphone_title": "Купи новый телефон - получи защитное стекло бесплатно",
+"promo_newphone_desc": "При покупке любого нового телефона - бесплатное защитное стекло и прозрачный чехол",
+"promo_newphone_tag": "Только для покупателей в магазине",
+"promo_tradein_title": "Трейд-ин со скидкой до 2 000 бат",
+"promo_tradein_desc": "Сдайте старый телефон и получите скидку на новый. Любые бренды и состояния",
+"promo_tradein_tag": "Бесплатная оценка в магазине",
 "promo_3for100_title": "3 предмета за 100 бат",
 "promo_3for100_desc": "3 аксессуара всего за 100 бат!",
 "promo_3for100_tag": "Лучшая цена по доступной цене",
@@ -587,6 +667,7 @@ const translations = {
 "contact_phone": "Контакты",
 "contact_phone_text": "Тел: 081-234-5678<br>Line: @aehongdaeng",
 "contact_map": "Открыть на Google Картах",
+"quick_contact_title": "Свяжитесь с нами",
 "admin_login": "Войти",
 "admin_error": "Неверный пароль",
 "tap_view": "Нажмите, чтобы подробнее",
@@ -604,6 +685,7 @@ const translations = {
 "nav_services": "सेवाएं",
 "nav_contact": "संपर्क",
 "tagline": "बेहतरीन कीमत पर गुणवत्तापूर्ण मोबाइल फोन!",
+"home_map_title": "हमारी दुकान का नक्शा",
 "pricing_title": "मोबाइल फोन की कीमतें",
 "pricing_sub": "हमारी दुकान की विशेष कीमतें",
 "calc_title": "किस्त कैलकुलेटर",
@@ -611,6 +693,12 @@ const translations = {
 "calc_result": "मासिक किस्त: ",
 "baht": "बात",
 "promo_title": "विशेष प्रोमोशन",
+"promo_newphone_title": "नया फोन खरीदें, मुफ्त स्क्रीन प्रोटेक्टर पाएं",
+"promo_newphone_desc": "कोई भी नया फोन खरीदें और मुफ्त टेम्पर्ड ग्लास स्क्रीन प्रोटेक्टर व क्लियर केस पाएं",
+"promo_newphone_tag": "केवल दुकान पर आने वाले ग्राहकों के लिए",
+"promo_tradein_title": "पुराना फोन बदलें, 2,000 बात तक बचाएं",
+"promo_tradein_desc": "पुराना फोन देकर नए पर तुरंत छूट पाएं। सभी ब्रांड, किसी भी स्थिति में",
+"promo_tradein_tag": "दुकान पर मुफ्त मूल्यांकन",
 "promo_3for100_title": "3 आइटम 100 बात में",
 "promo_3for100_desc": "केवल 100 बात में 3 एक्सेसरीज!",
 "promo_3for100_tag": "सबसे अच्छा मूल्य",
@@ -640,6 +728,7 @@ const translations = {
 "contact_phone": "संपर्क माध्यम",
 "contact_phone_text": "फोन: 081-234-5678<br>Line: @aehongdaeng",
 "contact_map": "गूगल मैप्स पर देखें",
+"quick_contact_title": "हमसे संपर्क करें",
 "admin_login": "लॉगिन",
 "admin_error": "गलत पासवर्ड",
 "tap_view": "विवरण देखने के लिए टैप करें",
@@ -657,6 +746,7 @@ const translations = {
 "nav_services": "שירותים",
 "nav_contact": "צור קשר",
 "tagline": "טלפונים ניידים איכותיים במחירים מעולים!",
+"home_map_title": "המיקום שלנו",
 "pricing_title": "מחירי טלפונים ניידים",
 "pricing_sub": "מחירים מיוחדים מהחנות שלנו",
 "calc_title": "מחשבון תשלומים",
@@ -664,6 +754,12 @@ const translations = {
 "calc_result": "תשלום חודשי: ",
 "baht": "באט",
 "promo_title": "מבצעים מיוחדים",
+"promo_newphone_title": "קנה טלפון חדש וקבל מגן מסך חינם",
+"promo_newphone_desc": "בקניית כל טלפון חדש - מגן מסך זכוכית וכיסוי שקוף במתנה",
+"promo_newphone_tag": "ללקוחות בחנות בלבד",
+"promo_tradein_title": "טרייד-אין עד 2,000 באט הנחה",
+"promo_tradein_desc": "הביאו את הטלפון הישן וקבלו הנחה מיידית על החדש. כל המותגים, כל מצב",
+"promo_tradein_tag": "הערכה חינם בחנות",
 "promo_3for100_title": "3 פריטים ב-100 באט",
 "promo_3for100_desc": "3 אביזרים ב-100 באט בלבד!",
 "promo_3for100_tag": "הערך הטוב ביותר במחיר הוגן",
@@ -693,6 +789,7 @@ const translations = {
 "contact_phone": "ערוצי יצירת קשר",
 "contact_phone_text": "טלפון: 081-234-5678<br>Line: @aehongdaeng",
 "contact_map": "צפייה במפות גוגל",
+"quick_contact_title": "צרו איתנו קשר",
 "admin_login": "כניסה",
 "admin_error": "סיסמה שגויה",
 "tap_view": "הקש לפרטים",
@@ -710,6 +807,7 @@ const translations = {
 "nav_services": "サービス",
 "nav_contact": "お問い合わせ",
 "tagline": "高品質な携帯電話をお手頃価格で！",
+"home_map_title": "店舗マップ",
 "pricing_title": "携帯電話の価格",
 "pricing_sub": "当店特別価格",
 "calc_title": "分割払い計算機",
@@ -717,6 +815,12 @@ const translations = {
 "calc_result": "月々のお支払い：",
 "baht": "バーツ",
 "promo_title": "特別プロモーション",
+"promo_newphone_title": "新品購入で保護フィルムが無料",
+"promo_newphone_desc": "新品スマホをご購入で強化ガラスフィルムとクリアケースをプレゼント",
+"promo_newphone_tag": "来店のお客様限定",
+"promo_tradein_title": "下取りで最大2,000バーツ割引",
+"promo_tradein_desc": "古い端末を下取りして新品購入時に即時割引。ブランド・状態は問いません",
+"promo_tradein_tag": "店頭で無料査定",
 "promo_3for100_title": "3点で100バーツ",
 "promo_3for100_desc": "アクセサリー3点がわずか100バーツ！",
 "promo_3for100_tag": "フレンドリー価格で最高価値",
@@ -746,6 +850,7 @@ const translations = {
 "contact_phone": "お問い合わせ先",
 "contact_phone_text": "電話: 081-234-5678<br>Line: @aehongdaeng",
 "contact_map": "Googleマップで見る",
+"quick_contact_title": "お問い合わせ",
 "admin_login": "ログイン",
 "admin_error": "パスワードが間違っています",
 "tap_view": "タップして詳細を見る",
@@ -763,6 +868,7 @@ const translations = {
 "nav_services": "서비스",
 "nav_contact": "연락처",
 "tagline": "훌륭한 가격의 품질 좋은 휴대폰!",
+"home_map_title": "매장 위치",
 "pricing_title": "휴대폰 가격",
 "pricing_sub": "当店 특별 가격",
 "calc_title": "할부 계산기",
@@ -770,6 +876,12 @@ const translations = {
 "calc_result": "월 할부금: ",
 "baht": "바트",
 "promo_title": "특별 프로모션",
+"promo_newphone_title": "새 폰 구매 시 강화필름 무료 증정",
+"promo_newphone_desc": "신제품 구매 시 강화유리 필름과 투명 케이스를 무료로 드립니다",
+"promo_newphone_tag": "매장 방문 고객 한정",
+"promo_tradein_title": "중고 보상판매 최대 2,000바트 할인",
+"promo_tradein_desc": "사용하던 폰을 반납하고 새 폰 구매 시 즉시 할인. 모든 브랜드, 모든 상태 가능",
+"promo_tradein_tag": "매장 무료 평가",
 "promo_3for100_title": "3개에 100바트",
 "promo_3for100_desc": "액세서리 3개를わずか 100바트에!",
 "promo_3for100_tag": "친근한 가격의 최고의 가치",
@@ -799,6 +911,7 @@ const translations = {
 "contact_phone": "연락처",
 "contact_phone_text": "전화: 081-234-5678<br>Line: @aehongdaeng",
 "contact_map": "구글 지도에서 보기",
+"quick_contact_title": "연락하기",
 "admin_login": "로그인",
 "admin_error": "비밀번호가 틀렸습니다",
 "tap_view": "탭하여 상세 보기",
@@ -816,6 +929,7 @@ const translations = {
 "nav_services": "الخدمات",
 "nav_contact": "اتصل بنا",
 "tagline": "هواتف محمولة عالية الجودة بأسعار رائعة!",
+"home_map_title": "موقع متجرنا",
 "pricing_title": "أسعار الهواتف المحمولة",
 "pricing_sub": "أسعار خاصة من متجرنا",
 "calc_title": "حاسبة التقسيط",
@@ -823,6 +937,12 @@ const translations = {
 "calc_result": "القسط الشهري: ",
 "baht": "بات",
 "promo_title": "عروض خاصة",
+"promo_newphone_title": "اشترِ هاتفًا جديدًا واحصل على واقي شاشة مجانًا",
+"promo_newphone_desc": "عند شراء أي هاتف جديد، احصل على واقي شاشة زجاجي وغطاء شفاف مجانًا",
+"promo_newphone_tag": "لعملاء المتجر فقط",
+"promo_tradein_title": "استبدل هاتفك القديم ووفر حتى 2,000 بات",
+"promo_tradein_desc": "أحضر هاتفك القديم واحصل على خصم فوري عند شراء هاتف جديد. جميع الماركات وأي حالة",
+"promo_tradein_tag": "تقييم مجاني في المتجر",
 "promo_3for100_title": "3 قطع بـ 100 بات",
 "promo_3for100_desc": "3 إكسسوارات بـ 100 بات فقط!",
 "promo_3for100_tag": "أفضل قيمة بسعر مناسب",
@@ -852,6 +972,7 @@ const translations = {
 "contact_phone": "قنوات الاتصال",
 "contact_phone_text": "هاتف: 081-234-5678<br>Line: @aehongdaeng",
 "contact_map": "عرض على خرائط جوجل",
+"quick_contact_title": "تواصل معنا",
 "admin_login": "تسجيل الدخول",
 "admin_error": "كلمة مرور غير صحيحة",
 "tap_view": "اضغط لعرض التفاصيل",
@@ -1483,9 +1604,18 @@ if (t[key]) el.innerHTML = t[key];
 renderPhones();
 renderPrices();
 renderAccessories();
+renderQuickContacts();
 const phonesTab = document.getElementById('adminTabPhones');
 if (phonesTab && phonesTab.style.display !== 'none') {
 renderPhonesEditor();
+}
+const promoTab = document.getElementById('adminTabPromo');
+if (promoTab && promoTab.style.display !== 'none') {
+renderPromoEditor();
+}
+const contentTab = document.getElementById('adminTabContent');
+if (contentTab && contentTab.style.display !== 'none') {
+renderContentEditor();
 }
 }
 
@@ -1583,6 +1713,26 @@ document.getElementById('chargersGrid').innerHTML = siteData.accessories.charger
 document.getElementById('audioGrid').innerHTML = siteData.accessories.audio.map(renderItem).join('');
 }
 
+function renderQuickContacts() {
+const t = translations[currentLang] || translations['en'];
+const html = `
+<h3><i class="fas fa-headset"></i> ${t.quick_contact_title || 'Contact us'}</h3>
+<div class="quick-contact-row">
+<div class="quick-contact-info">
+<p><i class="fas fa-phone-alt"></i> ${t.contact_phone_text || ''}</p>
+<p style="margin-top:6px;"><i class="fas fa-clock"></i> ${t.contact_hours_time || ''}</p>
+</div>
+<a href="https://maps.app.goo.gl/GvKaetCQbaCtduwH6" target="_blank" class="map-btn">
+<i class="fas fa-map-marked-alt"></i> ${t.contact_map || 'View on Google Maps'}
+</a>
+</div>
+`;
+['quickContactHome', 'quickContactPricing', 'quickContactPromo', 'quickContactAccessories', 'quickContactServices'].forEach(id => {
+const el = document.getElementById(id);
+if (el) el.innerHTML = html;
+});
+}
+
 function showSection(id) {
 document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
@@ -1607,6 +1757,7 @@ document.getElementById('adminDashboard').style.display = 'block';
 loadGithubConfig();
 renderPhonesEditor();
 renderAccessoriesEditor();
+renderPromoEditor();
 renderContentEditor();
 } else {
 document.getElementById('loginError').style.display = 'block';
@@ -1626,6 +1777,8 @@ document.getElementById('adminTab' + tab.charAt(0).toUpperCase() + tab.slice(1))
 event.target.classList.add('active');
 if (tab === 'phones') renderPhonesEditor();
 if (tab === 'accessories') renderAccessoriesEditor();
+if (tab === 'promo') renderPromoEditor();
+if (tab === 'content') renderContentEditor();
 }
 
 function loadGithubConfig() {
@@ -1857,7 +2010,42 @@ renderAccessoriesEditor();
 }
 }
 
+function renderPromoEditor() {
+const langNames = { th: 'ไทย', en: 'English', zh: '中文', ru: 'Русский', hi: 'हिन्दी', he: 'עברית', ja: '日本語', ko: '한국어', ar: 'العربية' };
+const noteEl = document.getElementById('promoLangNote');
+if (noteEl) {
+noteEl.innerHTML = `<i class="fas fa-language"></i> กำลังแก้ไขโปรโมชั่นของภาษา: <strong>${langNames[currentLang] || currentLang}</strong><br>สลับภาษาที่มุมขวาบนเพื่อแก้ไขเนื้อหาของภาษาอื่น`;
+}
+const t = translations[currentLang] || translations['en'];
+const promoFields = [
+{ key: 'promo_newphone_title', label: 'โปร 1 - หัวข้อ (ฟิล์มกระจกฟรี)' },
+{ key: 'promo_newphone_desc', label: 'โปร 1 - รายละเอียด' },
+{ key: 'promo_newphone_tag', label: 'โปร 1 - ป้ายข้อความ' },
+{ key: 'promo_tradein_title', label: 'โปร 2 - หัวข้อ (เทิร์นเครื่องเก่า)' },
+{ key: 'promo_tradein_desc', label: 'โปร 2 - รายละเอียด' },
+{ key: 'promo_tradein_tag', label: 'โปร 2 - ป้ายข้อความ' },
+{ key: 'promo_3for100_title', label: 'โปร 3 - หัวข้อ (3 ชิ้น 100 บาท)' },
+{ key: 'promo_3for100_desc', label: 'โปร 3 - รายละเอียด' },
+{ key: 'promo_3for100_tag', label: 'โปร 3 - ป้ายข้อความ' },
+{ key: 'promo_step1', label: 'ขั้นตอนที่ 1' },
+{ key: 'promo_step2', label: 'ขั้นตอนที่ 2' },
+{ key: 'promo_step3', label: 'ขั้นตอนที่ 3' }
+];
+const container = document.getElementById('promoEditor');
+container.innerHTML = promoFields.map(f => `
+<div class="form-group">
+<label>${f.label}</label>
+<textarea onchange="translations['${currentLang}']['${f.key}'] = this.value; changeLang(currentLang);">${t[f.key] || ''}</textarea>
+</div>
+`).join('');
+}
+
 function renderContentEditor() {
+const langNames = { th: 'ไทย', en: 'English', zh: '中文', ru: 'Русский', hi: 'हिन्दी', he: 'עברית', ja: '日本語', ko: '한국어', ar: 'العربية' };
+const noteEl = document.getElementById('contentLangNote');
+if (noteEl) {
+noteEl.innerHTML = `<i class="fas fa-language"></i> กำลังแก้ไขเนื้อหาของภาษา: <strong>${langNames[currentLang] || currentLang}</strong><br>สลับภาษาที่มุมขวาบนเพื่อแก้ไขเนื้อหาของภาษาอื่น`;
+}
 const container = document.getElementById('contentEditor');
 const t = translations[currentLang] || translations['en'];
 container.innerHTML = `
@@ -1875,7 +2063,12 @@ container.innerHTML = `
 </div>
 <div class="form-group">
 <label>ช่องทางติดต่อ (${currentLang.toUpperCase()})</label>
-<input type="text" value="${t.contact_phone_text}" onchange="translations['${currentLang}'].contact_phone_text = this.value">
+<input type="text" value="${t.contact_phone_text}" onchange="translations['${currentLang}'].contact_phone_text = this.value; renderQuickContacts();">
+</div>
+<div class="form-group">
+<label>รูปภาพแผนที่หน้าแรก (URL)</label>
+<input type="text" id="homeMapImageInput" value="${document.getElementById('homeMapImage') ? document.getElementById('homeMapImage').src : ''}" onchange="document.getElementById('homeMapImage').src = this.value;">
+${document.getElementById('homeMapImage') ? `<img src="${document.getElementById('homeMapImage').src}" class="media-preview">` : ''}
 </div>
 `;
 }
