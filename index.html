@@ -241,10 +241,10 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <input type="number" id="calcPrice" placeholder="ราคาสินค้า" value="30000">
 <input type="number" id="calcDown" placeholder="เงินดาวน์" value="5000">
 <select id="calcMonths">
-<option value="4">4 เดือน</option>
-<option value="6">6 เดือน</option>
-<option value="10" selected>10 เดือน</option>
-<option value="12">12 เดือน</option>
+<option value="4" data-i18n="calc_4m">4 เดือน</option>
+<option value="6" data-i18n="calc_6m">6 เดือน</option>
+<option value="10" selected data-i18n="calc_10m">10 เดือน</option>
+<option value="12" data-i18n="calc_12m">12 เดือน</option>
 </select>
 <button class="btn" onclick="calculateInstallment()"><i class="fas fa-calculator"></i> <span data-i18n="calc_btn">คำนวณ</span></button>
 </div>
@@ -446,6 +446,10 @@ const translations = {
 "calc_title": "คำนวณผ่อนชำระ",
 "calc_btn": "คำนวณ",
 "calc_result": "ยอดผ่อนต่อเดือน: ",
+"calc_4m": "4 เดือน",
+"calc_6m": "6 เดือน",
+"calc_10m": "10 เดือน",
+"calc_12m": "12 เดือน",
 "baht": "บาท",
 "promo_title": "โปรโมชั่นพิเศษ",
 "promo_how": "วิธีรับโปรโมชั่น",
@@ -500,6 +504,10 @@ const translations = {
 "calc_title": "Installment Calculator",
 "calc_btn": "Calculate",
 "calc_result": "Monthly payment: ",
+"calc_4m": "4 months",
+"calc_6m": "6 months",
+"calc_10m": "10 months",
+"calc_12m": "12 months",
 "baht": "Baht",
 "promo_title": "Special Promotions",
 "promo_how": "How to get promotion",
@@ -554,6 +562,10 @@ const translations = {
 "calc_title": "分期付款计算器",
 "calc_btn": "计算",
 "calc_result": "每月还款：",
+"calc_4m": "4 个月",
+"calc_6m": "6 个月",
+"calc_10m": "10 个月",
+"calc_12m": "12 个月",
 "baht": "泰铢",
 "promo_title": "特别促销",
 "promo_how": "如何获得促销",
@@ -608,6 +620,10 @@ const translations = {
 "calc_title": "Калькулятор рассрочки",
 "calc_btn": "Рассчитать",
 "calc_result": "Ежемесячный платеж: ",
+"calc_4m": "4 месяца",
+"calc_6m": "6 месяцев",
+"calc_10m": "10 месяцев",
+"calc_12m": "12 месяцев",
 "baht": "бат",
 "promo_title": "Специальные акции",
 "promo_how": "Как получить акцию",
@@ -662,6 +678,10 @@ const translations = {
 "calc_title": "किस्त कैलकुलेटर",
 "calc_btn": "गणना करें",
 "calc_result": "मासिक किस्त: ",
+"calc_4m": "4 महीने",
+"calc_6m": "6 महीने",
+"calc_10m": "10 महीने",
+"calc_12m": "12 महीने",
 "baht": "बात",
 "promo_title": "विशेष प्रोमोशन",
 "promo_how": "प्रोमोशन कैसे प्राप्त करें",
@@ -716,6 +736,10 @@ const translations = {
 "calc_title": "מחשבון תשלומים",
 "calc_btn": "חשב",
 "calc_result": "תשלום חודשי: ",
+"calc_4m": "4 חודשים",
+"calc_6m": "6 חודשים",
+"calc_10m": "10 חודשים",
+"calc_12m": "12 חודשים",
 "baht": "באט",
 "promo_title": "מבצעים מיוחדים",
 "promo_how": "איך לקבל מבצע",
@@ -770,6 +794,10 @@ const translations = {
 "calc_title": "分割払い計算機",
 "calc_btn": "計算",
 "calc_result": "月々のお支払い：",
+"calc_4m": "4ヶ月",
+"calc_6m": "6ヶ月",
+"calc_10m": "10ヶ月",
+"calc_12m": "12ヶ月",
 "baht": "バーツ",
 "promo_title": "特別プロモーション",
 "promo_how": "プロモーションの受け方",
@@ -824,6 +852,10 @@ const translations = {
 "calc_title": "할부 계산기",
 "calc_btn": "계산",
 "calc_result": "월 할부금: ",
+"calc_4m": "4개월",
+"calc_6m": "6개월",
+"calc_10m": "10개월",
+"calc_12m": "12개월",
 "baht": "바트",
 "promo_title": "특별 프로모션",
 "promo_how": "프로모션 받는 방법",
@@ -878,6 +910,10 @@ const translations = {
 "calc_title": "حاسبة التقسيط",
 "calc_btn": "احسب",
 "calc_result": "القسط الشهري: ",
+"calc_4m": "4 أشهر",
+"calc_6m": "6 أشهر",
+"calc_10m": "10 أشهر",
+"calc_12m": "12 شهرًا",
 "baht": "بات",
 "promo_title": "عروض خاصة",
 "promo_how": "كيفية الحصول على العرض",
